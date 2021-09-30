@@ -1,7 +1,6 @@
 import React from 'react';
 import './TableNumberButton.css'
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TableNumberButton(props) {
     return (
