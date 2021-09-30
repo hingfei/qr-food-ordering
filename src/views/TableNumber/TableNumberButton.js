@@ -1,9 +1,12 @@
 import React from 'react';
+import './TableNumberButton.css'
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TableNumberButton(props) {
     return (
-        <div>
-            <button>Submit Button</button>
+        <div id="container">
+            <Button variant="primary">Submit</Button>{' '}
         </div>
     );
 }
