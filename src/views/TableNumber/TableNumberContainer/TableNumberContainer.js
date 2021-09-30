@@ -7,8 +7,9 @@ import TableNumberButton from "../TableNumberButton";
 function TableNumberContainer(props) {
     return (
         <div>
-            Table Page
+
             <TableNumberNavBar/>
+            Table Page
             <TableNumberRestaurantName/>
             <TableNumberInputField/>
             <TableNumberButton/>
