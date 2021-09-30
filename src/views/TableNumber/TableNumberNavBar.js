@@ -5,7 +5,7 @@ function TableNumberNavBar(props) {
     return (
         <>
             <Navbar bg="light">
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="#">
                         <img
                             alt=""
                             src="./images/logo.svg"
