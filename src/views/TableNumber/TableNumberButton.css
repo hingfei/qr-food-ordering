@@ -1,3 +1,10 @@
 #container {
+    margin-top: 20px;
     text-align: center;
+}
+
+#butt1 {
+    background-color: #FFB300;
+    color: black;
+    border-radius: 50in;
 }

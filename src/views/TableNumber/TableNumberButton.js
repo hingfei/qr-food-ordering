@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function TableNumberButton(props) {
     return (
         <div id="container">
-            <Button variant="primary">Submit</Button>{' '}
+            <Button id="butt1" variant="primary" size='lg'>Submit</Button>{' '}
         </div>
     );
 }

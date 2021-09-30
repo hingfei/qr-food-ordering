@@ -5,7 +5,7 @@ form{
 input[type=text]{
 
     margin: auto;
-    width: 30%;
+    width: 100%;
     border: 2px solid black;
     padding: 30px;
     background-color: #DEB887
