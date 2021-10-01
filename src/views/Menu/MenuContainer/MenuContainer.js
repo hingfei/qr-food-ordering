@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuRestaurantName from '../MenuRestaurantName';
 import MenuNavBar from "../MenuNavBar";
+import MenuFooter from '../MenuFooter';
 
 function MenuContainer(props) {
     return (
@@ -9,7 +10,7 @@ function MenuContainer(props) {
             <MenuNavBar/>
             <MenuRestaurantName/>
 
-
+            <MenuFooter/>
         </div>
     );
 }
