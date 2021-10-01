@@ -1,5 +1,5 @@
 import React from 'react';
-import image1 from './images/decklogo.jpg';
+import image1 from '../images/decklogo.jpg';
 import './TableNumberRestaurantName.css';
 
 function TableNumberRestaurantName(props) {

@@ -1,0 +1,9 @@
+.shoppingCart {
+    float: right;
+}
+
+.tableNumber{
+    display:inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
