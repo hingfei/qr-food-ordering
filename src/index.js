@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import TableNumberContainer from "./views/TableNumber/TableNumberContainer/TableNumberContainer";
+import MenuContainer from "./views/Menu/MenuContainer/MenuContainer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TableNumberContainer />
+    <MenuContainer/>
   </React.StrictMode>,
   document.getElementById('root')
 );
