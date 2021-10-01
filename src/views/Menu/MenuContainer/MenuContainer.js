@@ -5,17 +5,16 @@ import MenuRestaurantName from '../MenuRestaurantName';
 import MenuNavBar from "../MenuNavBar";
 import MenuFooter from '../MenuFooter';
 
-function MenuContainer(props) {
+function MenuContainer() {
     return (
         <div>
-            Menu page
+            <MenuNavBar/>
             <Router>
              <MenuSideNav/>
              <Switch>
                  <Route path='/' />
              </Switch>
             </Router>
-            <MenuNavBar/>
             <MenuRestaurantName/>
 
             <MenuFooter/>
