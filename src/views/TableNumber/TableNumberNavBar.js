@@ -8,7 +8,7 @@ function TableNumberNavBar(props) {
                     <Navbar.Brand href="#">
                         <img
                             alt=""
-                            src="./images/logo.svg"
+                            src="../images/logo.svg"
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
