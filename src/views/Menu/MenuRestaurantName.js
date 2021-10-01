@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MenuRestaurantName(props) {
+function MenuRestaurantName() {
     return (
         <div>
             To do : Restaurant Logo + Name
