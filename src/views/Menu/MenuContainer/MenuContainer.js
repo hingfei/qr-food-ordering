@@ -1,9 +1,12 @@
 import React from 'react';
+import MenuNavBar from "../MenuNavBar";
 
 function MenuContainer(props) {
     return (
         <div>
-            Menu page
+            <MenuNavBar/>
+
+
         </div>
     );
 }
