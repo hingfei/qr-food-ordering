@@ -2,7 +2,7 @@ import React from 'react';
 import './MenuRestaurantName.css';
 import image1 from '../images/decklogo.jpg';
 
-function MenuRestaurantName(props) {
+function MenuRestaurantName() {
     return (
         <div id='container'>
             <div id='img-con'>
