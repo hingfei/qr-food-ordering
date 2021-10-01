@@ -3,13 +3,15 @@
     align-items: center;
     justify-content: center;
     background-color: #F9E7BD;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 img {
     max-width: 100%;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 #img-con {

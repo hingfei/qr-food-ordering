@@ -6,8 +6,8 @@ function MenuContainer(props) {
     return (
         <div>
             Menu page
-            <MenuRestaurantName/>
             <MenuNavBar/>
+            <MenuRestaurantName/>
 
 
         </div>
