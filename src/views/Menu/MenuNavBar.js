@@ -3,13 +3,30 @@ import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChangeCircleRoundedIcon from '@mui/icons-material/ChangeCircleRounded';
 import './MenuNavBar.css'
+import MenuSideNav from "./MenuSideNav";
+
 
 function MenuNavBar() {
+
+    // Todo: get TableNumber from db
+    const TableNumber = "A1";
+
+    // Todo: route path to table change page
+    function handleTableChange(e){
+        console.log('clicked Table Change');
+    }
+
+    // Todo: render shopping cart when clicked
+    function handleShoppingCart(e){
+        console.log('clicked Shopping Cart');
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
+                        <MenuSideNav/>
                         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>
                             <img
                                 alt=""
@@ -24,16 +41,16 @@ function MenuNavBar() {
                         </IconButton>
 
                     </Grid>
-                    <Grid item xs={4} className="tableNumber">
+                    <Grid item xs={4} className="tableNumber" >
                         <Typography  variant="h6" color="inherit" component="div" className="tableNumber">
-                            XX
+                            {TableNumber}
                         </Typography>
-                        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber">
+                        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber" onClick={handleTableChange}>
                             <ChangeCircleRoundedIcon/>
                         </IconButton>
                     </Grid>
-                    <Grid item xs={4}>
-                        <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart">
+                    <Grid item xs={2}>
+                        <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart" onClick={handleShoppingCart}>
                             <ShoppingCartIcon />
                         </IconButton>
                     </Grid>
