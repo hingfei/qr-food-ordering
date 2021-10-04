@@ -21,6 +21,7 @@ function MenuNavBar() {
         console.log('clicked Shopping Cart');
     }
 
+    // Todo: change Nav bar color
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

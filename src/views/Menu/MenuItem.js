@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {Button, Grid} from '@mui/material';
+import MenuItemModal from "./MenuItemModal";
 
 
 function MenuItem() {
@@ -12,9 +12,6 @@ function MenuItem() {
         console.log('clicked add button');
     }
 
-    function handleImageClick(e){
-        console.log('clicked Images');
-    }
     // Todo : change List to get from DB
     // Test List
     const menuList = [
@@ -40,20 +37,12 @@ function MenuItem() {
 
     return (
         menuList.map((item, index)=> {
-            const {title, description, price, image} = item;
+            const {title, description, price} = item;
             return (
                 <Card sx={{ width: "100%"}} key={index}>
                     <Grid container spacing={2} padding={1}>
                         <Grid item xs={3}>
-                            <Button onClick={handleImageClick}>
-                                <CardMedia
-                                    component="img"
-                                    image={image}
-                                    alt={title}
-                                    sx = {{width : "100%", height:"15vw", objectFit: "cover"}}
-
-                                />
-                            </Button>
+                            <MenuItemModal {...item}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant={"h6"} >
