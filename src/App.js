@@ -11,10 +11,10 @@ function App() {
       <div>
         <BrowserRouter>
           <Switch>
-              <Route path='/table_number' component={TableNumberContainer}/>
-              <Route path='/menu' component={MenuContainer}/>
-              <Route path='/cart' component={CartContainer}/>
-              <Route component={NotFound}/>
+            <Route path='/table_number' component={TableNumberContainer}/>
+            <Route path='/menu' component={MenuContainer}/>
+            <Route path='/cart' component={CartContainer}/>
+            <Route component={NotFound}/>
           </Switch>
         </BrowserRouter>
       </div>
