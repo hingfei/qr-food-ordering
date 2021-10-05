@@ -1,17 +1,15 @@
 import React from 'react';
-import './MenuRestaurantName.css';
-import image1 from '../images/decklogo.jpg';
+import {Typography} from "@mui/material";
+import './MenuRestaurantName.css'
 
 function MenuRestaurantName() {
+    // Todo : Replace Name by getting it from db
+    const restaurantName = "The Deck Restaurant"
+
     return (
-        <div id='container'>
-            <div id='img-con'>
-                <img src={image1} alt="" />
-            </div>
-            <div id='name'>
-                <h1>The Deck Restaurant</h1>
-            </div>
-        </div>
+        <Typography variant={"h6"} align={"center"} pt={2} pb={2} className="restaurantText">
+            {restaurantName}
+        </Typography>
     );
 }
 

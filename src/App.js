@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import TableNumberContainer from "./views/TableNumber/TableNumberContainer/TableNumberContainer";
+import MenuContainer from "./views/Menu/MenuContainer/MenuContainer";
+import NotFound from "./errors/NotFound";
+
+// Todo: create dynamic url with diff restaurants name and Route other pages lol
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Test 123
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <BrowserRouter>
+          <Switch>
+            <Route path='/table_number' component={TableNumberContainer}/>
+            <Route path='/menu' component={MenuContainer}/>
+            <Route component={NotFound}/>
+          </Switch>
+        </BrowserRouter>
+      </div>
   );
 }
 
