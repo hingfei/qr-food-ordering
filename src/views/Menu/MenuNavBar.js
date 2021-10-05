@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChangeCircleRoundedIcon from '@mui/icons-material/ChangeCircleRounded';
 import './MenuNavBar.css'
 import MenuSideNav from "./MenuSideNav";
+import {Link} from "react-router-dom";
 
 
 function MenuNavBar() {
@@ -23,7 +24,7 @@ function MenuNavBar() {
 
     // Todo: change Nav bar color
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar position="static">
                 <Toolbar>
                     <Grid item xs={6}>
@@ -51,9 +52,11 @@ function MenuNavBar() {
                         </IconButton>
                     </Grid>
                     <Grid item xs={2}>
-                        <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart" onClick={handleShoppingCart}>
-                            <ShoppingCartIcon />
-                        </IconButton>
+                        <Link to="/cart" style={{ textDecoration : 'none', color:"white"}}>
+                            <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart" onClick={handleShoppingCart}>
+                                <ShoppingCartIcon />
+                            </IconButton>
+                        </Link>
                     </Grid>
 
                 </Toolbar>

@@ -50,7 +50,7 @@ function MenuItemModal({title, price, description, image}) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <NumberInputSpinner />
+                        <NumberInputSpinner title={title} />
                     </CardActions>
                 </Card>
 

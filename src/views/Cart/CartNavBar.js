@@ -2,6 +2,7 @@ import React from 'react';
 import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
 import ChangeCircleRoundedIcon from "@mui/icons-material/ChangeCircleRounded";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import {Link} from "react-router-dom";
 
 
 function CartNavBar() {
@@ -18,7 +19,7 @@ function CartNavBar() {
     }
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Grid item xs={6}>
@@ -44,12 +45,14 @@ function CartNavBar() {
                         </IconButton>
                     </Grid>
                     <Grid item xs={2}>
-                        <IconButton size="large" aria-label="back-to-menu" color="inherit" sx={{ float: "right"}} onClick={handleBackButton}>
-                            <ArrowBackIosNewIcon />
-                            <Typography variant={"h6"} ml={2} >
-                                Back
-                            </Typography>
-                        </IconButton>
+                       <Link to="/menu" style={{ textDecoration : 'none', color:"white"}}>
+                           <IconButton size="large" aria-label="back-to-menu" color="inherit" sx={{ float: "right"}} onClick={handleBackButton}>
+                               <ArrowBackIosNewIcon />
+                               <Typography variant={"h6"} ml={2} >
+                                   Back
+                               </Typography>
+                           </IconButton>
+                       </Link>
                     </Grid>
 
                 </Toolbar>

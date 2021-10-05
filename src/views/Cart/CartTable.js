@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,45 +7,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import NumberInputSpinner from '../../components/NumberInputSpinner';
+import {OrderContext} from '../../App';
 
 
-function CartTable(props) {
+function CartTable() {
 
-    // function createOrder(item, qty, unit_price) {
-    //     const total_price = qty * unit_price;
-    //     return { item, qty, unit_price, total_price };
-    // }
+    const orderContext = useContext(OrderContext)
 
-    // const orderList = [
-    //     createOrder('Salad', 2, 5),
-    //     createOrder('Chicken Chop', 2, 25),
-    //     createOrder('Spaghetti', 1, 15),
-    //     createOrder('Lamb Chop', 1, 29),
-    //     createOrder('Orange Juice', 3, 5)
-    // ];
-    const orderList = [
-        {
-            title: 'Salad',
-            quantity : 5,
-            price : '20',
-            total : 100
-        },
-        {
-            title: 'Chicken',
-            quantity : 3,
-            price : '50',
-            total : 150
-        },
-        {
-            title: 'French Fries',
-            quantity : 6,
-            price : '5',
-            total : 30
-        }
-    ]
-
-    const [orderItem, setOrderItem] = useState(orderList)
-
+    // Todo : implement total price logic
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="order summary">
@@ -58,10 +27,10 @@ function CartTable(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {orderList.map((orderList, index) => (
-                        <TableRow key={index} 
-                        sx={{'&:last-child td, &:last-child th': { border: 0 }, 
-                        background: index % 2 ? 'lightyellow' : 'white'}}
+                    {orderContext.orderListState.map((orderList, index) => (
+                        <TableRow key={index}
+                                  sx={{'&:last-child td, &:last-child th': { border: 0 },
+                                      background: index % 2 ? 'lightyellow' : 'white'}}
                         >
                             <TableCell component='th' scope='row'>{orderList.title}</TableCell>
                             <TableCell align='right'>

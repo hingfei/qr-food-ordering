@@ -5,17 +5,18 @@ import CartTable from "../CartTable";
 import CartTotal from "../CartTotal";
 import CartConfirmButton from "../CartConfirmButton";
 import Footer from "../../../components/Footer";
+import {Box} from "@mui/material";
 
 function CartContainer() {
     return (
-        <div>
+        <Box sx={{display: "flex", flexDirection: "column", minHeight:"100vh"}}>
             <CartNavBar/>
             <CartTitle/>
             <CartTable/>
             <CartTotal/>
             <CartConfirmButton/>
             <Footer/>
-        </div>
+        </Box>
     );
 }
 

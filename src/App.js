@@ -3,22 +3,29 @@ import TableNumberContainer from "./views/TableNumber/TableNumberContainer/Table
 import MenuContainer from "./views/Menu/MenuContainer/MenuContainer";
 import NotFound from "./errors/NotFound";
 import CartContainer from "./views/Cart/CartContainer/CartContainer";
+import React, {useReducer} from "react";
+import {initialOrderList, orderReducer} from "./reducers/CartReducer";
 
+export const OrderContext = React.createContext();
 // Todo: create dynamic url with diff restaurants name and Route other pages lol
 
 function App() {
-  return (
-      <div>
-        <BrowserRouter>
-          <Switch>
-            <Route path='/table_number' component={TableNumberContainer}/>
-            <Route path='/menu' component={MenuContainer}/>
-            <Route path='/cart' component={CartContainer}/>
-            <Route component={NotFound}/>
-          </Switch>
-        </BrowserRouter>
-      </div>
-  );
+
+    const [orderList, dispatch] = useReducer(orderReducer, initialOrderList);
+      return (
+          <OrderContext.Provider value={{orderListState: orderList, orderListDispatch: dispatch }}>
+          <div>
+            <BrowserRouter>
+              <Switch>
+                <Route path='/table_number' component={TableNumberContainer}/>
+                <Route path='/menu' component={MenuContainer}/>
+                <Route path='/cart' component={CartContainer}/>
+                <Route component={NotFound}/>
+              </Switch>
+            </BrowserRouter>
+          </div>
+          </OrderContext.Provider>
+      );
 }
 
 export default App;

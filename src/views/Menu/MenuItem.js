@@ -3,46 +3,23 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import {Button, Grid} from '@mui/material';
 import MenuItemModal from "./MenuItemModal";
+import {useContext} from "react";
+import {OrderContext} from '../../App';
 
 
-function MenuItem() {
+function MenuItem({title, description, price, index, image}) {
 
-    // Todo : Implement add items to cart logic
-    function handleAddItem(e){
-        console.log('clicked add button');
+    const orderContext = useContext(OrderContext);
+
+    function handleAddItem(title){
+        orderContext.orderListDispatch({type:'add_item_to_cart', payload: title })
     }
 
-    // Todo : change List to get from DB
-    // Test List
-    const menuList = [
-        {
-            title: 'Salad',
-            description : 'tasty salad with 1000 vegetables and tomato',
-            price : '20',
-            image: './images/logo.svg'
-        },
-        {
-            title: 'Chicken',
-            description : 'BBQ chicken with bbq sauce',
-            price : '50',
-            image: './images/logo.svg'
-        },
-        {
-            title: 'French Fries',
-            description : 'Fries with tomato sauce',
-            price : '10',
-            image: './images/logo.svg'
-        }
-    ]
-
     return (
-        menuList.map((item, index)=> {
-            const {title, description, price} = item;
-            return (
                 <Card sx={{ width: "100%"}} key={index}>
                     <Grid container spacing={2} padding={1}>
                         <Grid item xs={3}>
-                            <MenuItemModal {...item}/>
+                            <MenuItemModal title={title} image={image} description={description}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant={"h6"} >
@@ -56,14 +33,16 @@ function MenuItem() {
                             </Typography>
                         </Grid>
                         <Grid item xs={3} sx={{display: "grid", justifyItems:"center", alignItems:"center"}}>
-                            <Button variant="contained" size={"small"} color={"primary"} onClick={handleAddItem}>
+                            <Button
+                                variant="contained"
+                                size={"small"}
+                                color={"primary"}
+                                onClick={() => handleAddItem(title)}>
                                 Add
                             </Button>
                         </Grid>
                     </Grid>
                 </Card>
-            )
-        })
     );
 }
 
