@@ -1,43 +1,69 @@
-import React, {useState} from 'react';
-import *as FaIcons from "react-icons/fa";
-import *as AiIcons from "react-icons/ai";
-import {Link} from 'react-router-dom';
-import {SidebarData} from './MenuSideNavData';
-import './MenuSideNav.css';
-import {IconContext} from 'react-icons';
+import React from 'react';
+import {Box, Divider, Drawer, IconButton, ListItem, ListItemIcon, ListItemText} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import List from '@mui/material/List';
+import { makeStyles } from '@mui/styles';
+import {SidebarData} from "./MenuSideNavData";
+import MenuRestaurantName from "./MenuRestaurantName";
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles({
+    drawer : {
+        width : drawerWidth
+    }
+});
 
 
-function MenuSideNav(props) {
-    const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(!sidebar);
+
+function MenuSideNav() {
+
+    // Custom Styles
+    const classes = useStyles();
+
+    const [state, setState] = React.useState(false);
+
+    const toggleSideNav = (open) => (event) => {
+        setState(open)
+    };
+
+    // Todo : Get list of categories (JSON) from db then use map to output a list of category
+    const categoriesList = SidebarData;
+
     return (
-    <>
-        <IconContext.Provider value={{color: '#fff'}}>
-        <div className="navbar">
-            <Link to = "#" className = 'menu-bars'>
-                <FaIcons.FaBars onClick={showSidebar} />
-            </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className = 'nav-menu-items' onClick={showSidebar}>
-                <li className="navbar-toggle">
-                    <Link to ="#" className= 'menu-bars'>
-                        <AiIcons.AiOutlineClose />
-                    </Link>
-                </li>
-                {SidebarData.map((item, index) => {
-                    return (
-                        <li key={index} className={item.cName}>
-                            <Link to ={item.path}>
-                                {item.icon}
-                                <span>{item.title}</span>
-                            </Link>
-                        </li>
-                    );
-                })}
-            </ul>
-        </nav>
-        </IconContext.Provider>
+        <>
+            <IconButton onClick={toggleSideNav(true)}
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 0 }}
+            >
+                <MenuIcon />
+            </IconButton>
+            <Drawer anchor={"left"} open={state} onClose={toggleSideNav(false)} className={classes.drawer} >
+                <Box
+                    sx={{ width: 250 }}
+                    role="presentation"
+                    onClick={toggleSideNav(false)}
+                    onKeyDown={toggleSideNav( false)}
+                >
+                    <MenuRestaurantName/>
+                    <List>
+                        {categoriesList.map((item, index)=> {
+                            const {title, icon} = item;
+                            return(
+                                // Todo : choose a divider from material UI
+                                <ListItem key={index} >
+                                    {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                                    <ListItemText primary={title} />
+                                    <Divider/>
+                                </ListItem>
+                            )
+                        })}
+                    </List>
+                </Box>
+            </Drawer>
         </>
     );
 }

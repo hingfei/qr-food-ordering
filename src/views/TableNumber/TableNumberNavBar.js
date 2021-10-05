@@ -1,22 +1,24 @@
 import React from 'react';
-import {Navbar} from "react-bootstrap";
+import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
 
-function TableNumberNavBar(props) {
+function TableNumberNavBar() {
     return (
-        <>
-            <Navbar bg="light">
-                    <Navbar.Brand href="#">
-                        <img
-                            alt=""
-                            src="../images/logo.svg"
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-top"
-                        />{' '}
+        <AppBar position="static">
+            <Toolbar variant="dense">
+                <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>
+                    <img
+                        alt=""
+                        src="./images/logo.svg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />
+                </IconButton>
+                    <Typography variant="h6" color="inherit" component="div">
                         Great Food
-                    </Navbar.Brand>
-            </Navbar>
-        </>
+                    </Typography>
+            </Toolbar>
+        </AppBar>
     );
 }
 

@@ -1,62 +1,71 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import {Row, Col} from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Icon from '@mui/material/Icon';
-import "./MenuItem.css";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import {Button, Grid} from '@mui/material';
+import MenuItemModal from "./MenuItemModal";
 
-function MenuItem(props) {
+
+function MenuItem() {
+
+    // Todo : Implement add items to cart logic
+    function handleAddItem(e){
+        console.log('clicked add button');
+    }
+
+    // Todo : change List to get from DB
+    // Test List
+    const menuList = [
+        {
+            title: 'Salad',
+            description : 'tasty salad with 1000 vegetables and tomato',
+            price : '20',
+            image: './images/logo.svg'
+        },
+        {
+            title: 'Chicken',
+            description : 'BBQ chicken with bbq sauce',
+            price : '50',
+            image: './images/logo.svg'
+        },
+        {
+            title: 'French Fries',
+            description : 'Fries with tomato sauce',
+            price : '10',
+            image: './images/logo.svg'
+        }
+    ]
+
     return (
-        <div>
-            <CardGroup>
-                <Card>
-                    <Row>
-                        <Col md = "auto">
-                        <Card.Img variant="top" src='https://www.twopeasandtheirpod.com/wp-content/uploads/2019/06/Easy-Green-Salad-4-500x375.jpg' style={{width:'250px'}}></Card.Img>
-                        </Col>
-                        <Col>
-                        <Card.Body>
-                        <Card.Title>Salad</Card.Title>
-                        <Card.Text>Lorem ipsum dolor sit amet...</Card.Text>
-                            <br/>
-                            <Card.Text>Price: 5000$</Card.Text>
-
-                        </Card.Body>
-                        </Col>
-                        <Col xs lg = "2" className= "AddButton">
-                                <Button size={'lg'}>
-                                    <Icon>add</Icon>
-                                </Button>
-                        </Col>
-                    </Row>
-                </Card>
-                <Card>
-                    <Row>
-                        <Col md = "auto">
-                            <Card.Img variant="top" src='https://www.twopeasandtheirpod.com/wp-content/uploads/2019/06/Easy-Green-Salad-4-500x375.jpg' style={{width:'250px'}}></Card.Img>
-                        </Col>
-                        <Col>
-                            <Card.Body>
-                                <Card.Title>Salad</Card.Title>
-                                <Card.Text>Lorem ipsum dolor sit amet...</Card.Text>
-                                <br/>
-                                <Card.Text>Price: 5000$</Card.Text>
-
-                            </Card.Body>
-                        </Col>
-                        <Col xs lg = "2" className= "AddButton">
-                            <Button size={'lg'}>
-                                <Icon>add</Icon>
+        menuList.map((item, index)=> {
+            const {title, description, price} = item;
+            return (
+                <Card sx={{ width: "100%"}} key={index}>
+                    <Grid container spacing={2} padding={1}>
+                        <Grid item xs={3}>
+                            <MenuItemModal {...item}/>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant={"h6"} >
+                                {title}
+                            </Typography>
+                            <Typography variant={"body1"} noWrap={true}>
+                                {description}
+                            </Typography>
+                            <Typography variant={"body2"} noWrap={true} pt={2}>
+                                RM {price}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={3} sx={{display: "grid", justifyItems:"center", alignItems:"center"}}>
+                            <Button variant="contained" size={"small"} color={"primary"} onClick={handleAddItem}>
+                                Add
                             </Button>
-                        </Col>
-                    </Row>
+                        </Grid>
+                    </Grid>
                 </Card>
-
-            </CardGroup>
-
-        </div>
+            )
+        })
     );
 }
+
 
 export default MenuItem;
