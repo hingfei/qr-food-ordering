@@ -3,17 +3,16 @@ import TableNumberNavBar from "../TableNumberNavBar";
 import TableNumberRestaurantName from "../TableNumberRestaurantName";
 import TableNumberInputField from "../TableNumberInputField";
 import TableNumberButton from "../TableNumberButton";
-import TableNumberFooter from "../TableNumberFooter";
+import Footer from "../../../components/Footer";
 
 function TableNumberContainer(props) {
     return (
         <div>
-
             <TableNumberNavBar/>
             <TableNumberRestaurantName/>
             <TableNumberInputField/>
             <TableNumberButton/>
-            <TableNumberFooter/>
+            <Footer/>
         </div>
     );
 }

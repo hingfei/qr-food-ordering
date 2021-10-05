@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import MenuNavBar from "../MenuNavBar";
-import MenuFooter from '../MenuFooter';
 import MenuItem from "../MenuItem";
+import Footer from "../../../components/Footer";
 
 function MenuContainer() {
     return (
@@ -14,7 +14,7 @@ function MenuContainer() {
              </Switch>
             </Router>
             <MenuItem />
-            <MenuFooter/>
+            <Footer/>
         </div>
     );
 }

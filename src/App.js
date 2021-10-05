@@ -3,6 +3,7 @@ import TableNumberContainer from "./views/TableNumber/TableNumberContainer/Table
 import MenuContainer from "./views/Menu/MenuContainer/MenuContainer";
 import NotFound from "./errors/NotFound";
 import CartContainer from "./views/Cart/CartContainer/CartContainer";
+
 // Todo: create dynamic url with diff restaurants name and Route other pages lol
 
 function App() {
