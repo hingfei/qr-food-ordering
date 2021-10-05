@@ -4,6 +4,7 @@ import CartTitle from "../CartFooter";
 import CartTable from "../CartTable";
 import CartFooter from "../CartFooter";
 import CartTotal from "../CartTotal";
+import CartConfirmButton from "../CartConfirmButton";
 
 function CartContainer() {
     return (
@@ -16,7 +17,9 @@ function CartContainer() {
             <CartTable/>
 
             <CartTotal/>
-
+            
+            <CartConfirmButton/>
+            
             <CartFooter/>
         </div>
     );
