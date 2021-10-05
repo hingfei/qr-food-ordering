@@ -3,8 +3,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import {Box, IconButton, Typography} from "@mui/material";
 
-// Todo : get initial quantity of item
-const initialQuantity = 1
+
 
 const reducer = (state, action) => {
     switch (action) {
@@ -17,9 +16,11 @@ const reducer = (state, action) => {
     }
 }
 
-function NumberInputSpinner() {
+function NumberInputSpinner({title, quantity, price, total}) {
+    // Todo : get initial quantity of item
+    
 
-    const [count, dispatch] = useReducer(reducer, initialQuantity)
+    const [count, dispatch] = useReducer(reducer, quantity)
 
     return (
 
