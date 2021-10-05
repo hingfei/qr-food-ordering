@@ -1,23 +1,20 @@
 import React from 'react';
 import CartNavBar from "../CartNavBar";
-import CartTitle from "../CartFooter";
+import CartTitle from "../CartTitle";
 import CartTable from "../CartTable";
-import CartFooter from "../CartFooter";
 import CartTotal from "../CartTotal";
+import CartConfirmButton from "../CartConfirmButton";
+import Footer from "../../../components/Footer";
 
 function CartContainer() {
     return (
         <div>
-            Cart Page
             <CartNavBar/>
-
             <CartTitle/>
-
             <CartTable/>
-
             <CartTotal/>
-
-            <CartFooter/>
+            <CartConfirmButton/>
+            <Footer/>
         </div>
     );
 }
