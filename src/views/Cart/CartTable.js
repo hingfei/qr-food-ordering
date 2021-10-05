@@ -44,17 +44,13 @@ function CartTable(props) {
         }
     ]
 
-    function getStripedStyle(index) {
-        return { background: index % 2 ? 'lightyellow' : 'white' };
-    }
-
     const [orderItem, setOrderItem] = useState(orderList)
 
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="order summary">
                 <TableHead>
-                    <TableRow>
+                    <TableRow sx={{backgroundColor: 'yellow'}}>
                         <TableCell>Item</TableCell>
                         <TableCell align='right'>Quantity</TableCell>
                         <TableCell align='right'>Unit Price (RM)</TableCell>
@@ -63,8 +59,9 @@ function CartTable(props) {
                 </TableHead>
                 <TableBody>
                     {orderList.map((orderList, index) => (
-                        <TableRow key={index} style={getStripedStyle(index)}
-                        sx={{'&:last-child td, &:last-child th': { border: 0 }}}
+                        <TableRow key={index} 
+                        sx={{'&:last-child td, &:last-child th': { border: 0 }, 
+                        background: index % 2 ? 'lightyellow' : 'white'}}
                         >
                             <TableCell component='th' scope='row'>{orderList.title}</TableCell>
                             <TableCell align='right'>
