@@ -1,33 +1,51 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Typography from '@mui/material/Typography';
-import Box from "@mui/material/Box";
+import {OrderContext} from "../../App";
+import {TableContainer, TableRow, TableBody, Paper} from "@mui/material";
+import {TableHead} from "@mui/material";
+import {Table} from "@mui/material";
+import TableCell from "@mui/material/TableCell";
 import './CartTotal.css';
 
-/*
-function subTotal(){
-   return null;
-}*/
-
 function CartTotal(props) {
+    const orderContext = useContext(OrderContext)
+    const subtotal = orderContext.orderListState.map(sum => sum.total).reduce((a, b) => a+b)
+    const discount = 0.2
+    console.log(subtotal)
+
+    useEffect(()=>{
+        console.log('use effect run')
+        console.log(orderContext.orderListState)
+    });
+
     return (
         <div className="CartSum">
-            <Box sx={{width: 300, height: 200, bgcolor: '#FDCAA4'}}>
-                <Typography variant='h4'>
-                    <Box sx={{bgcolor:'#D6CD14', textAlign: 'center', border: '1px solid black'}}>
-                        Cart Summary
-                    </Box>
-                </Typography>
-                <Typography variant='h6'>
-                    SubTotal:
-                </Typography>
-                <Typography variant='h6'>
-                    Discount:
-                </Typography>
-                <br/>
-                <Typography variant='h5'>
-                    Total :
-                </Typography>
-            </Box>
+            <TableContainer component={Paper}>
+                <Table sx={{minWidth:350}} aria-label="Cart Summary">
+                    <TableHead>
+                        <TableRow sx={{backgroundColor:'yellow'}}>
+                            <TableCell align={"center"} colSpan={3}>
+                                <Typography variant={'h6'}>CART SUMMARY</Typography>
+                            </TableCell>
+                         </TableRow>
+                </TableHead>
+                    <TableBody>
+                        <TableRow>
+                        <TableCell colSpan={2}>SubTotal:</TableCell>
+                        <TableCell align={"right"}>{subtotal}</TableCell>
+                    </TableRow>
+                        <TableRow>
+                            <TableCell>Discount:</TableCell>
+                            <TableCell align={"right"}>{discount*100}%</TableCell>
+                            <TableCell align={"right"}>-RM{discount*subtotal}</TableCell>
+                        </TableRow>
+                        <TableRow sx={{backgroundColor:'darkgrey'}}>
+                            <TableCell colSpan={2} sx={{fontSize: 'larger'}}>Total:</TableCell>
+                            <TableCell align={"right"} sx={{fontSize: 'larger'}}>RM{subtotal-subtotal*discount}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 }

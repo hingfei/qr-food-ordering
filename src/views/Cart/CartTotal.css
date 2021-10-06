@@ -1,6 +1,6 @@
 .CartSum{
     position: absolute;
-    bottom: 20%;
-    right: 10%;
-    border: 2px solid black;
+    margin-top: 360px;
+    right: 15%;
+    border: 1px solid black;
 }
