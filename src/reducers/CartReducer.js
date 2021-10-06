@@ -1,10 +1,5 @@
 export const initialOrderList = [
-    {
-        title: 'Salad',
-        quantity : 5,
-        price : '20',
-        total : 100
-    },
+    
     {
         title: 'Chicken',
         quantity : 3,
@@ -22,26 +17,36 @@ export const initialOrderList = [
 export const orderReducer = (orderList, action) => {
     // add_to_cart action
     if (action.type === 'add_item_to_cart'){
+        var orderFound = false;
+     
         // Todo: implement logic if it is empty?
-        return orderList.map(
+        orderList = orderList.map(
             order => {
                 if (order.title === action.payload){
                     order.quantity = order.quantity + 1;
+                    order.total = order.quantity * order.price;
+                    orderFound = true;
                 }
                 return order;
             })
+        if (orderFound === false) {
+            return [...orderList, {title: action.payload, quantity: 1, price: 5, total: 5}]
+        }
+        return orderList;
     }
-
-    // remove_item_from_cart action
-    if (action.type === 'remove_item_from_cart'){
+       
+        // remove_item_from_cart action
+        if (action.type === 'remove_item_from_cart'){
         // Todo: implement logic if item quantity is 0
         return orderList.map(
             order => {
                 if (order.title === action.payload){
                     order.quantity = order.quantity - 1;
+                    order.total = order.quantity * order.price;
                 }
                 return order;
             })
-    }
+        }
+        // Todo: validate negative number
 }
 

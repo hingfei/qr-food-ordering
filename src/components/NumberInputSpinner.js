@@ -4,7 +4,6 @@ import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox
 import {Box, IconButton, Typography} from "@mui/material";
 import {OrderContext} from '../App';
 
-
 function NumberInputSpinner({title}) {
 
     const orderContext = useContext(OrderContext)
@@ -18,10 +17,10 @@ function NumberInputSpinner({title}) {
     }
 
     return (
-        orderContext.orderListState.map(orderItem => {
+            orderContext.orderListState.map(orderItem => {
             if (orderItem.title === title) {
                 return (
-                    <Box display={"flex"} flexWrap={"nowrap"} alignItems={"center"} >
+                    <Box key={orderItem.title} display={"flex"} flexWrap={"nowrap"} alignItems={"center"} >
                         <IconButton color={"error"} size={"large"} onClick={() => handleRemoveItem(title)}>
                             <IndeterminateCheckBoxIcon/>
                         </IconButton>
@@ -34,9 +33,8 @@ function NumberInputSpinner({title}) {
                     </Box>
                 )
             }
-            return orderItem
+            return <></>
         })
-
     );
 }
 

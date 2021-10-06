@@ -17,7 +17,7 @@ function CartTable() {
     // Todo : implement total price logic
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="order summary">
+            <Table sx={{ minWidth: 650 }} aria-label="order summary" >
                 <TableHead>
                     <TableRow sx={{backgroundColor: 'yellow'}}>
                         <TableCell>Item</TableCell>
@@ -28,6 +28,7 @@ function CartTable() {
                 </TableHead>
                 <TableBody>
                     {orderContext.orderListState.map((orderList, index) => {
+
                             return (
                                 <TableRow key={index}
                                           sx={{'&:last-child td, &:last-child th': { border: 0 },
@@ -35,7 +36,7 @@ function CartTable() {
                             >
                                 <TableCell component='th' scope='row'>{orderList.title}</TableCell>
                                 <TableCell align='right'>
-                                    {orderList.quantity}
+                                    <NumberInputSpinner title={orderList.title}/>
                                 </TableCell>
                                 <TableCell align='right'>{orderList.price}</TableCell>
                                 <TableCell align='right'>{orderList.total}</TableCell>
