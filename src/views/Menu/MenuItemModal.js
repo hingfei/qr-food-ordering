@@ -23,7 +23,6 @@ function MenuItemModal({title, price, description, image}) {
                     image={image}
                     alt={title}
                     sx = {{width : "100%", height:"15vw", objectFit: "cover"}}
-
                 />
             </Button>
             <Dialog open={open}

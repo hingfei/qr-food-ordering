@@ -40,9 +40,11 @@ function CartNavBar() {
                         <Typography  variant="h6" color="inherit" component="div" className="tableNumber">
                             {TableNumber}
                         </Typography>
-                        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber" onClick={handleTableChange}>
-                            <ChangeCircleRoundedIcon/>
-                        </IconButton>
+                        <Link to="/table_number" style={{ textDecoration : 'none', color:"white"}}>
+                            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber" onClick={handleTableChange}>
+                                <ChangeCircleRoundedIcon/>
+                            </IconButton>
+                        </Link>
                     </Grid>
                     <Grid item xs={2}>
                        <Link to="/menu" style={{ textDecoration : 'none', color:"white"}}>

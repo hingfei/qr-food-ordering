@@ -13,6 +13,7 @@ function MenuItem({title, description, price, index, image}) {
 
     function handleAddItem(title){
         orderContext.orderListDispatch({type:'add_item_to_cart', payload: title })
+        console.log(orderContext.orderListState);
     }
 
     return (

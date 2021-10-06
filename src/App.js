@@ -10,7 +10,6 @@ export const OrderContext = React.createContext();
 // Todo: create dynamic url with diff restaurants name and Route other pages lol
 
 function App() {
-
     const [orderList, dispatch] = useReducer(orderReducer, initialOrderList);
       return (
           <OrderContext.Provider value={{orderListState: orderList, orderListDispatch: dispatch }}>

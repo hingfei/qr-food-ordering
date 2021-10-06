@@ -27,19 +27,22 @@ function CartTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {orderContext.orderListState.map((orderList, index) => (
-                        <TableRow key={index}
-                                  sx={{'&:last-child td, &:last-child th': { border: 0 },
-                                      background: index % 2 ? 'lightyellow' : 'white'}}
-                        >
-                            <TableCell component='th' scope='row'>{orderList.title}</TableCell>
-                            <TableCell align='right'>
-                                <NumberInputSpinner {... orderList} />
-                            </TableCell>
-                            <TableCell align='right'>{orderList.price}</TableCell>
-                            <TableCell align='right'>{orderList.total}</TableCell>
-                        </TableRow>
-                    ))}
+                    {orderContext.orderListState.map((orderList, index) => {
+                            return (
+                                <TableRow key={index}
+                                          sx={{'&:last-child td, &:last-child th': { border: 0 },
+                                              background: index % 2 ? 'lightyellow' : 'white'}}
+                            >
+                                <TableCell component='th' scope='row'>{orderList.title}</TableCell>
+                                <TableCell align='right'>
+                                    {orderList.quantity}
+                                </TableCell>
+                                <TableCell align='right'>{orderList.price}</TableCell>
+                                <TableCell align='right'>{orderList.total}</TableCell>
+                            </TableRow>
+                            )
+                    }
+                    )}
                 </TableBody>
             </Table>
         </TableContainer>
