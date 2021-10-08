@@ -2,7 +2,7 @@ import React from 'react';
 import image1 from '../images/decklogo.jpg';
 import './TableNumberRestaurantName.css';
 
-function TableNumberRestaurantName(props) {
+function TableNumberRestaurantName() {
     return (
         <div className ="restaurant">
             <h1 className="name"> THE DECK RESTAURANT</h1>

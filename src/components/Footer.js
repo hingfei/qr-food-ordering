@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Container, Typography} from "@mui/material";
 
-function Footer(props) {
+function Footer() {
     return (
         <Box bgcolor={"text.secondary"}
              sx = {{marginTop : "auto", width: "100%", height: "3vw"}}
