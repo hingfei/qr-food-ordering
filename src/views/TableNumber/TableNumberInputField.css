@@ -1,19 +1,6 @@
-form{
+#filled-required{
+
+    width: 250px;
     text-align: center;
-}
-
-input[type=text]{
-
-    margin: auto;
-    width: 100%;
-    border: 2px solid black;
-    padding: 30px;
-    background-color: #DEB887
-
-}
-input[placeholder]{
-
-    text-align: center;
-    font-size: large;
 
 }
