@@ -17,7 +17,7 @@ export const initialOrderList = [
 export const orderReducer = (orderList, action) => {
     // add_to_cart action
     if (action.type === 'add_item_to_cart'){
-        var orderFound = false;
+        let orderFound = false;
      
         // Todo: implement logic if it is empty?
         orderList = orderList.map(
