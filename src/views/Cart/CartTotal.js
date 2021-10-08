@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Typography from '@mui/material/Typography';
 import {OrderContext} from "../../App";
 import {TableContainer, TableRow, TableBody, Paper} from "@mui/material";
@@ -7,16 +7,11 @@ import {Table} from "@mui/material";
 import TableCell from "@mui/material/TableCell";
 import './CartTotal.css';
 
-function CartTotal(props) {
+function CartTotal() {
     const orderContext = useContext(OrderContext)
     const subtotal = orderContext.orderListState.map(sum => sum.total).reduce((a, b) => a+b)
     const discount = 0.2
     console.log(subtotal)
-
-    useEffect(()=>{
-        console.log('use effect run')
-        console.log(orderContext.orderListState)
-    });
 
     return (
         <div className="CartSum">

@@ -19,7 +19,7 @@ export const orderReducer = (orderList, action) => {
     if (action.type === 'add_item_to_cart'){
         let orderFound = false;
      
-        // Todo: implement logic if it is empty?
+
         orderList = orderList.map(
             order => {
                 if (order.title === action.payload){
@@ -30,6 +30,7 @@ export const orderReducer = (orderList, action) => {
                 return order;
             })
         if (orderFound === false) {
+            // Todo: replace the price with the actual price of item
             return [...orderList, {title: action.payload, quantity: 1, price: 5, total: 5}]
         }
         return orderList;
@@ -37,16 +38,33 @@ export const orderReducer = (orderList, action) => {
        
         // remove_item_from_cart action
         if (action.type === 'remove_item_from_cart'){
-        // Todo: implement logic if item quantity is 0
-        return orderList.map(
-            order => {
-                if (order.title === action.payload){
-                    order.quantity = order.quantity - 1;
-                    order.total = order.quantity * order.price;
+            let orderRemove  = false;
+
+            let newOrderList = orderList.map(
+                order => {
+                    if (order.title === action.payload){
+                        // check if order quantity is 1, if it is 1 then remove from list
+                        if (order.quantity === 1)
+                        {
+                            orderRemove = true;
+                        }
+                        else {
+                            order.quantity = order.quantity - 1;
+                            order.total = order.quantity * order.price;
+                        }
+                    }
+                    return order;
+                })
+
+                // This will return a list that contains all other items other than matched title
+                if (orderRemove){
+                    newOrderList = orderList.filter(order => (order.title !== action.payload))
                 }
-                return order;
-            })
+
+            return newOrderList;
         }
+
+
         // Todo: validate negative number
 }
 

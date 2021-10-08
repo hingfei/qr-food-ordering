@@ -19,7 +19,7 @@ function MenuItem({title, description, price, index, image}) {
                 <Card sx={{ width: "100%"}} key={index}>
                     <Grid container spacing={2} padding={1}>
                         <Grid item xs={3}>
-                            <MenuItemModal title={title} image={image} description={description}/>
+                            <MenuItemModal price={price} title={title} image={image} description={description}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant={"h6"} >

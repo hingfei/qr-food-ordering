@@ -2,7 +2,7 @@ import React from 'react';
 
 function ReceiptNotification(props) {
     return (
-        <div>Notification here</div>
+        <div>Notification here bar indicating order received</div>
     );
 }
 
