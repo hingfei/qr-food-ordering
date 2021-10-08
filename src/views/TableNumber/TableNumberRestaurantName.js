@@ -3,7 +3,7 @@ import image1 from '../images/decklogo.jpg';
 import './TableNumberRestaurantName.css';
 import {Typography} from "@mui/material";
 
-function TableNumberRestaurantName(props) {
+function TableNumberRestaurantName() {
     return (
         <div className ="restaurant">
             <Typography variant="h3" color = "inherit" align = "center"  className = "name"

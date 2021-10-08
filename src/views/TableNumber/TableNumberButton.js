@@ -1,22 +1,22 @@
 import React from 'react';
 import './TableNumberButton.css';
-import {Button} from '@mui/material';
+import {Box, Button} from '@mui/material';
 
-function TableNumberButton(props) {
+function TableNumberButton() {
     function handleSubmitNumber()
     {
         console.log('clicked submit button')
     }
     return (
-        <div id="container">
+        <Box mt={3}>
             <Button id="butt1"
-             color="primary" 
-             size='lg'
-             variant = "contained"
-             onClick ={()=> handleSubmitNumber()}
-             >Submit
-             </Button>
-        </div>
+                    color="primary"
+                    size='lg'
+                    variant = "contained"
+                    onClick ={()=> handleSubmitNumber()}
+            >Submit
+            </Button>
+        </Box>
     );
 }
 

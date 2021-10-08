@@ -10,9 +10,16 @@ function TableNumberContainer(props) {
     return (
         <Box sx={{display: "flex", flexDirection: "column", minHeight:"100vh"}}>
             <TableNumberNavBar/>
-            <TableNumberRestaurantName/>
-            <TableNumberInputField/>
-            <TableNumberButton/>
+            <Box sx={{ display: "inline-flex",
+                flexDirection:"column",
+                alignItems: "center" ,
+                minHeight: "80vh",
+                justifyContent: "center"
+            }}>
+                <TableNumberRestaurantName/>
+                <TableNumberInputField/>
+                <TableNumberButton/>
+            </Box>
             <Footer/>
         </Box>
     );
