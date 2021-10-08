@@ -1,10 +1,19 @@
 import React from 'react';
+import ReceiptNavBar from "../ReceiptNavBar";
+import ReceiptNotification from "../ReceiptNotification";
+import ReceiptDetails from "../ReceiptDetails";
+import ReceiptTable from "../ReceiptTable";
+import ReceiptBackButton from "../ReceiptBackButton";
 
-function ReceiptContainer(props) {
+function ReceiptContainer() {
     return (
-        <div>
-            Receipt Page
-        </div>
+        <>
+            <ReceiptNavBar/>
+            <ReceiptNotification/>
+            <ReceiptDetails/>
+            <ReceiptTable/>
+            <ReceiptBackButton/>
+        </>
     );
 }
 

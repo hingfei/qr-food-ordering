@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from '@mui/material';
 import './CartConfirmButton.css';
 
-function CartConfirmButton(props) {
+function CartConfirmButton() {
 
     function handleSubmit()
     {
