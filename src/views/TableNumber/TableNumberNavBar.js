@@ -3,7 +3,7 @@ import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
 
 function TableNumberNavBar() {
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{backgroundColor:"#54486E"}} >
             <Toolbar variant="dense">
                 <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>
                     <img

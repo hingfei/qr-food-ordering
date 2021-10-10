@@ -20,7 +20,7 @@ function CartNavBar() {
 
     return (
         <Box>
-            <AppBar position="static">
+            <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
                 <Toolbar variant="dense">
                     <Grid item xs={6}>
                         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>

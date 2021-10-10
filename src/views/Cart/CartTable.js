@@ -25,7 +25,7 @@ function CartTable() {
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="order summary" >
                 <TableHead>
-                    <TableRow sx={{backgroundColor: 'yellow'}}>
+                    <TableRow sx={{backgroundColor: '#F9E3C5'}}>
                         <TableCell>Item</TableCell>
                         <TableCell align='center'>Quantity</TableCell>
                         <TableCell align='right'>Unit Price (RM)</TableCell>
@@ -38,7 +38,7 @@ function CartTable() {
                             return (
                                 <TableRow key={index}
                                           sx={{'&:last-child td, &:last-child th': { border: 0 },
-                                              background: index % 2 ? 'lightyellow' : 'white'}}
+                                              background: index % 2 ? '#EAF2F8' : 'white'}}
                             >
                                 <TableCell component='th' scope='row'>{orderList.title}</TableCell>
                                 <TableCell sx={{float:'right'}}>
@@ -62,9 +62,9 @@ function CartTable() {
                         <TableCell align={"right"}>{discount*100}%</TableCell>
                         <TableCell align={"right"}>-RM{discount*subtotal}</TableCell>
                     </TableRow>
-                    <TableRow sx={{backgroundColor:'darkgrey'}}>
-                        <TableCell colSpan={2} sx={{fontSize: 'larger'}}>Total:</TableCell>
-                        <TableCell align={"right"} sx={{fontSize: 'larger'}}>RM{subtotal-subtotal*discount}</TableCell>
+                    <TableRow sx={{backgroundColor:'grey'}}>
+                        <TableCell colSpan={2} sx={{fontSize: 'larger', fontWeight:'800'}}>Total:</TableCell>
+                        <TableCell align={"right"} sx={{fontSize: 'larger', fontWeight:'800'}}>RM{subtotal-subtotal*discount}</TableCell>
                     </TableRow>
                     </Table>
                 </TableFooter>

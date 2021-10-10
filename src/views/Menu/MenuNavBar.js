@@ -25,7 +25,7 @@ function MenuNavBar() {
     // Todo: change Nav bar color
     return (
         <Box>
-            <AppBar position="static">
+            <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
                 <Toolbar>
                     <Grid item xs={6}>
                         <MenuSideNav/>
