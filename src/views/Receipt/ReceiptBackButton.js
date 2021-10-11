@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Typography} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 
@@ -8,12 +8,20 @@ function ReceiptBackButton() {
         console.log('clicked back button')
     }
     return (
-        <Button id="butt1" variant={"contained"} color={"primary"} size="large" aria-label="back-to-menu"   onClick={handleBackButton}>
-            <ArrowBackIosNewIcon />
-            <Typography variant={"h6"} ml={2} >
-                Back
-            </Typography>
-        </Button>
+        <Box sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex"}}>
+            <Button id="butt2"
+                    variant={"contained"}
+                    aria-label="back-to-menu"   onClick={handleBackButton}>
+                <ArrowBackIosNewIcon />
+                <Typography variant={"h6"} ml={2} >
+                    Back
+                </Typography>
+            </Button>
+        </Box>
+
     );
 }
 

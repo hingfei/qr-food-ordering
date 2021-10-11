@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Grid, Paper, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 import axios from 'axios';
 
 function ReceiptDetails() {
@@ -11,7 +11,15 @@ function ReceiptDetails() {
     let date = new Date(dateTime.datetime);
 
     const dateNow = date.getDate() + '-' + (date.getMonth() +1 ) + '-' + date.getFullYear();
-    const timeNow = date.getHours() + ':' + date.getMinutes()
+    const minutes = () => {
+        if (date.getMinutes() < 10){
+            return '0' + date.getMinutes();
+        }
+        else {
+            return date.getMinutes();
+        }
+    }
+    const timeNow = date.getHours() + ':' + minutes()
 
     useEffect(()=>{
         axios.get(timeURL)
@@ -24,7 +32,7 @@ function ReceiptDetails() {
     }, [])
 
     return (
-        <Paper elevation={2}>
+        <Box>
             <Grid container spacing={1}>
                 <Grid item xs={6}>
                     <Typography m={1} variant={"body1"} >Order Number: {OrderNumber} </Typography>
@@ -40,7 +48,7 @@ function ReceiptDetails() {
                     <Typography m={1} variant={"body1"}>Time : {timeNow} </Typography>
                 </Grid>
             </Grid>
-        </Paper>
+        </Box>
     );
 }
 
