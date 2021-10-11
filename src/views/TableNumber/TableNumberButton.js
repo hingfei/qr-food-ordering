@@ -9,7 +9,7 @@ function TableNumberButton() {
     }
     return (
         <Box mt={3}>
-            <Button id="butt1"
+            <Button id="page_button"
                     color="primary"
                     size='lg'
                     variant = "contained"

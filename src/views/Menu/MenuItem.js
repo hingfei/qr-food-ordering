@@ -34,7 +34,7 @@ function MenuItem({title, description, price, index, image}) {
                         </Grid>
                         <Grid item xs={3} sx={{display: "grid", justifyItems:"center", alignItems:"center"}}>
                             <Button
-                                id = "butt1"
+                                id = "page_button"
                                 variant="contained"
                                 size={"small"}
                                 color={"primary"}
