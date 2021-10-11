@@ -6,11 +6,9 @@
   position:fixed;
   bottom: 5px;
   width:95%;
-
 }
 
 #submit{
-  margin-top: 160px;
   justify-content: center;
   align-items: center;
   display:flex;

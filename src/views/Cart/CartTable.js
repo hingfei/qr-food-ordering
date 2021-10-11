@@ -34,25 +34,36 @@ function CartTable() {
             })}
             <Grid container mt={2} sx={{marginRight:'auto', marginLeft:'auto'}}>
                 <Grid item xs={8}>
-                    SubTotal:
+                    <Typography variant={"body1"} ml={5}>
+                        SubTotal :
+                    </Typography>
+
                 </Grid>
-                <Grid item xs={4} sx={{textAlign:'right'}}>
-                    {subtotal}
+                <Grid item xs={4} sx={{textAlign:'left'}}>
+                    <Typography variant={"body1"} ml={5} >
+                        RM {subtotal}
+                    </Typography>
                 </Grid>
-                <Grid item xs={4} borderBottom={1}>
-                    Discount:
+                <Grid item xs={8} borderBottom={1} pb={2}>
+                    <Typography variant={"body1"} ml={5}>
+                        Discount ({discount*100}%) :
+                    </Typography>
                 </Grid>
-                <Grid item xs={4} borderBottom={1} sx={{textAlign:'center'}}>
-                    {discount*100}%
-                </Grid>
-                <Grid item xs={4} borderBottom={1} sx={{textAlign:'right'}}>
-                    RM{discount*subtotal}
+                <Grid item xs={4} borderBottom={1} sx={{textAlign:'left'}} pb={2}>
+                    <Typography variant={"body1"} ml={5} >
+                        RM {discount*subtotal}
+                    </Typography>
                 </Grid>
                 <Grid item xs={8} mt={2} sx={{fontSize: 'larger', fontWeight:'800'}}>
-                    Total:
+                    <Typography variant={"h5"} ml={5} fontWeight={"bold"}>
+                        Total:
+                    </Typography>
+
                 </Grid>
-                <Grid item xs={4} mt={2} sx={{textAlign:'right',fontSize: 'larger', fontWeight:'800'}}>
-                    RM{subtotal-subtotal*discount}
+                <Grid item xs={4} mt={2} sx={{textAlign:'left'}}>
+                    <Typography variant={"h5"} ml={5} fontWeight={"bold"}>
+                        RM{subtotal-subtotal*discount}
+                    </Typography>
                 </Grid>
 
             </Grid>
