@@ -2,7 +2,6 @@ import React from 'react';
 import CartNavBar from "../CartNavBar";
 import CartTitle from "../CartTitle";
 import CartTable from "../CartTable";
-import Footer from "../../../components/Footer";
 import {Box} from "@mui/material";
 
 function CartContainer() {
@@ -11,7 +10,6 @@ function CartContainer() {
             <CartNavBar/>
             <CartTitle/>
             <CartTable/>
-            <Footer/>
         </Box>
     );
 }

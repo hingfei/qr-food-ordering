@@ -11,8 +11,7 @@ function CartConfirmButton() {
 
     return (
         <div id = "submit">
-            <Button id ="butt1"
-            color = "primary"
+            <Button id ="butt2"
             variant ="contained"
             size = "medium"
             onClick ={()=> handleSubmit()}
