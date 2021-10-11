@@ -1,18 +1,25 @@
-#butt1{
-
-    text-align: center;
+#butt2{
+  background-color:#F5B7B1;
+  padding-left: 35px;
+  padding-right: 35px;  
+  text-align: center;
+  position:fixed;
+  bottom: 5px;
+  width:95%;
 
 }
 
 #submit{
   margin-top: 160px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display:flex;
 }
 
-#butt1:hover{
-
+#butt2:hover{
+   background-color: #fdd5b1;
     letter-spacing: 3px;
     box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-	transition: all 0.3s ease 0s;
+	  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  	transition: all 0.3s ease 0s;
 }

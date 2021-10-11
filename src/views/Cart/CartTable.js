@@ -32,6 +32,30 @@ function CartTable() {
                     </Grid>
                 )
             })}
+            <Grid container mt={2} sx={{marginRight:'auto', marginLeft:'auto'}}>
+                <Grid item xs={8}>
+                    SubTotal:
+                </Grid>
+                <Grid item xs={4} sx={{textAlign:'right'}}>
+                    {subtotal}
+                </Grid>
+                <Grid item xs={4} borderBottom={1}>
+                    Discount:
+                </Grid>
+                <Grid item xs={4} borderBottom={1} sx={{textAlign:'center'}}>
+                    {discount*100}%
+                </Grid>
+                <Grid item xs={4} borderBottom={1} sx={{textAlign:'right'}}>
+                    RM{discount*subtotal}
+                </Grid>
+                <Grid item xs={8} mt={2} sx={{fontSize: 'larger', fontWeight:'800'}}>
+                    Total:
+                </Grid>
+                <Grid item xs={4} mt={2} sx={{textAlign:'right',fontSize: 'larger', fontWeight:'800'}}>
+                    RM{subtotal-subtotal*discount}
+                </Grid>
+
+            </Grid>
             <CartConfirmButton/>
         </Box>
     );
