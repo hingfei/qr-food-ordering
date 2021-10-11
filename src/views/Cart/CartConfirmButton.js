@@ -11,7 +11,7 @@ function CartConfirmButton() {
 
     return (
         <div id = "submit">
-            <Button id ="butt2"
+            <Button id ="bottom_button"
             variant ="contained"
             size = "medium"
             onClick ={()=> handleSubmit()}
