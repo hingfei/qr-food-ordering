@@ -8,10 +8,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import NumberInputSpinner from '../../components/NumberInputSpinner';
 import {OrderContext} from '../../App';
-import {TableFooter} from "@mui/material";
 import Box from "@mui/material/Box"
 import CartConfirmButton from "./CartConfirmButton";
-
+import Grid from "@mui/material/Grid";
 
 function CartTable() {
 
@@ -51,25 +50,32 @@ function CartTable() {
                     }
                     )}
                 </TableBody>
-                <TableFooter>
-                    <Table sx={{position: 'absolute', right: 0, width: '500px'}}>
-                    <TableRow>
-                        <TableCell colSpan={2}>SubTotal:</TableCell>
-                        <TableCell align={"right"}>{subtotal}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Discount:</TableCell>
-                        <TableCell align={"right"}>{discount*100}%</TableCell>
-                        <TableCell align={"right"}>-RM{discount*subtotal}</TableCell>
-                    </TableRow>
-                    <TableRow sx={{backgroundColor:'grey'}}>
-                        <TableCell colSpan={2} sx={{fontSize: 'larger', fontWeight:'800'}}>Total:</TableCell>
-                        <TableCell align={"right"} sx={{fontSize: 'larger', fontWeight:'800'}}>RM{subtotal-subtotal*discount}</TableCell>
-                    </TableRow>
-                    </Table>
-                </TableFooter>
             </Table>
         </TableContainer>
+            <Grid container mt={2} sx={{marginRight:'auto', marginLeft:'auto'}}>
+                <Grid item xs={8}>
+                    SubTotal:
+                </Grid>
+                <Grid item xs={4} sx={{textAlign:'right'}}>
+                    {subtotal}
+                </Grid>
+                <Grid item xs={4} borderBottom={1}>
+                    Discount:
+                </Grid>
+                <Grid item xs={4} borderBottom={1} sx={{textAlign:'center'}}>
+                    {discount*100}%
+                </Grid>
+                <Grid item xs={4} borderBottom={1} sx={{textAlign:'right'}}>
+                    RM{discount*subtotal}
+                </Grid>
+                <Grid item xs={8} mt={2} sx={{fontSize: 'larger', fontWeight:'800'}}>
+                    Total:
+                </Grid>
+                <Grid item xs={4} mt={2} sx={{textAlign:'right',fontSize: 'larger', fontWeight:'800'}}>
+                    RM{subtotal-subtotal*discount}
+                </Grid>
+
+            </Grid>
             <CartConfirmButton/>
         </Box>
     );
