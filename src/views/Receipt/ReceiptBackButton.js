@@ -12,7 +12,7 @@ function ReceiptBackButton() {
             justifyContent: "center",
             alignItems: "center",
             display: "flex"}}>
-            <Button id="butt2"
+            <Button id="bottom_button"
                     variant={"contained"}
                     aria-label="back-to-menu"   onClick={handleBackButton}>
                 <ArrowBackIosNewIcon />
