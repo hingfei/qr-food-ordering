@@ -11,8 +11,8 @@ function MenuItem({title, description, price, index, image}) {
 
     const orderContext = useContext(OrderContext);
 
-    function handleAddItem(title){
-        orderContext.orderListDispatch({type:'add_item_to_cart', payload: title })
+    function handleAddItem(title, price){
+        orderContext.orderListDispatch({type:'add_item_to_cart', payload: {title: title, price: price} })
     }
 
     return (
@@ -38,7 +38,7 @@ function MenuItem({title, description, price, index, image}) {
                                 variant="contained"
                                 size={"small"}
                                 color={"primary"}
-                                onClick={() => handleAddItem(title)}>
+                                onClick={() => handleAddItem(title, price)}>
                                 Add
                             </Button>
                         </Grid>
