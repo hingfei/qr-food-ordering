@@ -1,28 +1,46 @@
-import React from 'react';
-import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
+import React, {useContext} from 'react';
+import {AppBar, Badge, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChangeCircleRoundedIcon from '@mui/icons-material/ChangeCircleRounded';
 import './MenuNavBar.css'
 import MenuSideNav from "./MenuSideNav";
 import {Link} from "react-router-dom";
+import {OrderContext} from "../../App";
 
 
 function MenuNavBar() {
 
+    const orderContext = useContext(OrderContext)
+
     // Todo: get TableNumber from db
     const TableNumber = "A1";
 
-    // Todo: route path to table change page
-    function handleTableChange(e){
-        console.log('clicked Table Change');
+
+    const orderList = orderContext.orderListState;
+
+    // check OrderList state
+
+    let cartQuantity = orderList.length;
+    let shoppingCart;
+
+    if (orderList.length === 0){
+        // todo : cart icon with snackbar
+        shoppingCart =
+            <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart">
+                <ShoppingCartIcon />
+            </IconButton>
+    }
+    else {
+        shoppingCart =
+            <Link to="/cart" style={{ textDecoration : 'none', color:"white"}}>
+                <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart">
+                    <Badge badgeContent={cartQuantity} color={"error"}>
+                        <ShoppingCartIcon />
+                    </Badge>
+                </IconButton>
+            </Link>
     }
 
-    // Todo: render shopping cart when clicked
-    function handleShoppingCart(e){
-        console.log('clicked Shopping Cart');
-    }
-
-    // Todo: change Nav bar color
     return (
         <Box>
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
@@ -48,19 +66,14 @@ function MenuNavBar() {
                             {TableNumber}
                         </Typography>
                         <Link to="/table_number" style={{ textDecoration : 'none', color:"white"}}>
-                            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber" onClick={handleTableChange}>
+                            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber">
                                 <ChangeCircleRoundedIcon/>
                             </IconButton>
                         </Link>
                     </Grid>
                     <Grid item xs={2}>
-                        <Link to="/cart" style={{ textDecoration : 'none', color:"white"}}>
-                            <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart" onClick={handleShoppingCart}>
-                                <ShoppingCartIcon />
-                            </IconButton>
-                        </Link>
+                        {shoppingCart}
                     </Grid>
-
                 </Toolbar>
             </AppBar>
         </Box>
