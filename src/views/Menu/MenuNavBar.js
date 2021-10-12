@@ -6,7 +6,12 @@ import './MenuNavBar.css'
 import MenuSideNav from "./MenuSideNav";
 import {Link} from "react-router-dom";
 import {OrderContext} from "../../App";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function MenuNavBar() {
 
@@ -20,15 +25,32 @@ function MenuNavBar() {
 
     // check OrderList state
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     let cartQuantity = orderList.length;
     let shoppingCart;
 
     if (orderList.length === 0){
         // todo : cart icon with snackbar
         shoppingCart =
-            <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart">
+            <>
+            <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart" onClick={handleClick}>
                 <ShoppingCartIcon />
             </IconButton>
+            <Snackbar anchorOrigin={{vertical:'top', horizontal:'right'}} open={open} autoHideDuration={3000} onClose={handleClose} sx={{marginTop: "50px"}}>
+            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                Your cart is empty!
+            </Alert>
+            </Snackbar>
+        </>
     }
     else {
         shoppingCart =
