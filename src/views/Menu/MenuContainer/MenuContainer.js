@@ -3,31 +3,13 @@ import MenuNavBar from "../MenuNavBar";
 import MenuItem from "../MenuItem";
 import Footer from "../../../components/Footer";
 import {Box} from "@mui/material";
+import MenuList from "../../../data/MenuList.json";
 
 
 function MenuContainer() {
     // Todo : change List to get from DB
     // Test List
-    const menuList = [
-        {
-            title: 'Salad',
-            description : 'tasty salad with 1000 vegetables and tomato',
-            price : '20',
-            image: './images/logo.svg'
-        },
-        {
-            title: 'Chicken',
-            description : 'BBQ chicken with bbq sauce',
-            price : '50',
-            image: './images/logo.svg'
-        },
-        {
-            title: 'French Fries',
-            description : 'Fries with tomato sauce',
-            price : '10',
-            image: './images/logo.svg'
-        }
-    ]
+    const menuList = MenuList;
 
     // Todo: replace key with something more meaningful
     return (
