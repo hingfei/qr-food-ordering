@@ -37,16 +37,16 @@ function CartTable() {
                             <Grid item xs={4}>
                                 <NumberInputSpinner title={order.title}/>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={5}>
                                 <Typography variant='body1' fontWeight='bold'>{order.title}</Typography>
                             </Grid>
-                            <Grid item xs={2}>
+                            <Grid item xs={2} ml={1}>
                                 <Typography variant='body1' fontWeight='bold'>RM {order.total}</Typography>
                             </Grid>
                         </Grid>
                     )
                 })}
-                <Grid container mt={2} sx={{marginRight:'auto', marginLeft:'auto'}}>
+                <Grid container mt={2} sx={{marginRight:'auto', marginLeft:'auto', marginBottom: '100px'}}>
                     <Grid item xs={8}>
                         <Typography variant={"body1"} ml={5}>
                             SubTotal :
@@ -68,14 +68,14 @@ function CartTable() {
                             RM {discount*subtotal}
                         </Typography>
                     </Grid>
-                    <Grid item xs={8} mt={2} sx={{fontSize: 'larger', fontWeight:'800'}}>
+                    <Grid item xs={7} mt={2} sx={{fontSize: 'larger', fontWeight:'800'}}>
                         <Typography variant={"h5"} ml={5} fontWeight={"bold"}>
                             Total:
                         </Typography>
 
                     </Grid>
-                    <Grid item xs={4} mt={2} sx={{textAlign:'left'}}>
-                        <Typography variant={"h5"} ml={5} fontWeight={"bold"}>
+                    <Grid item xs={5} mt={2} sx={{textAlign:'left'}}>
+                        <Typography variant={"h5"} ml={1} fontWeight={"bold"}>
                             RM{subtotal-subtotal*discount}
                         </Typography>
                     </Grid>
