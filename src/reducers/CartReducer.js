@@ -1,3 +1,5 @@
+import OrderList from "../data/OrderList.json";
+
 export const initialOrderList = [
     
     {
