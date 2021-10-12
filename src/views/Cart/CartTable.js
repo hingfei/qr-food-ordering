@@ -17,6 +17,7 @@ function CartTable() {
 
     if (orderList.length === 0)
     {
+        // todo : style this shit
         shoppingCart =
             <Box>
                 <Typography variant={'h6'}>
