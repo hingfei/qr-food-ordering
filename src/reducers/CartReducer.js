@@ -1,20 +1,6 @@
 import OrderList from "../data/OrderList.json";
 
-export const initialOrderList = [
-    
-    {
-        title: 'Chicken',
-        quantity : 3,
-        price : '50',
-        total : 150
-    },
-    {
-        title: 'French Fries',
-        quantity : 6,
-        price : '5',
-        total : 30
-    }
-]
+export const initialOrderList = OrderList;
 
 export const orderReducer = (orderList, action) => {
     // add_to_cart action
