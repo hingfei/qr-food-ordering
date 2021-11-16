@@ -1,10 +1,18 @@
 import React from "react";
 import OrderListNavBar from "../OrderListNavBar";
-import OrderListSideNav from "../OrderListSideNav";
-import OrderListCard from "../OrderListCard";
+import OrderListTitle from "../OrderListTitle";
+import {Box} from '@mui/material';
+import Footer from "../../../components/Footer";
 
 function OrderListContainer() {
     return (
-        <OrderListNavBar></OrderListNavBar>
+        <Box sx={{display: "flex", flexDirection: "column", minHeight:"100vh"}}>
+            <OrderListNavBar/>
+            <OrderListTitle/>
+
+            <Footer/>
+        </Box>
     )
 }
+
+export default OrderListContainer;
