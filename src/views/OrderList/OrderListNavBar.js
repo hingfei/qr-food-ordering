@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Box, Toolbar, IconButton, Typography} from '@mui/material';
-import OrderListSideNav from "./OrderListSideNav";
+import OrderListSideNav from "../../components/OwnerSideNav";
 
 function OrderListNavBar() {
     return (
