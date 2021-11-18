@@ -1,13 +1,13 @@
 import React from "react";
 import { AppBar, Box, Toolbar, IconButton, Typography} from '@mui/material';
-import OrderListSideNav from "../../components/OwnerSideNav";
+import OwnerSideNav from "../../components/OwnerSideNav";
 
 function OrderListNavBar() {
     return (
         <Box>
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
                 <Toolbar>
-                    <OrderListSideNav/>
+                    <OwnerSideNav/>
                     <IconButton >
                         <img
                             alt=""

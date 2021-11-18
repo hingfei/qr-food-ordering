@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     }
 });
 
-function OrderListSideNav() {
+function OwnerSideNav() {
     // Custom Styles
     const classes = useStyles();
 
@@ -78,4 +78,4 @@ function OrderListSideNav() {
     );
 }
 
-export default OrderListSideNav;
+export default OwnerSideNav;
