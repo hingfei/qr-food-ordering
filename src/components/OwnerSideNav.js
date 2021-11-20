@@ -1,6 +1,5 @@
 import React from "react";
-import {Box, Divider, Drawer, IconButton, ListItem, ListItemIcon, ListItemText} from "@mui/material";
-import {SidebarData} from '../views/Menu/MenuSideNavData';
+import {Box, Divider, Drawer, IconButton, ListItem, ListItemText} from "@mui/material";
 import List from '@mui/material/List';
 import { makeStyles } from '@mui/styles';
 import MenuIcon from "@mui/icons-material/Menu";
@@ -27,9 +26,6 @@ function OwnerSideNav() {
     const toggleSideNav = (open) => (event) => {
         setState(open)
     };
-
-    // Todo : Get list of categories (JSON) from db then use map to output a list of category
-    const categoriesList = SidebarData;
 
     return (
         <><IconButton onClick={toggleSideNav(true)}
