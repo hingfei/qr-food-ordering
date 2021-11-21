@@ -28,7 +28,8 @@ function OwnerSideNav() {
     };
 
     return (
-        <><IconButton onClick={toggleSideNav(true)}
+        <>
+        <IconButton onClick={toggleSideNav(true)}
             size="large"
             edge="start"
             color="inherit"
@@ -36,41 +37,43 @@ function OwnerSideNav() {
             sx={{ mr: 0 }}
         >
             <MenuIcon />
-        </IconButton><Drawer anchor={"left"} open={state} onClose={toggleSideNav(false)} className={classes.drawer}>
-                <Box
-                    sx={{ width: 250 }}
-                    role="presentation"
-                    onClick={toggleSideNav(false)}
-                    onKeyDown={toggleSideNav(false)}
-                >
-                    <List>
-                        <ListItem>
-                            <AccountCircleIcon sx={{mr:2}}/>
-                            <ListItemText primary="Profile"/>
-                        </ListItem>
-                        <Divider variant="middle"/>
-                        <ListItem>
-                            <ListAltIcon sx={{mr:2}}/>
-                            <ListItemText primary="Order Lists"/>
-                        </ListItem>
-                        <Divider variant="middle"/>
-                        <ListItem>
-                            <RestaurantMenuIcon sx={{mr:2}}/>
-                            <ListItemText primary="Menu"/>
-                        </ListItem>
-                        <Divider variant="middle"/>
-                        <ListItem>
-                            <BarChartIcon sx={{mr:2}}/>
-                            <ListItemText primary="Business Summary"/>
-                        </ListItem>
-                        <Divider variant="middle"/>
-                        <ListItem>
-                            <LogoutIcon sx={{mr:2}}/>
-                            <ListItemText primary="Logout"/>
-                        </ListItem>
-                    </List>
-                </Box>
-            </Drawer></>
+        </IconButton>
+        <Drawer anchor={"left"} open={state} onClose={toggleSideNav(false)} className={classes.drawer}>
+            <Box
+                sx={{ width: 250 }}
+                role="presentation"
+                onClick={toggleSideNav(false)}
+                onKeyDown={toggleSideNav(false)}
+            >
+                <List>
+                    <ListItem>
+                        <AccountCircleIcon sx={{mr:2}}/>
+                        <ListItemText primary="Profile"/>
+                    </ListItem>
+                    <Divider variant="middle"/>
+                    <ListItem>
+                        <ListAltIcon sx={{mr:2}}/>
+                        <ListItemText primary="Order Lists"/>
+                    </ListItem>
+                    <Divider variant="middle"/>
+                    <ListItem>
+                        <RestaurantMenuIcon sx={{mr:2}}/>
+                        <ListItemText primary="Menu"/>
+                    </ListItem>
+                    <Divider variant="middle"/>
+                    <ListItem>
+                        <BarChartIcon sx={{mr:2}}/>
+                        <ListItemText primary="Business Summary"/>
+                    </ListItem>
+                    <Divider variant="middle"/>
+                    <ListItem>
+                        <LogoutIcon sx={{mr:2}}/>
+                        <ListItemText primary="Logout"/>
+                    </ListItem>
+                </List>
+            </Box>
+        </Drawer>
+        </>
     );
 }
 

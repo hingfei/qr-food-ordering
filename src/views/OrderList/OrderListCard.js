@@ -1,77 +1,85 @@
-// Order list card to do
 import React, {useContext} from "react";
 import { OrderListContext } from "../../App";
-import {Box, Card, CardContent, Typography , CardActionArea, CardActions, Button} from '@mui/material';
+import {Box, Card, CardContent, Typography, CardActions, Button} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import OrderListDialog from "./OrderListDialog";
+import OrderListDialog from './OrderListDialog';
 
 function OrderListCard() {
     const ordersContext = useContext(OrderListContext);
     let status="";
-
-    // Function to show the dialog of the order
-    const handleDialog = () => {
-        console.log("Show dialog");
-        <OrderListDialog/>
-    }
-
-    // Function to show the details of the order.
-    const handleDetails = () => {
-        console.log("Show details");
-    }
+    let served="";
 
     // Function to indicate order is done.
-    const handleFinish = () => {
+    const handleFinish = (id, served) => {
+        ordersContext.ordersDispatch({type:'served', payload: {id: id, served: served}});
         console.log("Order finish");
     }
 
+    const extractOrders = (order) => {
+        // Todo: extract order details from str to json.
+    }
+
     return (
-        <Box display="flex">
+        <Box 
+            display="flex" 
+            flexDirection="row" 
+            columnGap={3} 
+            flexWrap="wrap" 
+            rowGap={3} 
+        >
             {ordersContext.ordersState.map((order) => {
+                // Set the status of the payment.
                 if(order.paid === true) {
                     status = "Paid";
                 }
                 else {
                     status = "Not Paid";
                 }
+                
+                if(order.served === true) {
+                    served = "Served";
+                }
+                else {
+                    served = "Not served";
+                }
+
+                const orderDetails = extractOrders(order);
+
                 return (
-                    <Card sx={{minWidth:300}}>
-                        <CardActionArea onClick={<OrderListDialog/>} >
+                    <Box component="div" flexBasis="30%">
+                        <Card sx={{ minWidth: 350 }} variant="outlined">
                             <CardContent>
-                                <Typography variant="h6" component="div">
+                                {/* Todo: Add table number */}
+                                <Typography variant="h6" component="div" alignSelf="center">
                                     Order ID: {order.id}
                                 </Typography>
                                 <Typography variant="body1" color="text.secondary">
                                     Paid Status: {status}
                                 </Typography>
                                 <Typography variant="body1" color="text.secondary">
-                                    Total Amount: {order.amount}
+                                    Total Amount: RM {order.amount}
                                 </Typography>
                                 <Typography variant="body1" color="text.secondary">
                                     Payment Method: {order.payment}
                                 </Typography>
+                                <Typography variant="body1" color="text.secondary">
+                                    Served: {served}
+                                </Typography>
                             </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                            <Button
-                                onClick={handleDetails}
-                                size="small" 
-                                color="info" 
-                                variant="outlined"
-                            >
-                                Details
-                            </Button>
-                            <Button
-                                onClick={handleFinish}
-                                size="small" 
-                                color="success" 
-                                variant="contained" 
-                                endIcon={<CheckCircleIcon/>}
-                            >
-                                Finish
-                            </Button>
-                        </CardActions>
-                    </Card>
+                            <CardActions>
+                                <OrderListDialog orderDetails={orderDetails}/>
+                                <Button
+                                    onClick={() => handleFinish(order.id, order.served)}
+                                    size="small"
+                                    color="success"
+                                    variant="contained"
+                                    endIcon={<CheckCircleIcon />}
+                                >
+                                    Finish
+                                </Button>
+                            </CardActions>
+                        </Card>
+                   </Box>
                 );
             })}
         </Box>

@@ -9,12 +9,16 @@ import ReceiptContainer from "./views/Receipt/ReceiptContainer/ReceiptContainer"
 import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 
+// Create context for customer cart
 export const OrderContext = React.createContext();
+// Create context for owner order list
 export const OrderListContext = React.createContext();
 // Todo: create dynamic url with diff restaurants name and Route other pages lol
 
 function App() {
+    // Reducer for customer cart
     const [orderList, dispatch] = useReducer(orderReducer, initialOrderList);
+    // Reducer for owner order list
     const [orders, action] = useReducer(orderListReducer, ordersTotal);
       return (
           <OrderContext.Provider value={{orderListState: orderList, orderListDispatch: dispatch }}>

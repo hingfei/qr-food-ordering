@@ -11,7 +11,6 @@ function OrderListContainer() {
             <OrderListNavBar/>
             <OrderListTitle/>
             <OrderListCard/>
-
             <Footer/>
         </Box>
     )
