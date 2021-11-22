@@ -5,6 +5,7 @@ import { Typography } from '@mui/material';
 
 function CartConfirmButton() {
 
+    // todo: send POST request and redirect to checkout page?
     function handleSubmit()
     {
         console.log('clicked submit button')

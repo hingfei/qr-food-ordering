@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import NumberInputSpinner from "../../components/NumberInputSpinner";
 
 // Todo: pass down Menu items and create a modal
-function MenuItemModal({title, price, description, image}) {
+function MenuItemModal({_id, title, price, description, image}) {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -49,7 +49,7 @@ function MenuItemModal({title, price, description, image}) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <NumberInputSpinner title={title} price={price} />
+                        <NumberInputSpinner _id={_id} title={title} price={price} />
                     </CardActions>
                 </Card>
 

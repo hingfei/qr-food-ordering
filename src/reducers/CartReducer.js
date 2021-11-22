@@ -1,6 +1,4 @@
-import OrderList from "../data/OrderList.json";
-
-export const initialOrderList = OrderList;
+export const initialOrderList = [];
 
 export const orderReducer = (orderList, action) => {
     // add_to_cart action
@@ -9,7 +7,7 @@ export const orderReducer = (orderList, action) => {
 
         orderList = orderList.map(
             order => {
-                if (order.title === action.payload.title){
+                if (order._id === action.payload._id){
                     order.quantity = order.quantity + 1;
                     order.total = order.quantity * order.price;
                     orderFound = true;
@@ -18,7 +16,7 @@ export const orderReducer = (orderList, action) => {
             })
         if (orderFound === false) {
             // Todo: replace the price with the actual price of item
-            return [...orderList, {title: action.payload.title, quantity: 1, price: action.payload.price, total: action.payload.price * 1}]
+            return [...orderList, {_id: action.payload._id, title: action.payload.title, quantity: 1, price: action.payload.price, total: action.payload.price * 1}]
         }
         return orderList;
     }
@@ -29,7 +27,7 @@ export const orderReducer = (orderList, action) => {
 
             let newOrderList = orderList.map(
                 order => {
-                    if (order.title === action.payload.title){
+                    if (order._id === action.payload._id){
                         // check if order quantity is 1, if it is 1 then remove from list
                         if (order.quantity === 1)
                         {
@@ -45,7 +43,7 @@ export const orderReducer = (orderList, action) => {
 
                 // This will return a list that contains all other items other than matched title
                 if (orderRemove){
-                    newOrderList = orderList.filter(order => (order.title !== action.payload.title))
+                    newOrderList = orderList.filter(order => (order._id !== action.payload._id))
                 }
 
             return newOrderList;

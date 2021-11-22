@@ -1,22 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
 import ChangeCircleRoundedIcon from "@mui/icons-material/ChangeCircleRounded";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import axios from "axios";
 
 
 function CartNavBar() {
-    // Todo : replace table number with props ?
-    const TableNumber = "A1";
 
-    function handleBackButton (e) {
-        console.log ('clicked back button');
-    }
+    // GET TABLE FROM DATABASE USING SESSION ID
+    const history = useHistory()
 
-    // Todo: route path to table change page
-    function handleTableChange(e){
-        console.log('clicked Table Change');
-    }
+    const [TableNumber, setTableNumber] = useState('Empty')
+
+    useEffect(()=>{
+
+        // check session storage if id exists
+        if (sessionStorage.getItem("session_id") === null) {
+            history.push('/table_number')
+        }
+        else {
+            axios.get('http://localhost:8000/users/'.concat(sessionStorage.getItem(("session_id"))))
+                .then(res => {
+                    setTableNumber(res.data.tableNumber)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    })
 
     return (
         <Box>
@@ -41,14 +53,14 @@ function CartNavBar() {
                             {TableNumber}
                         </Typography>
                         <Link to="/table_number" style={{ textDecoration : 'none', color:"white"}}>
-                            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber" onClick={handleTableChange}>
+                            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber">
                                 <ChangeCircleRoundedIcon/>
                             </IconButton>
                         </Link>
                     </Grid>
                     <Grid item xs={2}>
                        <Link to="/menu" style={{ textDecoration : 'none', color:"white"}}>
-                           <IconButton size="large" aria-label="back-to-menu" color="inherit" sx={{ float: "right"}} onClick={handleBackButton}>
+                           <IconButton size="large" aria-label="back-to-menu" color="inherit" sx={{ float: "right"}}>
                                <ArrowBackIosNewIcon />
                                <Typography variant={"h6"} ml={2} >
                                    Back

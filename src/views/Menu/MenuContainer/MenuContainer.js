@@ -1,23 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MenuNavBar from "../MenuNavBar";
 import MenuItem from "../MenuItem";
 import Footer from "../../../components/Footer";
 import {Box} from "@mui/material";
-import MenuList from "../../../data/MenuList.json";
-
+import axios from 'axios'
 
 function MenuContainer() {
-    // Todo : change List to get from DB
-    // Test List
-    const menuList = MenuList;
 
-    // Todo: replace key with something more meaningful
+    const [MenuList, setMenuList] = useState([])
+    // Menu List from database
+    useEffect( ()=> {
+        axios.get('http://localhost:8000/menu/')
+            .then(response =>{
+                    console.log(response.data)
+                    setMenuList(response.data)
+            }
+            )
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
     return (
             <Box sx={{display: "flex", flexDirection: "column", minHeight:"100vh"}}>
                 <MenuNavBar/>
-                { menuList.map((item, index)=> {
+                { MenuList.map((item)=> {
                     return (
-                        <div key={index}>
+                        <div key={item._id}>
                             <MenuItem {...item}/>
                         </div>
                     )

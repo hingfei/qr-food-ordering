@@ -1,13 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {AppBar, Badge, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChangeCircleRoundedIcon from '@mui/icons-material/ChangeCircleRounded';
 import './MenuNavBar.css'
 import MenuSideNav from "./MenuSideNav";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {OrderContext} from "../../App";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import axios from 'axios'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -15,10 +16,28 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function MenuNavBar() {
 
-    const orderContext = useContext(OrderContext)
+    const history = useHistory()
+    // get table number
+    const [TableNumber, setTableNumber] = useState('Empty')
 
-    // Todo: get TableNumber from db
-    const TableNumber = "A1";
+    useEffect(()=>{
+
+        // check session storage if id exists
+        if (sessionStorage.getItem("session_id") === null) {
+            history.push('/table_number')
+        }
+        else {
+            axios.get('http://localhost:8000/users/'.concat(sessionStorage.getItem(("session_id"))))
+                .then(res => {
+                    setTableNumber(res.data.tableNumber)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    })
+
+    const orderContext = useContext(OrderContext)
 
 
     const orderList = orderContext.orderListState;

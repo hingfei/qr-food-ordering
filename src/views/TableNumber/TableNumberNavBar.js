@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
 
+
 function TableNumberNavBar() {
     return (
         <AppBar position="static" sx={{backgroundColor:"#54486E"}} >

@@ -9,7 +9,7 @@ import { Typography } from '@mui/material';
 function CartTable() {
 
     const orderContext = useContext(OrderContext)
-    const discount = 0.2
+    const discount = 1
 
     let shoppingCart;
 
@@ -17,7 +17,7 @@ function CartTable() {
 
     if (orderList.length === 0)
     {
-        // todo : style this shit
+        // todo : style this shit/ should redirect to menu
         shoppingCart =
             <Box>
                 <Typography variant={'h6'}>
@@ -31,11 +31,11 @@ function CartTable() {
             <Box sx={{ width: '100%' }}>
                 {orderContext.orderListState.map((order, index) => {
                     return (
-                        <Grid container alignItems='center'
+                        <Grid key={order._id} container alignItems='center'
                               sx={{background: index % 2 ? 'white' : '#EAF2F8'}}
                         >
                             <Grid item xs={4}>
-                                <NumberInputSpinner title={order.title}/>
+                                <NumberInputSpinner _id={order._id} title={order.title} price={order.price}/>
                             </Grid>
                             <Grid item xs={5}>
                                 <Typography variant='body1' fontWeight='bold'>{order.title}</Typography>

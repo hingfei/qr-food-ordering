@@ -7,19 +7,19 @@ import {useContext} from "react";
 import {OrderContext} from '../../App';
 
 
-function MenuItem({title, description, price, index, image}) {
+function MenuItem({_id, title, price, description, categories, image}) {
 
     const orderContext = useContext(OrderContext);
 
-    function handleAddItem(title, price){
-        orderContext.orderListDispatch({type:'add_item_to_cart', payload: {title: title, price: price} })
+    function handleAddItem(id, title, price){
+        orderContext.orderListDispatch({type:'add_item_to_cart', payload: {_id: id, title: title, price: price} })
     }
 
     return (
-                <Card sx={{ width: "100%"}} key={index}>
+                <Card sx={{ width: "100%"}} key={_id}>
                     <Grid container spacing={2} padding={1}>
                         <Grid item xs={3}>
-                            <MenuItemModal price={price} title={title} image={image} description={description}/>
+                            <MenuItemModal _id={_id} price={price} title={title} image={image} description={description}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant={"h6"} >
@@ -38,7 +38,7 @@ function MenuItem({title, description, price, index, image}) {
                                 variant="contained"
                                 size={"small"}
                                 color={"primary"}
-                                onClick={() => handleAddItem(title, price)}>
+                                onClick={() => handleAddItem(_id, title, price)}>
                                 Add
                             </Button>
                         </Grid>
