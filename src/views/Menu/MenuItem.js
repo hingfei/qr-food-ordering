@@ -12,14 +12,14 @@ function MenuItem({_id, title, price, description, categories, image}) {
     const orderContext = useContext(OrderContext);
 
     function handleAddItem(id, title, price){
-        orderContext.orderListDispatch({type:'add_item_to_cart', payload: {_id: id, title: title, price: price} })
+        orderContext.orderListDispatch({type:'add_item_to_cart', payload: {id: id, title: title, price: price} })
     }
 
     return (
-                <Card sx={{ width: "100%"}} key={_id}>
+                <Card sx={{ width: "100%"}}>
                     <Grid container spacing={2} padding={1}>
                         <Grid item xs={3}>
-                            <MenuItemModal _id={_id} price={price} title={title} image={image} description={description}/>
+                            <MenuItemModal id={_id} price={price} title={title} image={image} description={description}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant={"h6"} >

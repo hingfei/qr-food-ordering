@@ -1,5 +1,8 @@
 export const initialOrderList = [];
 
+// Example Order List
+//{"id": id, "title":"Testing","quantity":15,"price":28,"total":1000}
+
 export const orderReducer = (orderList, action) => {
     // add_to_cart action
     if (action.type === 'add_item_to_cart'){
@@ -7,7 +10,7 @@ export const orderReducer = (orderList, action) => {
 
         orderList = orderList.map(
             order => {
-                if (order._id === action.payload._id){
+                if (order.id === action.payload.id){
                     order.quantity = order.quantity + 1;
                     order.total = order.quantity * order.price;
                     orderFound = true;
@@ -16,7 +19,7 @@ export const orderReducer = (orderList, action) => {
             })
         if (orderFound === false) {
             // Todo: replace the price with the actual price of item
-            return [...orderList, {_id: action.payload._id, title: action.payload.title, quantity: 1, price: action.payload.price, total: action.payload.price * 1}]
+            return [...orderList, {id: action.payload.id, title: action.payload.title, quantity: 1, price: action.payload.price, total: action.payload.price * 1}]
         }
         return orderList;
     }
@@ -27,7 +30,7 @@ export const orderReducer = (orderList, action) => {
 
             let newOrderList = orderList.map(
                 order => {
-                    if (order._id === action.payload._id){
+                    if (order.id === action.payload.id){
                         // check if order quantity is 1, if it is 1 then remove from list
                         if (order.quantity === 1)
                         {
@@ -43,10 +46,16 @@ export const orderReducer = (orderList, action) => {
 
                 // This will return a list that contains all other items other than matched title
                 if (orderRemove){
-                    newOrderList = orderList.filter(order => (order._id !== action.payload._id))
+                    newOrderList = orderList.filter(order => (order.id !== action.payload.id))
                 }
 
             return newOrderList;
+        }
+
+        // RENDER BACK PREVIOUS ORDER
+        if (action.type === 'load_order_list'){
+            orderList = action.payload
+            return orderList
         }
 
 

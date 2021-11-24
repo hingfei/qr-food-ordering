@@ -2,34 +2,25 @@ import React, {useEffect, useState} from 'react';
 import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
 import ChangeCircleRoundedIcon from "@mui/icons-material/ChangeCircleRounded";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 
 function CartNavBar() {
-
-    // GET TABLE FROM DATABASE USING SESSION ID
-    const history = useHistory()
-
     const [TableNumber, setTableNumber] = useState('Empty')
-
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(()=>{
-
-        // check session storage if id exists
-        if (sessionStorage.getItem("session_id") === null) {
-            history.push('/table_number')
-        }
-        else {
+        if (isLoading){
             axios.get('http://localhost:8000/users/'.concat(sessionStorage.getItem(("session_id"))))
-                .then(res => {
-                    setTableNumber(res.data.tableNumber)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-    })
-
+                    .then(res => {
+                        setTableNumber(res.data.tableNumber)
+                        setIsLoading(false)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+        })
     return (
         <Box>
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>

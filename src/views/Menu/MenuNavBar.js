@@ -10,40 +10,40 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import axios from 'axios'
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 function MenuNavBar() {
+    const history = useHistory();
 
-    const history = useHistory()
+    const Alert = React.forwardRef(function Alert(props, ref) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
+
     // get table number
     const [TableNumber, setTableNumber] = useState('Empty')
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
-
-        // check session storage if id exists
-        if (sessionStorage.getItem("session_id") === null) {
-            history.push('/table_number')
-        }
-        else {
+        if (isLoading)
+        {
             axios.get('http://localhost:8000/users/'.concat(sessionStorage.getItem(("session_id"))))
                 .then(res => {
                     setTableNumber(res.data.tableNumber)
+                    setIsLoading(false)
                 })
                 .catch(err => {
-                    console.log(err)
+                    if (err.response.status === 404){
+                        return history.push('/table_number')
+                    }else{
+                        console.log(err.response.data)
+                    }
                 })
         }
     })
 
     const orderContext = useContext(OrderContext)
-
-
     const orderList = orderContext.orderListState;
 
     // check OrderList state
-
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
@@ -58,7 +58,6 @@ function MenuNavBar() {
     let shoppingCart;
 
     if (orderList.length === 0){
-        // todo : cart icon with snackbar
         shoppingCart =
             <>
             <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart" onClick={handleClick}>
@@ -82,6 +81,19 @@ function MenuNavBar() {
             </Link>
     }
 
+    let renderTable;
+
+    if (isLoading) {
+        // todo: find a loading spinner
+        renderTable =  <><Typography  variant="h6" color="inherit" component="div" className="tableNumber">
+            Loading..
+        </Typography></>
+    }else {
+        renderTable =  <><Typography  variant="h6" color="inherit" component="div" className="tableNumber">
+            {TableNumber}
+        </Typography></>
+    }
+
     return (
         <Box>
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
@@ -103,9 +115,7 @@ function MenuNavBar() {
 
                     </Grid>
                     <Grid item xs={4} className="tableNumber" >
-                        <Typography  variant="h6" color="inherit" component="div" className="tableNumber">
-                            {TableNumber}
-                        </Typography>
+                        {renderTable}
                         <Link to="/table_number" style={{ textDecoration : 'none', color:"white"}}>
                             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber">
                                 <ChangeCircleRoundedIcon/>

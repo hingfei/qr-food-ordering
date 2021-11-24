@@ -6,7 +6,7 @@ import Footer from "../../../components/Footer";
 import {Box} from "@mui/material";
 
 
-function TableNumberContainer(props) {
+function TableNumberContainer() {
     return (
         <Box sx={{display: "flex", flexDirection: "column", minHeight:"100vh",backgroundColor:"FBF1E4"}}>
             <TableNumberNavBar/>
