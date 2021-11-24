@@ -8,6 +8,7 @@ import {initialOrderList, orderReducer} from "./reducers/CartReducer";
 import ReceiptContainer from "./views/Receipt/ReceiptContainer/ReceiptContainer";
 import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
+import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/cart' component={CartContainer}/>
                 <Route path='/receipt' component={ReceiptContainer}/>
                 <Route path='/order_list' component={OrderListContainer}/>
+                <Route path='/logout' component={LogoutContainer}/>
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>
