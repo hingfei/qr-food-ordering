@@ -7,6 +7,8 @@ import React, {useReducer} from "react";
 import {initialOrderList, orderReducer} from "./reducers/CartReducer";
 import ReceiptContainer from "./views/Receipt/ReceiptContainer/ReceiptContainer";
 import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListContainer";
+import QrContainer from "./views/QrPage/QrContainer/QrContainer"
+import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
 
@@ -33,6 +35,8 @@ function App() {
                 <Route path='/receipt' component={ReceiptContainer}/>
                 <Route path='/order_list' component={OrderListContainer}/>
                 <Route path='/logout' component={LogoutContainer}/>
+                <Route path='/login' component={LoginContainer}/>
+                <Route path='/qrPage' component={QrContainer}/>
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>
