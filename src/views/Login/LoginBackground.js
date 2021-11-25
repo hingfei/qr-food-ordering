@@ -9,14 +9,16 @@ import "./LoginBackground.css";
 
 function LoginBackground(){
     return(
-        <Box ml={5} mt={7}>
-            <img src={login_img} alt="login" id="login_img"/>
-        <Box ml={40} sx={{color:"#1E7DBC", display:"inline-flex", flexDirection:"column", alignItems:"center"}}>
-            <AssignmentInd sx={{fontSize:100}}/>
-            <LoginInputField/>
-            <FormControlLabel control={<Checkbox/>} label="Remember me"/>
-            <LoginButton/>
-        </Box>
+        <Box display="flex" width="100%">
+            <Box minWidth="40%" alignSelf="center" sx={{paddingLeft:"50px"}}>
+                <img src={login_img} alt="login" id="login_img"/>
+            </Box>
+            <Box minWidth="60%" sx={{color:"#1E7DBC", display:"inline-flex", flexDirection:"column", alignItems:"center"}}>
+                <AssignmentInd sx={{fontSize:100}}/>
+                <LoginInputField/>
+                <FormControlLabel control={<Checkbox/>} label="Remember me"/>
+                <LoginButton/>
+            </Box>
         </Box>
     );
 }

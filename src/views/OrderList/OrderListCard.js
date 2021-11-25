@@ -46,7 +46,7 @@ function OrderListCard() {
                 const orderDetails = extractOrders(order);
 
                 return (
-                    <Box component="div" flexBasis="30%">
+                    <Box component="div" flexBasis="32%">
                         <Card sx={{ minWidth: 350 }} variant="outlined">
                             <CardContent>
                                 {/* Todo: Add table number */}
