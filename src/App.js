@@ -7,6 +7,7 @@ import React, {useReducer} from "react";
 import {initialOrderList, orderReducer} from "./reducers/CartReducer";
 import ReceiptContainer from "./views/Receipt/ReceiptContainer/ReceiptContainer";
 import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListContainer";
+import EditMenuContainer from "./views/EditMenu/EditMenuContainer/EditMenuContainer";
 
 export const OrderContext = React.createContext();
 // Todo: create dynamic url with diff restaurants name and Route other pages lol
@@ -23,6 +24,7 @@ function App() {
                 <Route path='/cart' component={CartContainer}/>
                 <Route path='/receipt' component={ReceiptContainer}/>
                 <Route path='/order_list' component={OrderListContainer}/>
+                <Route path='/edit_menu' component={EditMenuContainer}/>
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>
