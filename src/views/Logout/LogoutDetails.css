@@ -1,0 +1,20 @@
+#sign_in_button {
+    background-color:#F5B7B1;
+    margin-top: 50px;
+    align-self: center;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+#sign_in_button:hover{
+    background-color: #fdd5b1;
+    letter-spacing: 3px;
+    box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.3s ease 0s;
+ }
+
+ #logout_img {
+    width: 100%;
+    height: auto;
+ }

@@ -29,6 +29,7 @@ function MenuItemModal({title, price, description, image}) {
                     maxWidth={"sm"}
                     fullWidth={true}
                     onClose={handleClose}
+                    scroll='paper'
             >
                 <Card sx={{ width : "100%" }}>
                     <CardMedia

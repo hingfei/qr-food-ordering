@@ -1,8 +1,8 @@
-import React from "react";
-import { AppBar, Box, Toolbar, IconButton, Typography} from '@mui/material';
+import React from 'react';
+import {AppBar, Box, Toolbar, IconButton, Typography} from '@mui/material';
 import OwnerSideNav from "../../components/OwnerSideNav";
 
-function OrderListNavBar() {
+function QrNavBar() {
     return (
         <Box>
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
@@ -22,8 +22,7 @@ function OrderListNavBar() {
                 </Toolbar>
             </AppBar>
         </Box>
-        
     );
 }
 
-export default OrderListNavBar;
+export default QrNavBar;
