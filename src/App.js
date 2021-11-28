@@ -34,6 +34,7 @@ function App() {
                 <Route path='/cart' component={CartContainer}/>
                 <Route path='/receipt' component={ReceiptContainer}/>
                 <Route path='/order_list' component={OrderListContainer}/>
+                <Route path='/edit_menu' component={EditMenuContainer}/>
                 <Route path='/logout' component={LogoutContainer}/>
                 <Route path='/login' component={LoginContainer}/>
                 <Route path='/profile' component={ProfileContainer}/>
