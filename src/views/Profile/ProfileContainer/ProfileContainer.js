@@ -1,14 +1,14 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Footer from "../../../components/Footer";
-import QrGenerator from "../QrGenerator";
-import QrNavBar from "../QrNavBar";
-import QrDownloadButton from "../QrDownloadButton";
+import ProfileQrGenerator from "../ProfileQrGenerator";
+import ProfileNavBar from "../ProfileNavBar";
+import ProfileQrDownloadButton from "../ProfileQrDownloadButton";
 
-function QrContainer(){
+function ProfileContainer(){
     return (
         <Box sx={{display: "flex", flexDirection: "column", minHeight:"100vh",backgroundColor:"FBF1E4"}}>
-            <QrNavBar/>
+            <ProfileNavBar/>
             <Box sx={{
                 display: "inline-flex",
                 flexDirection:"column",
@@ -17,14 +17,12 @@ function QrContainer(){
                 justifyContent: "center"
             }}>
                 
-                <QrGenerator/>
-                <QrDownloadButton/>
+                <ProfileQrGenerator/>
+                <ProfileQrDownloadButton/>
             </Box>
             <Footer/>
         </Box>
-
-
     );
 }
 
-export default QrContainer;
+export default ProfileContainer;

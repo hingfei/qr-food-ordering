@@ -1,5 +1,6 @@
 import React from "react";
-import {Box, Divider, Drawer, IconButton, ListItem, ListItemText} from "@mui/material";
+import { useHistory } from "react-router-dom";
+import {Box, Divider, Drawer, IconButton, ListItem, Button} from "@mui/material";
 import List from '@mui/material/List';
 import { makeStyles } from '@mui/styles';
 import MenuIcon from "@mui/icons-material/Menu";
@@ -27,6 +28,13 @@ function OwnerSideNav() {
         setState(open)
     };
 
+    // Redirect webpage
+    const history = useHistory();
+
+    const redirect = (path) => {
+        history.push('/' + path)
+    }
+
     return (
         <>
         <IconButton onClick={toggleSideNav(true)}
@@ -47,28 +55,55 @@ function OwnerSideNav() {
             >
                 <List>
                     <ListItem>
-                        <AccountCircleIcon sx={{mr:2}}/>
-                        <ListItemText primary="Profile"/>
+                        <Button 
+                            variant="inherit" 
+                            startIcon={<AccountCircleIcon/>}
+                            onClick={() => redirect("profile")}
+                        >
+                            Profile
+                        </Button>
                     </ListItem>
                     <Divider variant="middle"/>
                     <ListItem>
-                        <ListAltIcon sx={{mr:2}}/>
-                        <ListItemText primary="Order Lists"/>
+                        <Button 
+                            variant="inherit" 
+                            startIcon={<ListAltIcon/>}
+                            onClick={() => redirect("order_list")}
+                        >
+                            Order Lists
+                        </Button>
                     </ListItem>
                     <Divider variant="middle"/>
                     <ListItem>
-                        <RestaurantMenuIcon sx={{mr:2}}/>
-                        <ListItemText primary="Menu"/>
+                        <Button 
+                            variant="inherit" 
+                            startIcon={<RestaurantMenuIcon/>}
+                            // Todo: Add endpoint of Menu
+                            onClick={() => redirect("")}
+                        >
+                            Menu
+                        </Button>
                     </ListItem>
                     <Divider variant="middle"/>
                     <ListItem>
-                        <BarChartIcon sx={{mr:2}}/>
-                        <ListItemText primary="Business Summary"/>
+                        <Button 
+                            variant="inherit" 
+                            startIcon={<BarChartIcon/>}
+                            // Todo: Add endpoint of business summary
+                            onClick={() => redirect("")}
+                        >
+                            Business Summary
+                        </Button>
                     </ListItem>
                     <Divider variant="middle"/>
                     <ListItem>
-                        <LogoutIcon sx={{mr:2}}/>
-                        <ListItemText primary="Logout"/>
+                        <Button 
+                            variant="inherit" 
+                            startIcon={<LogoutIcon/>}
+                            onClick={() => redirect("logout")}
+                        >
+                            Logout
+                        </Button>
                     </ListItem>
                 </List>
             </Box>

@@ -2,7 +2,7 @@ import React from 'react';
 import {Box, Typography} from "@mui/material";
 
 
-function QrGenerator(){
+function ProfileQrGenerator(){
     return(
         <Box sx={{display:"inline-flex", flexDirection:"column", alignItems:"center"}}>
         <Typography mb={6} variant="h4">YOUR RESTAURANT QR CODE</Typography>
@@ -11,4 +11,4 @@ function QrGenerator(){
     );
 }
 
-export default QrGenerator;
+export default ProfileQrGenerator;

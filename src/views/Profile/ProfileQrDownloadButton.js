@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button} from "@mui/material";
 
-function QrDownloadButton(){
+function ProfileQrDownloadButton(){
     function handleDownload(){
         console.log('clicked download button')
     }
@@ -17,4 +17,4 @@ function QrDownloadButton(){
     );
 }
 
-export default QrDownloadButton;
+export default ProfileQrDownloadButton;
