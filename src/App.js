@@ -8,6 +8,7 @@ import {initialOrderList, orderReducer} from "./reducers/CartReducer";
 import ReceiptContainer from "./views/Receipt/ReceiptContainer/ReceiptContainer";
 import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListContainer";
 import ProfileContainer from "./views/Profile/ProfileContainer/ProfileContainer"
+import EditMenuContainer from "./views/EditMenu/EditMenuContainer/EditMenuContainer"
 import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
