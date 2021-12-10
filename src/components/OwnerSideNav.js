@@ -25,14 +25,14 @@ function OwnerSideNav() {
     const [state, setState] = React.useState(false);
 
     const toggleSideNav = (open) => (event) => {
-        setState(open)
+        setState(open);
     };
 
     // Redirect webpage
     const history = useHistory();
 
     const redirect = (path) => {
-        history.push('/' + path)
+        history.push('/' + path);
     }
 
     return (
@@ -78,8 +78,7 @@ function OwnerSideNav() {
                         <Button 
                             variant="inherit" 
                             startIcon={<RestaurantMenuIcon/>}
-                            // Todo: Add endpoint of Menu
-                            onClick={() => redirect("")}
+                            onClick={() => redirect("edit_menu")}
                         >
                             Menu
                         </Button>
