@@ -1,0 +1,14 @@
+#login_button {
+    background-color:#F5B7B1;
+    border-radius: 50in;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+#login_button:hover{
+    background-color: #fdd5b1;
+    letter-spacing: 3px;
+    box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.3s ease 0s;
+}

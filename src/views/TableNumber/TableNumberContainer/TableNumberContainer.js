@@ -15,7 +15,6 @@ function TableNumberContainer() {
                 alignItems: "center" ,
                 minHeight: "80vh",
                 justifyContent: "center" ,
-                
             }}>
                 <TableNumberRestaurantName/>
                 <TableNumberInputField/>

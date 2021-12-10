@@ -4,8 +4,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Card from "@mui/material/Card";
 import NumberInputSpinner from "../../components/NumberInputSpinner";
 
+
+
 // Todo: pass down Menu items and create a modal
-function MenuItemModal({id, title, price, description, image}) {
+function MenuItemModal({title, price, description, image}) {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -29,7 +31,6 @@ function MenuItemModal({id, title, price, description, image}) {
                     maxWidth={"sm"}
                     fullWidth={true}
                     onClose={handleClose}
-                    scroll='paper'
             >
                 <Card sx={{ width : "100%" }}>
                     <CardMedia
@@ -50,7 +51,7 @@ function MenuItemModal({id, title, price, description, image}) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <NumberInputSpinner id={id} title={title} price={price} />
+                        <NumberInputSpinner title={title} price={price} />
                     </CardActions>
                 </Card>
 
@@ -60,6 +61,7 @@ function MenuItemModal({id, title, price, description, image}) {
             </Dialog>
         </>
     );
+
 }
 
 export default MenuItemModal;
