@@ -25,7 +25,7 @@ function MenuNavBar() {
     useEffect(()=>{
         if (isLoading)
         {
-            axios.get('http://localhost:8000/users/'.concat(sessionStorage.getItem(("session_id"))))
+            axios.get('users/'.concat(sessionStorage.getItem(("session_id"))))
                 .then(res => {
                     setTableNumber(res.data.tableNumber)
                     setIsLoading(false)

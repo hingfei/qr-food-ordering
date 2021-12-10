@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 import axios from 'axios';
+import {useLocation} from "react-router-dom";
 
 function ReceiptDetails() {
-    const [dateTime, setDateTime] = useState([])
-    const TableNumber = "A1";
-    const OrderNumber = "001";
-    const timeURL = "https://www.worldtimeapi.org/api/timezone/Etc/GMT-8";
+    const [dateTime, setDateTime] = useState("")
+    const [tableNumber, setTableNumber] = useState(null)
+    const location = useLocation()
+    const order_id = sessionStorage.getItem("orderId")
+    const payment_id = location.state
 
-    let date = new Date(dateTime.datetime);
+
+    let date = new Date(Date.parse(dateTime))
 
     const dateNow = date.getDate() + '-' + (date.getMonth() +1 ) + '-' + date.getFullYear();
     const minutes = () => {
@@ -22,23 +25,33 @@ function ReceiptDetails() {
     const timeNow = date.getHours() + ':' + minutes()
 
     useEffect(()=>{
-        axios.get(timeURL)
+
+        // get user table number
+        axios.get("users/"+ sessionStorage.getItem("session_id"))
             .then(res => {
-                setDateTime(res.data)
+                setTableNumber(res.data.tableNumber)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+        axios.get("payment/"+ payment_id)
+            .then(res => {
+                setDateTime(res.data.timestamp)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+    })
 
     return (
         <Box>
             <Grid container spacing={1}>
                 <Grid item xs={6}>
-                    <Typography m={1} variant={"body1"} >Order Number: {OrderNumber} </Typography>
+                    <Typography m={1} variant={"body1"} >Order Number: {order_id} </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography m={1} variant={"body1"} >Table Number : {TableNumber} </Typography>
+                    <Typography m={1} variant={"body1"} >Table Number : {tableNumber} </Typography>
                 </Grid>
 
                 <Grid item xs={6}>

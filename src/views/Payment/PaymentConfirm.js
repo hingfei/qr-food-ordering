@@ -1,30 +1,60 @@
 import React from 'react';
 import {Box, Button} from "@mui/material";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import axios from "axios";
 
 
 
 function PaymentConfirm({paymentChoice}) {
     const history = useHistory()
+    const location = useLocation()
+
+
 
     function handleBack(){
         return history.push('/cart')
     }
 
     function handleConfirm(){
-        const data = {
+        const timestamp = new Date().toString();
+        const amount = location.state
+        const method = paymentChoice
+        const user = sessionStorage.getItem("session_id")
 
+        const paymentData = {
+            "amount": amount,
+            "timestamp": timestamp,
+            "method": method,
+            "user": user
         }
-        // todo: update payment choice
-        axios.put('http://localhost:8000/orders/'.concat(sessionStorage.getItem("orderId")), data)
+
+        console.log(paymentData)
+
+        let payment_id;
+        // CREATE PAYMENT HERE
+        axios.post('payment/', paymentData)
             .then(response => {
                 console.log(response.data)
-                return history.push('/payment')})
+                payment_id = response.data._id
+
+                const data = {
+                    "payment": payment_id,
+                    "paid": true
+                }
+                axios.put('orders/'.concat(sessionStorage.getItem("orderId")), data)
+                    .then(response => {
+                        console.log(response.data)
+                        return history.push({
+                            pathname: '/receipt',
+                            state: payment_id
+                        })})
+                    .catch(error => {
+                        console.log(error)
+                    })
+            })
             .catch(error => {
                 console.log(error)
             })
-        console.log('handle confirm')
     }
 
 

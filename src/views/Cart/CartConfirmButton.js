@@ -29,10 +29,13 @@ function CartConfirmButton({total}) {
             "orders": orders
         }
 
-        axios.put('http://localhost:8000/orders/'.concat(sessionStorage.getItem("orderId")), data)
+        axios.put('orders/'.concat(sessionStorage.getItem("orderId")), data)
             .then(response => {
                 console.log(response.data)
-                return history.push('/payment')})
+                return history.push({
+                    pathname: '/payment',
+                    state: amount
+                })})
             .catch(error => {
                 console.log(error)
             })

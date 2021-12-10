@@ -13,7 +13,7 @@ function TableNumberButton({tableNumber}) {
             tableNumber: tableNumber,
         }
 
-        axios.put('http://localhost:8000/users/'.concat(sessionStorage.getItem(("session_id"))), data
+        axios.put('users/'.concat(sessionStorage.getItem(("session_id"))), data
         )
             .then(response => {
                 console.log(response.data)
@@ -40,7 +40,7 @@ function TableNumberButton({tableNumber}) {
             "orders": orders
         }
 
-        axios.post('http://localhost:8000/orders/', data)
+        axios.post('orders/', data)
             .then(response => {
                 console.log(response.data)
                 sessionStorage.setItem("orderId", response.data._id)

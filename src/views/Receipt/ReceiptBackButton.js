@@ -1,11 +1,16 @@
 import React from 'react';
 import {Box, Button, Typography} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import {useHistory} from "react-router-dom";
 
 
 function ReceiptBackButton() {
+    const history = useHistory();
+
     function handleBackButton(){
-        console.log('clicked back button')
+        // clear storage and restart
+        sessionStorage.clear()
+        history.push('/table_number')
     }
     return (
         <Box sx={{

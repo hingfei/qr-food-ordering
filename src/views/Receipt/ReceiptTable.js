@@ -1,16 +1,25 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
-import {OrderContext} from "../../App";
+import axios from "axios";
 
 function ReceiptTable() {
-    // Todo : style table
-    const orderContext = useContext(OrderContext)
+    const [orderList, setOrderList] = useState([])
+    // get order from database
+    useEffect( ()=> {
+            axios.get("orders/" + sessionStorage.getItem("orderId"))
+                .then(res => {
+                    setOrderList(JSON.parse(res.data.orders))
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }, [])
 
     return (
         <Box mt={2}>
-                {orderContext.orderListState.map((order, index) => {
+                {orderList.map((order, index) => {
                     return (
-                            <Grid container
+                            <Grid key={order.id} container
                                   sx={{background: index % 2 ? 'white' : '#EAF2F8', minHeight: "5vh"}}
                                   alignItems={"center"} justifyContent={"center"}>
                                 <Grid item xs={6} >

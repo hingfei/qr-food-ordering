@@ -10,7 +10,7 @@ function MenuContainer() {
     const [MenuList, setMenuList] = useState([])
     // Menu List from database
     useEffect( ()=> {
-        axios.get('http://localhost:8000/menu/')
+        axios.get('menu/')
             .then(response =>{
                     console.log(response.data)
                     setMenuList(response.data)

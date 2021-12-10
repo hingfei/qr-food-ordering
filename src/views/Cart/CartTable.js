@@ -22,7 +22,7 @@ function CartTable() {
     useEffect(()=> {
         if (isLoading)
         {
-            axios.get('http://localhost:8000/orders/'.concat(sessionStorage.getItem("orderId")))
+            axios.get('orders/'.concat(sessionStorage.getItem("orderId")))
                 .then(res => {
                     // todo : function to load orders
                     loadOrder(JSON.parse(res.data.orders))
