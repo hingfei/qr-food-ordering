@@ -1,17 +1,20 @@
-import React from 'react';
-import {Box, Button} from "@mui/material";
+import React from "react";
+import { Box, Button } from "@mui/material";
 
-function ProfileQrDownloadButton(){
-    function handleDownload(){
-        console.log('clicked download button')
+function ProfileQrDownloadButton() {
+    function handleDownload() {
+        console.log("clicked download button");
     }
-    return(
+
+    return (
         <Box mt={3}>
-            <Button color="primary"
-                    size='lg'
-                    variant = "outlined"
-                    onClick ={()=> handleDownload()}
-            >DOWNLOAD
+            <Button
+                color="primary"
+                size="large"
+                variant="outlined"
+                onClick={() => handleDownload()}
+            >
+                DOWNLOAD
             </Button>
         </Box>
     );

@@ -74,11 +74,11 @@ function MenuItem({title, description, price, index, image}) {
                                         autoComplete="off"
                                         
                                     >
-                                        <TextField  color="secondary" focused size="small" variant ="filled" id="index" label="Index" type="text" width='25ch'/>
-                                        <TextField  color="secondary" focused size="small" variant ="filled" id="title" label="Title" type="text" width='25ch'/>
-                                        <TextField  color="secondary" focused size="small" variant ="filled" id="description" label="Description" type="text" fullWidth  multiline rows ={4} />
-                                        <TextField  color="secondary" focused size="small" variant ="filled" id="category" label="Category" type="text" width='25ch'  />
-                                        <TextField  color="secondary" focused size="small" variant ="filled" id="price" label="Price" type="number" width="25ch"  />
+                                        <TextField  color="primary" focused size="small" variant ="filled" id="index" label="Index" type="text" width='25ch'/>
+                                        <TextField  color="primary" focused size="small" variant ="filled" id="title" label="Title" type="text" width='25ch'/>
+                                        <TextField  color="primary" focused size="small" variant ="filled" id="description" label="Description" type="text" fullWidth  multiline rows ={4} />
+                                        <TextField  color="primary" focused size="small" variant ="filled" id="category" label="Category" type="text" width='25ch'  />
+                                        <TextField  color="primary" focused size="small" variant ="filled" id="price" label="Price" type="number" width="25ch"  />
 
                                         
 
