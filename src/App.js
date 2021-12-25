@@ -12,6 +12,7 @@ import QrContainer from "./views/QrPage/QrContainer/QrContainer"
 import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
+import RegistrationContainer from "./views/Registration/RegistrationContainer/RegistrationContainer";
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/logout' component={LogoutContainer}/>
                 <Route path='/login' component={LoginContainer}/>
                 <Route path='/qrPage' component={QrContainer}/>
+                <Route path='/registration' component={RegistrationContainer}/>
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>
