@@ -13,6 +13,7 @@ import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
 import BusinessSumContainer from "./views/BusinessSum/BusinessSumContainer/BusinessSumContainer";
+import RegistrationContainer from "./views/Registration/RegistrationContainer/RegistrationContainer";
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
@@ -39,8 +40,13 @@ function App() {
                 <Route path='/edit_menu' component={EditMenuContainer}/>
                 <Route path='/logout' component={LogoutContainer}/>
                 <Route path='/login' component={LoginContainer}/>
+<<<<<<< HEAD
+                <Route path='/qrPage' component={QrContainer}/>
+                <Route path='/registration' component={RegistrationContainer}/>
+=======
                 <Route path='/profile' component={ProfileContainer}/>
                 <Route path='/business_summary' component={BusinessSumContainer}/>
+>>>>>>> b63731e62d9cb2b269e47bb57b092240285e4209
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>

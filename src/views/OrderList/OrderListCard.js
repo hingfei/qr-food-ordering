@@ -26,6 +26,7 @@ function OrderListCard() {
             columnGap={3} 
             flexWrap="wrap" 
             rowGap={3} 
+            justifyContent="space-between"
         >
             {ordersContext.ordersState.map((order) => {
                 // Set the status of the payment.

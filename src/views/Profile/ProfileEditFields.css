@@ -1,0 +1,15 @@
+#edit_button {
+    background-color:#6495ED;
+    border-radius: 8px;
+    padding-left: 35px;
+    padding-right: 35px;  
+    
+}
+
+#edit_button:hover{
+    background-color: #40E0D0;
+    letter-spacing: 3px;
+    box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.3s ease 0s;
+}

@@ -35,7 +35,7 @@ function OrderListDialog(orderDetails) {
           onClose={handleClose}
           open={open}
           fullWidth={true}
-          maxWidth={"md"}
+          maxWidth="md"
           scroll="paper"
           TransitionComponent={Transition}
       >

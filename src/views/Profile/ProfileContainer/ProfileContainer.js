@@ -1,31 +1,54 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import React from "react";
+import Box from "@mui/material/Box";
 import Footer from "../../../components/Footer";
-import ProfileQrGenerator from "../ProfileQrGenerator";
 import ProfileNavBar from "../ProfileNavBar";
-import ProfileQrDownloadButton from "../ProfileQrDownloadButton";
-import ProfileName from '../ProfileName';
-import {Paper} from '@mui/material';
+import ProfileName from "../ProfileName";
+import { Paper } from "@mui/material";
+import ProfileFields from "../ProfileFields";
+import ProfileEditFields from "../ProfileEditFields";
 
-function ProfileContainer(){
+function ProfileContainer() {
     return (
-        <Box sx={{minHeight:"100vh",backgroundColor:"FBF1E4"}}>
-            <ProfileNavBar/>
-            <Box display="flex">
-                <Paper sx={{minWidth:"30%", minHeight:"70vh", alignSelf:"center"}}>
-                    <ProfileName/>
-                </Paper>
-                <Box display="flex"
-                     minWidth="70%"
-                     flexDirection="column" 
-                     justifyContent="center" 
-                     alignItems="center"
+        <Box sx={{ minHeight: "100vh", backgroundColor: "FBF1E4" }}>
+            <ProfileNavBar />
+            <ProfileEditFields/>
+            <Box
+                display="flex"
+                width="100%"
+                minHeight="70vh"
+                alignItems="center"
+                justifyContent="center"
+            >
+                <Box
+                    id="profileContainer"
+                    display="flex"
+                    width="90%"
+                    columnGap={5}
                 >
-                    <ProfileQrGenerator/>
-                    <ProfileQrDownloadButton/>
+                    <Paper
+                        elevation={3}
+                        sx={{
+                            display:"flex",
+                            width: "400px",
+                            height: "500px",
+                            marginTop: 2,
+                        }}
+                    >
+                        <ProfileName />
+                    </Paper>
+                    <Paper
+                        elevation={3}
+                        sx={{
+                            width: "70%",
+                            marginTop: 2,
+                            marginBottom: 4,
+                        }}
+                    >
+                        <ProfileFields />
+                    </Paper>
                 </Box>
             </Box>
-            <Footer/>
+            <Footer />
         </Box>
     );
 }
