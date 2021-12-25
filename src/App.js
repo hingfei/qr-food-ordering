@@ -12,6 +12,7 @@ import EditMenuContainer from "./views/EditMenu/EditMenuContainer/EditMenuContai
 import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
+import BusinessSumContainer from "./views/BusinessSum/BusinessSumContainer/BusinessSumContainer";
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/logout' component={LogoutContainer}/>
                 <Route path='/login' component={LoginContainer}/>
                 <Route path='/profile' component={ProfileContainer}/>
+                <Route path='/business_summary' component={BusinessSumContainer}/>
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>
