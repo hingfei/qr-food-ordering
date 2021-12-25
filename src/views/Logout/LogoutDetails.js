@@ -1,20 +1,24 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {Box, Button, Typography} from '@mui/material';
 import './LogoutDetails.css';
 import logout_img from '../images/logout_img.jpg';
  
-const handleOnClick = () => {
-    console.log("Sign in again");
-}
-
 function LogoutDetails() {
+    // Redirect to login page
+    const history = useHistory();
+
+    const handleOnClick = () => {
+        history.push('/login');
+    }
+
     return (
         <Box minHeight="80vh" display="flex">
-            <Box minWidth="40%" alignSelf="center">
+            <Box minWidth="50%" alignSelf="center">
                 <img src={logout_img} alt="logout" id="logout_img"/>
             </Box>
             <Box 
-                minWidth="60%" 
+                minWidth="50%" 
                 justifyContent="center" 
                 display="flex" 
                 flexDirection="column"

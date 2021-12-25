@@ -7,8 +7,8 @@ import React, {useReducer} from "react";
 import {initialOrderList, orderReducer} from "./reducers/CartReducer";
 import ReceiptContainer from "./views/Receipt/ReceiptContainer/ReceiptContainer";
 import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListContainer";
-import EditMenuContainer from "./views/EditMenu/EditMenuContainer/EditMenuContainer";
-import QrContainer from "./views/QrPage/QrContainer/QrContainer"
+import ProfileContainer from "./views/Profile/ProfileContainer/ProfileContainer"
+import EditMenuContainer from "./views/EditMenu/EditMenuContainer/EditMenuContainer"
 import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
 import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
@@ -39,8 +39,12 @@ function App() {
                 <Route path='/edit_menu' component={EditMenuContainer}/>
                 <Route path='/logout' component={LogoutContainer}/>
                 <Route path='/login' component={LoginContainer}/>
+<<<<<<< HEAD
                 <Route path='/qrPage' component={QrContainer}/>
                 <Route path='/registration' component={RegistrationContainer}/>
+=======
+                <Route path='/profile' component={ProfileContainer}/>
+>>>>>>> b63731e62d9cb2b269e47bb57b092240285e4209
                 <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>

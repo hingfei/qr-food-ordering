@@ -2,7 +2,7 @@ import React from 'react';
 import {AppBar, Box, Toolbar, IconButton, Typography} from '@mui/material';
 import OwnerSideNav from "../../components/OwnerSideNav";
 
-function QrNavBar() {
+function ProfileNavBar() {
     return (
         <Box>
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
@@ -25,4 +25,4 @@ function QrNavBar() {
     );
 }
 
-export default QrNavBar;
+export default ProfileNavBar;
