@@ -1,4 +1,5 @@
 import React from 'react';
+import {Box} from '@mui/material';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -29,13 +30,17 @@ export const options = {
         title: {
             display: true,
             text: 'Total Income Bar Chart (Last 30 days)',
+            font:{
+                size: 20,
+            }
+
         },
 
     },
 };
 function OrderGraph(props) {
     return (
-        <div>
+        <Box>
             <Bar
                 data={{
                         labels,
@@ -51,7 +56,7 @@ function OrderGraph(props) {
                 width={600}
                 options={options}
             />
-        </div>
+        </Box>
     );
 }
 

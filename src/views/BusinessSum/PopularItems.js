@@ -2,13 +2,14 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut} from "react-chartjs-2";
 import faker from 'faker';
+import {Box} from "@mui/material";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const labels = ['nasi lemak', 'laksa', 'mee goreng']; // Replace data from database
 
-function PopularItems(props) {
+function PopularItems() {
     return (
-        <div>
+        <Box mt={3}>
             <Doughnut
                 data={{
                     labels,
@@ -28,12 +29,14 @@ function PopularItems(props) {
                         title:{
                             display: true,
                             text: 'Popular Items',
+                            font:{
+                                size: 20,
+                            }
                         }
                     }
                 }}
-
-            />
-        </div>
+             />
+        </Box>
     );
 }
 
