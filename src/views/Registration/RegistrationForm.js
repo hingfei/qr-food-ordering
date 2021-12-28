@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,11 +13,36 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
+
 const theme = createTheme();
 
-function RegistrationForm() {
+const initialState ={
+  firstName: '',
+  lastName: '',
+  gender: '',
+  icNumber: '',
+  contact: '',
+  ssm: '',
+  restaurantName: '',
+  restaurantAddress: '',
+  email: '',
+  password: '',
+}
 
-  const handleSubmit=() =>{
+export default function RegistrationForm() {
+
+  const [value, setValue]= useState(initialState);
+
+  const handleInputChange = e =>{
+    const {name, values} = e.target
+    setValue({
+      ...value,
+      [name]: values
+    })
+  }
+
+
+  const handleSubmit=()=>{
      console.log('Clicked Submit Button');
   };
 
@@ -48,6 +74,8 @@ function RegistrationForm() {
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  value={value.firstName}
+                  onChange = {handleInputChange}
                   autoFocus
                 />
               </Grid>
@@ -57,6 +85,8 @@ function RegistrationForm() {
                   fullWidth
                   id="lastName"
                   label="Last Name"
+                  value={value.lastName}
+                  onChange = {handleInputChange}
                   name="lastName"
                   autoComplete="family-name"
                 />
@@ -68,6 +98,9 @@ function RegistrationForm() {
                   fullWidth
                   id="gender"
                   label="Gender"
+                  name="gender"
+                  value={value.gender}
+                  onChange = {handleInputChange}
                   />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -76,6 +109,9 @@ function RegistrationForm() {
                   fullWidth
                   id="icNumber"
                   label="IC Number"
+                  name="icNumber"
+                  value={value.icNumber}
+                  onChange = {handleInputChange}
                   />
               </Grid>
 
@@ -85,6 +121,9 @@ function RegistrationForm() {
                   fullWidth
                   id="contact"
                   label="Contact Number"
+                  name="contact"
+                  value={value.contact}
+                  onChange = {handleInputChange}
                   />
               </Grid>
             
@@ -94,6 +133,9 @@ function RegistrationForm() {
                   fullWidth
                   id="ssm"
                   label="SSM"
+                  name="ssm"
+                  value={value.ssm}
+                  onChange = {handleInputChange}
                   />
               </Grid>
 
@@ -103,6 +145,9 @@ function RegistrationForm() {
                   fullWidth
                   id="restaurantName"
                   label="Restaurant Name"
+                  value={value.restaurantName}
+                  name="restaurantName"
+                  onChange = {handleInputChange}
                   />
               </Grid>
 
@@ -111,7 +156,10 @@ function RegistrationForm() {
                   required
                   fullWidth
                   id="restaurantAddress"
+                  name="restaurantAddress"
                   label="Restaurant Address"
+                  value={value.restaurantAddress}
+                  onChange = {handleInputChange}
                   />
               </Grid>
 
@@ -123,6 +171,8 @@ function RegistrationForm() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={value.email}
+                  onChange = {handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -131,6 +181,8 @@ function RegistrationForm() {
                   fullWidth
                   name="password"
                   label="Password"
+                  value={value.password}
+                  onChange = {handleInputChange}
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -139,6 +191,7 @@ function RegistrationForm() {
             </Grid>
             <Button
               id="signUp"
+              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -160,4 +213,3 @@ function RegistrationForm() {
   );
 }
 
-export default RegistrationForm;
