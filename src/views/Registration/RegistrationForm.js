@@ -12,38 +12,87 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
+import axios from 'axios'
 
 const theme = createTheme();
 
-const initialState ={
-  firstName: '',
-  lastName: '',
-  gender: '',
-  icNumber: '',
-  contact: '',
-  ssm: '',
-  restaurantName: '',
-  restaurantAddress: '',
-  email: '',
-  password: '',
-}
-
 export default function RegistrationForm() {
+  const [gender, setGender] = useState('');
+  const [firstName, setFirstName] = useState('Hayden');
+  const [lastName, setLastName] = useState('Soong');
+  const [icNumber, setICNumber] = useState('991234085678');
+  const [contact, setContact] = useState('01234567890');
+  const [ssm, setSSM] = useState('ABC-123456');
+  const [restaurantName, setRestaurantName] = useState('The Deck 3');
+  const [restaurantAddress, setRestaurantAddress] = useState('Deck, USM Penang');
+  const [email, setEmail] = useState('thedeck3@gmail.com');
+  const [password, setPassword] = useState('test123');
 
-  const [value, setValue]= useState(initialState);
+  const handleGenderChange = e => {
+    setGender(e.target.value);
+  }
 
-  const handleInputChange = e =>{
-    const {name, values} = e.target
-    setValue({
-      ...value,
-      [name]: values
-    })
+  const handleFirstNameChange = e => {
+    setFirstName(e.target.value);
+  }
+
+  const handleLastNameChange = e => {
+    setLastName(e.target.value);
+  }
+
+  const handleICNumberChange = e => {
+    setICNumber(e.target.value);
+  }
+
+  const handleContactChange = e => {
+    setContact(e.target.value);
+  }
+
+  const handleSSMChange = e => {
+    setSSM(e.target.value);
+  }
+
+  const handleRestaurantName = e => {
+    setRestaurantName(e.target.value);
+  }
+
+  const handleRestaurantAddress = e => {
+    setRestaurantAddress(e.target.value);
+  }
+
+  const handleEmailChange = e => {
+    setEmail(e.target.value);
+  }
+
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
   }
 
 
   const handleSubmit=()=>{
-     console.log('Clicked Submit Button');
+    const data = {
+      firstname: firstName,
+      lastname: lastName,
+      gender: gender,
+      icNo: icNumber,
+      contactNo: contact,
+      ssm: ssm,
+      restaurantName: restaurantName,
+      restaurantAddress: restaurantAddress,
+      email: email,
+      hashed_password: password
+    }
+    // todo: check response code, if 201 all good, if 409 = email ald taken!
+    axios.post('/auth/signup', data)  
+    .then(response => {  
+       console.log(response) 
+    }).catch(error => {  
+    	console.log(error)  
+})
+
   };
 
   return (
@@ -64,129 +113,167 @@ export default function RegistrationForm() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  value={value.firstName}
-                  onChange = {handleInputChange}
-                  autoFocus
-                />
+                <FormControl fullWidth>
+                  <TextField
+                    variant="filled"
+                    name="firstName"
+                    required
+                    id="firstName"
+                    label="First Name"
+                    placeholder="First Name"
+                    onChange = {handleFirstNameChange}
+                    value={firstName}
+                    autoFocus
+                  />
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
                 <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  value={value.lastName}
-                  onChange = {handleInputChange}
-                  name="lastName"
-                  autoComplete="family-name"
-                />
+                      required
+                      variant="filled"
+                      id="lastName"
+                      label="Last Name"
+                      onChange = {handleLastNameChange}
+                      value={lastName}
+                      name="lastName"
+                      placeholder="Last Name"
+                    />
+                </FormControl>
               </Grid>
 
               <Grid item xs={12} sm={6}>
+                <FormControl fullWidth >
                   <TextField
-                  required
-                  fullWidth
-                  id="gender"
-                  label="Gender"
-                  name="gender"
-                  value={value.gender}
-                  onChange = {handleInputChange}
-                  />
+                        required
+                        id="gender"
+                        select
+                        label="Gender"
+                        value={gender}
+                        onChange={handleGenderChange}
+                        variant="filled"
+                        placeholder="Gender"
+                      >
+                    <MenuItem value={"male"}>Male</MenuItem>
+                    <MenuItem value={"female"}>Female</MenuItem>
+                  </TextField>
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                  <TextField
-                  required
-                  fullWidth
-                  id="icNumber"
-                  label="IC Number"
-                  name="icNumber"
-                  value={value.icNumber}
-                  onChange = {handleInputChange}
-                  />
+                <FormControl fullWidth>
+                    <TextField
+                      required
+                      fullWidth
+                      id="icNumber"
+                      label="IC Number"
+                      name="icNumber"
+                      value={icNumber}
+                      onChange = {handleICNumberChange}
+                      variant="filled"
+                      placeholder="IC Number"
+                    />
+                </FormControl>
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                  <TextField
-                  required
-                  fullWidth
-                  id="contact"
-                  label="Contact Number"
-                  name="contact"
-                  value={value.contact}
-                  onChange = {handleInputChange}
-                  />
+                <FormControl fullWidth>
+                    <TextField
+                      required
+                      fullWidth
+                      id="contact"
+                      label="Contact Number"
+                      name="contact"
+                      onChange = {handleContactChange}
+                      value={contact}
+                      variant="filled"
+                      placeholder="Contact Number"
+                    />
+                </FormControl>
               </Grid>
             
               <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
                   <TextField
                   required
                   fullWidth
                   id="ssm"
                   label="SSM"
                   name="ssm"
-                  value={value.ssm}
-                  onChange = {handleInputChange}
+                  value={ssm}
+                  onChange = {handleSSMChange}
+                  variant="filled"
+                  placeholder="SSM"
                   />
+                </FormControl>
               </Grid>
 
               <Grid item xs={12}>
-                  <TextField
-                  required
-                  fullWidth
-                  id="restaurantName"
-                  label="Restaurant Name"
-                  value={value.restaurantName}
-                  name="restaurantName"
-                  onChange = {handleInputChange}
-                  />
+                <FormControl fullWidth>
+                    <TextField
+                      required
+                      fullWidth
+                      id="restaurantName"
+                      label="Restaurant Name"
+                      name="restaurantName"
+                      onChange = {handleRestaurantName}
+                      value={restaurantName}
+                      variant="filled"
+                      placeholder="Restaurant Name"
+                    />
+                  </FormControl>
               </Grid>
 
               <Grid item xs={12}>
+                <FormControl fullWidth>
                   <TextField
                   required
                   fullWidth
                   id="restaurantAddress"
                   name="restaurantAddress"
                   label="Restaurant Address"
-                  value={value.restaurantAddress}
-                  onChange = {handleInputChange}
+                  onChange = {handleRestaurantAddress}
+                  value={restaurantAddress}
+                  variant="filled"
+                  placeholder="Restaurant Address"
                   />
+                </FormControl>
               </Grid>
 
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={value.email}
-                  onChange = {handleInputChange}
-                />
+                <FormControl fullWidth>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    variant="filled"
+                    placeholder="E-mail"
+                    value={email}
+                    onChange = {handleEmailChange}
+                  />
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  value={value.password}
-                  onChange = {handleInputChange}
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
+                <FormControl fullWidth>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    value={password}
+                    onChange = {handlePasswordChange}
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                    variant="filled"
+                    placeholder="Password"
+                  />
+                </FormControl>
               </Grid>
             </Grid>
             <Button
@@ -201,7 +288,7 @@ export default function RegistrationForm() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

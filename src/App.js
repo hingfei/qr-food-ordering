@@ -16,6 +16,8 @@ import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
 import BusinessSumContainer from "./views/BusinessSum/BusinessSumContainer/BusinessSumContainer";
 import RegistrationContainer from "./views/Registration/RegistrationContainer/RegistrationContainer";
 
+import AuthContextProvider from "./context/AuthContextProvider";
+
 // Create context for customer cart
 export const OrderContext = React.createContext();
 // Create context for owner order list
@@ -27,31 +29,51 @@ function App() {
     const [orderList, dispatch] = useReducer(orderReducer, initialOrderList);
     // Reducer for owner order list
     const [orders, action] = useReducer(orderListReducer, ordersTotal);
+
+
+    // store token in localstorage
       return (
-          <OrderContext.Provider value={{orderListState: orderList, orderListDispatch: dispatch }}>
-          <OrderListContext.Provider value={{ordersState: orders, ordersDispatch: action}}>
+          
           <div>
             <BrowserRouter>
               <Switch>
-                <Route path='/payment' component={PaymentContainer}/>
-                <Route path='/table_number' component={TableNumberContainer}/>
-                <Route path='/menu' component={MenuContainer}/>
-                <Route path='/cart' component={CartContainer}/>
-                <Route path='/receipt' component={ReceiptContainer}/>
-                <Route path='/order_list' component={OrderListContainer}/>
-                <Route path='/edit_menu' component={EditMenuContainer}/>
-                <Route path='/logout' component={LogoutContainer}/>
-                <Route path='/login' component={LoginContainer}/>
-                <Route path='/registration' component={RegistrationContainer}/>
-                <Route path='/profile' component={ProfileContainer}/>
-                <Route path='/business_summary' component={BusinessSumContainer}/>
+                <AuthContextProvider>
+                    <OrderListContext.Provider value={{ordersState: orders, ordersDispatch: action}}>
+                      <Route path='/registration' component={RegistrationContainer}/> 
+                      <Route path='/login' component={LoginContainer}/>
 
-                <Route component={NotFound}/>
+                      <Route path='/profile'>
+                        <ProfileContainer/>
+                      </Route>
+                      <Route path='/business_summary'>
+                        <BusinessSumContainer/> 
+                      </Route>
+                      <Route path='/order_list'>
+                        <OrderListContainer/> 
+                      </Route>
+                      <Route path='/edit_menu'>
+                        <EditMenuContainer/>
+                      </Route>
+                      <Route path='/logout' component={LogoutContainer}/>
+                    </OrderListContext.Provider>
+                  </AuthContextProvider>
+                </Switch>
+                <Switch>
+                  <OrderContext.Provider value={{orderListState: orderList, orderListDispatch: dispatch }}>
+                    <Route path='/table_number' component={TableNumberContainer}/>
+                    <Route path='/menu' component={MenuContainer}/>
+                    <Route path='/cart' component={CartContainer}/>
+                    <Route path='/receipt' component={ReceiptContainer}/>
+                    <Route path='/payment' component={PaymentContainer}/>
+                  </OrderContext.Provider>
+              
+
+              <Route component={NotFound}/>
               </Switch>
             </BrowserRouter>
           </div>
-          </OrderListContext.Provider>
-          </OrderContext.Provider>
+          
+          
           
       );
 }

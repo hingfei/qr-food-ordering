@@ -5,7 +5,6 @@ import axios from 'axios';
 import {useHistory} from "react-router-dom";
 
 function TableNumberButton({tableNumber}) {
-
     const history = useHistory();
     // updateUser
     function updateUser (){

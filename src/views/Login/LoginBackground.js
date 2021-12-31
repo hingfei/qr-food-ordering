@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import AssignmentInd from '@mui/icons-material/AssignmentInd';
 import {Checkbox, FormControlLabel} from "@mui/material";
 import LoginInputField from "./LoginInputField";
-import LoginButton from "./LoginButton";
 import login_img from "../images/menu.jpg";
 import "./LoginBackground.css";
 
@@ -17,7 +16,6 @@ function LoginBackground(){
                 <AssignmentInd sx={{fontSize:100}}/>
                 <LoginInputField/>
                 <FormControlLabel control={<Checkbox/>} label="Remember me"/>
-                <LoginButton/>
             </Box>
         </Box>
     );
