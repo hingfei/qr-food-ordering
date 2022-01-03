@@ -2,11 +2,15 @@ import React from 'react';
 import './TableNumberButton.css';
 import {Box, Button} from '@mui/material';
 import axios from 'axios';
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 function TableNumberButton({tableNumber}) {
+    // get Restaurant ID
+    const { id } = useParams();
     const history = useHistory();
-    // updateUser
+
+
+    // Update User
     function updateUser (){
         const data = {
             tableNumber: tableNumber,
@@ -15,42 +19,37 @@ function TableNumberButton({tableNumber}) {
         axios.put('users/'.concat(sessionStorage.getItem(("session_id"))), data
         )
             .then(response => {
-                console.log(response.data)
-                return history.push('/menu')
+                return history.push('/menu/'.concat(id))
             }).catch(error => {
             console.log(error)
         })
     }
 
+    // Create Order
+    function createOrder (user_id){
 
-    function createOrder (id){
-        const user = id
-        const amount = 0
-        const paid = false
-        const done = false
-        const orders = ""
-
-        // COMBINE DATA TO POST
+        // data to POST
         const data = {
-            "user": user,
-            "amount": amount,
-            "paid": paid,
-            "done": done,
-            "orders": orders
+            "user": user_id,
+            "amount": 0,
+            "paid": false,
+            "done": false,
+            "orders": "",
+            "restaurant_id": id
         }
 
         axios.post('orders/', data)
             .then(response => {
                 console.log(response.data)
                 sessionStorage.setItem("orderId", response.data._id)
-                return history.push('/menu')
+                return history.push('/menu/'.concat(id))
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
-
+    // Handle POST Table Number to DB
     function handleSubmitNumber()
     {
         // POST USER ID -> ORDER ID -> UPDATE USER ID agn
@@ -81,6 +80,8 @@ function TableNumberButton({tableNumber}) {
         }
 
     }
+
+
     return (
         <Box mt={3} sx={{justifyContent: "center", alignItems: "center", display:"flex"}}>
             <Button id="page_button"
