@@ -6,6 +6,7 @@ import CartConfirmButton from "./CartConfirmButton";
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import axios from "axios";
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 function CartTable() {
 
@@ -38,16 +39,18 @@ function CartTable() {
 
     if (orderList.length === 0)
     {
-        // todo: style this
         return (<>
-            <div>Empty Cart</div>
+        
         </>)
     }
     else {
         const subtotal = orderContext.orderListState.map(sum => sum.total).reduce((a, b) => a+b)
         if (isLoading) {
             return(
-                <Typography> Loading Data.... </Typography>
+                <>
+                 <LoadingSpinner/>
+                </>
+               
             );
         }
         else{
