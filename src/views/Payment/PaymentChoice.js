@@ -6,22 +6,24 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import PaymentConfirm from "./PaymentConfirm";
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { CreditCard } from 'react-kawaii'
 
 function PaymentChoice() {
     const [PaymentChoice, setPaymentChoice] = React.useState('E-Wallet')
 
+    
     const handleChange = (event) => {
         setPaymentChoice(event.target.value);
     };
 
     return (
-        <Box sx={{
-            mt : 5,
-            display: "flex",
-            alignItems: "center",
-            verticalAlign: "center",
-            minHeight: "40vh",
-            flexWrap: "wrap"
+        <Box
+            sx={{
+            mt:5,
+            minHeight: '60vh', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', flexWrap: 'wrap'
         }}>
             <FormControl component="fieldset" sx={{
                 width: "100%",
@@ -45,6 +47,7 @@ function PaymentChoice() {
             </FormControl>
             <Box sx={{flexBasis: "100%", height:"0"}}/>
             <PaymentConfirm paymentChoice={PaymentChoice}/>
+            <CreditCard size={160} mood="blissful" color="#83D1FB" />
         </Box>
     );
 }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 import axios from 'axios';
-import {useLocation} from "react-router-dom";
+import {useLocation, useHistory} from "react-router-dom";
 
 function ReceiptDetails() {
     const [dateTime, setDateTime] = useState("")
@@ -10,7 +10,7 @@ function ReceiptDetails() {
     const order_id = sessionStorage.getItem("orderId")
     const payment_id = location.state
 
-
+    const history = useHistory()
     let date = new Date(Date.parse(dateTime))
 
     const dateNow = date.getDate() + '-' + (date.getMonth() +1 ) + '-' + date.getFullYear();
@@ -33,6 +33,7 @@ function ReceiptDetails() {
             })
             .catch(err => {
                 console.log(err)
+                history.push('/error')
             })
         axios.get("payment/"+ payment_id)
             .then(res => {
@@ -40,6 +41,7 @@ function ReceiptDetails() {
             })
             .catch(err => {
                 console.log(err)
+                history.push('/error')
             })
 
     })
@@ -47,7 +49,7 @@ function ReceiptDetails() {
     return (
         <Box>
             <Grid container spacing={1}>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <Typography m={1} variant={"body1"} >Order Number: {order_id} </Typography>
                 </Grid>
                 <Grid item xs={6}>

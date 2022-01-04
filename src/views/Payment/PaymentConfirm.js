@@ -1,21 +1,24 @@
 import React from 'react';
-import {Box, Button} from "@mui/material";
-import {useHistory, useLocation} from "react-router-dom";
+import { Box, Button } from "@mui/material";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 
 
 
-function PaymentConfirm({paymentChoice}) {
+function PaymentConfirm({ paymentChoice }) {
     const history = useHistory()
     const location = useLocation()
 
+    const { id } = useParams();
 
+    const cart_url = "/cart/".concat(id)
+    const receipt_url = '/receipt/'.concat(id)
 
-    function handleBack(){
-        return history.push('/cart')
+    function handleBack() {
+        return history.push(cart_url)
     }
 
-    function handleConfirm(){
+    function handleConfirm() {
         const timestamp = new Date().toString();
         const amount = location.state
         const method = paymentChoice
@@ -45,39 +48,42 @@ function PaymentConfirm({paymentChoice}) {
                     .then(response => {
                         console.log(response.data)
                         return history.push({
-                            pathname: '/receipt',
+                            pathname:  receipt_url,
                             state: payment_id
-                        })})
+                        })
+                    })
                     .catch(error => {
                         console.log(error)
+                        history.push('/error')
                     })
             })
             .catch(error => {
                 console.log(error)
+                history.push('/error')
             })
     }
 
 
     return (
         <Box display={"flex"} width={"100%"}
-             justifyContent={"center"}
-             alignItems={"center"}>
-            <Button onClick={()=> handleBack()} variant={"contained"} color={"error"} sx={{
+            justifyContent={"center"}
+            alignItems={"center"}>
+            <Button onClick={() => handleBack()} variant={"contained"} color={"error"} sx={{
                 borderRadius: "50in",
                 paddingLeft: "35px",
                 paddingRight: "35px",
-                minHeight: "50px",
-                minWidth: "150px"
+                minHeight: "40px",
+                minWidth: "100px"
             }}>
                 Cancel
             </Button>
-            <Box minWidth={"3vw"}/>
-            <Button onClick={()=> handleConfirm()} variant={"contained"} color={"success"} sx={{
+            <Box minWidth={"3vw"} />
+            <Button onClick={() => handleConfirm()} variant={"contained"} color={"success"} sx={{
                 borderRadius: "50in",
                 paddingLeft: "35px",
                 paddingRight: "35px",
-                minHeight: "50px",
-                minWidth: "150px"
+                minHeight: "40px",
+                minWidth: "100px"
             }}>
                 Confirm
             </Button>

@@ -5,14 +5,14 @@ import Footer from "../../../components/Footer";
 import { Box } from "@mui/material";
 import axios from 'axios'
 import LoadingSpinner from '../../../components/LoadingSpinner';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 const _ = require("lodash")
 
 function MenuContainer() {
 
     // get restaurant id
     const { id } = useParams();
-
+    const history = useHistory()
     const [MenuList, setMenuList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -28,6 +28,7 @@ function MenuContainer() {
                 )
                 .catch(err => {
                     console.log(err)
+                    history.push('/error')
                 })
         }
     })
