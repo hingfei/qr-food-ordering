@@ -6,7 +6,7 @@ import {Box} from "@mui/material"
 function TableNumberRestaurantName({restaurantName, restaurantDescription, restaurantPicture}) {
     return (
         <Box mb={5}>    
-            <img src={restaurantPicture} alt="restaurant image" 
+            <img src={restaurantPicture} alt="restaurant" 
             height = {150}
             width = {300} /> 
 

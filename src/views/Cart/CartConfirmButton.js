@@ -4,13 +4,17 @@ import './CartConfirmButton.css';
 import { Typography } from '@mui/material';
 import axios from 'axios'
 import {OrderContext} from "../../App";
-import {useHistory} from "react-router-dom";
+import { useHistory, useParams} from "react-router-dom";
 
 function CartConfirmButton({total}) {
 
     const history = useHistory();
     const orderContext = useContext(OrderContext)
 
+
+    const { id } = useParams();
+
+    const payment_url = "/payment/".concat(id)
     // todo: send PUT request
     function handleSubmit()
     {
@@ -33,7 +37,7 @@ function CartConfirmButton({total}) {
             .then(response => {
                 console.log(response.data)
                 return history.push({
-                    pathname: '/payment',
+                    pathname: payment_url,
                     state: amount
                 })})
             .catch(error => {

@@ -15,9 +15,8 @@ import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
 import BusinessSumContainer from "./views/BusinessSum/BusinessSumContainer/BusinessSumContainer";
 import RegistrationContainer from "./views/Registration/RegistrationContainer/RegistrationContainer";
-
+import SomethingWentWrong from "./errors/SomethingWentWrong";
 import AuthContextProvider from "./context/AuthContextProvider";
-import LoadingSpinner from "./components/LoadingSpinner"
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
@@ -65,7 +64,9 @@ function App() {
                       <Route  path='/cart/:id' component={CartContainer}/>
                       <Route  path='/receipt/:id' component={ReceiptContainer}/>
                       <Route  path='/payment/:id' component={PaymentContainer}/>
+                      <Route path='/error' component={SomethingWentWrong} />
                       <Route component={NotFound}></Route>
+
                 </Switch>
               </OrderContext.Provider>
               </OrderListContext.Provider>

@@ -4,7 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChangeCircleRoundedIcon from '@mui/icons-material/ChangeCircleRounded';
 import './MenuNavBar.css'
 import MenuSideNav from "./MenuSideNav";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import {OrderContext} from "../../App";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -12,8 +12,14 @@ import axios from 'axios'
 
 
 function MenuNavBar() {
+    //get restaurant id
     const history = useHistory();
+    const {id} = useParams();
 
+    const check_in_url = "/check-in/".concat(id)
+    const cart_url = "/cart/".concat(id)
+
+    // Alert Function
     const Alert = React.forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
@@ -32,7 +38,7 @@ function MenuNavBar() {
                 })
                 .catch(err => {
                     if (err.response.status === 404){
-                        return history.push('/table_number')
+                        return history.push(check_in_url)
                     }else{
                         console.log(err.response.data)
                     }
@@ -72,7 +78,7 @@ function MenuNavBar() {
     }
     else {
         shoppingCart =
-            <Link to="/cart" style={{ textDecoration : 'none', color:"white"}}>
+            <Link to={cart_url} style={{ textDecoration : 'none', color:"white"}}>
                 <IconButton size="large" aria-label="shopping cart" color="inherit" className="shoppingCart">
                     <Badge badgeContent={cartQuantity} color={"error"}>
                         <ShoppingCartIcon />
@@ -103,7 +109,7 @@ function MenuNavBar() {
                         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>
                             <img
                                 alt=""
-                                src="./images/logo.svg"
+                                src="../images/logo.svg"
                                 width="30"
                                 height="30"
                                 className="d-inline-block align-top"
@@ -116,7 +122,7 @@ function MenuNavBar() {
                     </Grid>
                     <Grid item xs={4} className="tableNumber" >
                         {renderTable}
-                        <Link to="/table_number" style={{ textDecoration : 'none', color:"white"}}>
+                        <Link to={check_in_url} style={{ textDecoration : 'none', color:"white"}}>
                             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber">
                                 <ChangeCircleRoundedIcon/>
                             </IconButton>

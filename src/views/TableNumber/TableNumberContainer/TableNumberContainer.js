@@ -32,6 +32,10 @@ function TableNumberContainer() {
                     history.push('/not-found')
                     setIsLoading(false);
                 }
+                else{
+                    console.log(err)
+                    history.push('/error')
+                }
             })
         }
     })

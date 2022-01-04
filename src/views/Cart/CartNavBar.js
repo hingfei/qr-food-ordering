@@ -2,13 +2,19 @@ import React, {useEffect, useState} from 'react';
 import {AppBar, Box, Grid, IconButton, Toolbar, Typography} from "@mui/material";
 import ChangeCircleRoundedIcon from "@mui/icons-material/ChangeCircleRounded";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import {Link} from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import axios from "axios";
 
 
 function CartNavBar() {
     const [TableNumber, setTableNumber] = useState('Empty')
     const [isLoading, setIsLoading] = useState(true)
+
+    const { id } = useParams();
+
+    const check_in_url = "/check-in/".concat(id)
+    const menu_url = "/menu/".concat(id)
+
     useEffect(()=>{
         if (isLoading){
             axios.get('users/'.concat(sessionStorage.getItem(("session_id"))))
@@ -29,7 +35,7 @@ function CartNavBar() {
                         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>
                             <img
                                 alt=""
-                                src="./images/logo.svg"
+                                src="../images/logo.svg"
                                 width="30"
                                 height="30"
                                 className="d-inline-block align-top"
@@ -43,14 +49,14 @@ function CartNavBar() {
                         <Typography  variant="h6" color="inherit" component="div" className="tableNumber">
                             {TableNumber}
                         </Typography>
-                        <Link to="/table_number" style={{ textDecoration : 'none', color:"white"}}>
+                        <Link to={check_in_url} style={{ textDecoration : 'none', color:"white"}}>
                             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ ml: 2}} className="tableNumber">
                                 <ChangeCircleRoundedIcon/>
                             </IconButton>
                         </Link>
                     </Grid>
                     <Grid item xs={2}>
-                       <Link to="/menu" style={{ textDecoration : 'none', color:"white"}}>
+                        <Link to={menu_url} style={{ textDecoration : 'none', color:"white"}}>
                            <IconButton size="large" aria-label="back-to-menu" color="inherit" sx={{ float: "right"}}>
                                <ArrowBackIosNewIcon />
                                <Typography variant={"h6"} ml={2} >

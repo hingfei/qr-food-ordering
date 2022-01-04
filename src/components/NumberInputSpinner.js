@@ -24,9 +24,11 @@ function NumberInputSpinner({id, title, price}) {
                         <IconButton color={"error"} size={"large"} onClick={() => handleRemoveItem(id,title, price)}>
                             <IndeterminateCheckBoxIcon/>
                         </IconButton>
-                        <Typography variant={"h6"}>
-                            {orderItem.quantity}
-                        </Typography>
+                        <Box sx={{ minWidth: '30px'}}>
+                            <Typography variant={"h6"} align='center'>
+                                {orderItem.quantity}
+                            </Typography>
+                        </Box>
                         <IconButton color={"success"} size={"large"} onClick={() => handleAddItem(id, title, price)}>
                             <AddBoxIcon />
                         </IconButton>
@@ -37,5 +39,6 @@ function NumberInputSpinner({id, title, price}) {
         })
     );
 }
+
 
 export default NumberInputSpinner;
