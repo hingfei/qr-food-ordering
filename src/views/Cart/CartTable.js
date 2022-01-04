@@ -12,7 +12,7 @@ function CartTable() {
 
     // todo: fix discount logic
     const orderContext = useContext(OrderContext)
-    const discount = 0.5
+    const discount = 0
     const orderList = orderContext.orderListState;
     const [isLoading, setIsLoading] = useState(true)
 

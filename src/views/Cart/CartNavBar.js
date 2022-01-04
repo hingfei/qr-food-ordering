@@ -40,9 +40,6 @@ function CartNavBar() {
                                 height="30"
                                 className="d-inline-block align-top"
                             />
-                            <Typography variant="h6" color="inherit" component="div">
-                                Great Food
-                            </Typography>
                         </IconButton>
                     </Grid>
                     <Grid item xs={4} className="tableNumber" >
@@ -59,9 +56,6 @@ function CartNavBar() {
                         <Link to={menu_url} style={{ textDecoration : 'none', color:"white"}}>
                            <IconButton size="large" aria-label="back-to-menu" color="inherit" sx={{ float: "right"}}>
                                <ArrowBackIosNewIcon />
-                               <Typography variant={"h6"} ml={2} >
-                                   Back
-                               </Typography>
                            </IconButton>
                        </Link>
                     </Grid>

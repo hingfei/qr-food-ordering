@@ -114,9 +114,6 @@ function MenuNavBar() {
                                 height="30"
                                 className="d-inline-block align-top"
                             />
-                            <Typography variant="h6" color="inherit" component="div">
-                                Great Food
-                            </Typography>
                         </IconButton>
 
                     </Grid>

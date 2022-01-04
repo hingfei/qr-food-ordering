@@ -6,7 +6,7 @@ function CartTitle() {
     return (
         <Paper elevation={3}
                sx={{display: "flex", width: "100%",
-                   height: "10vw", justifyItems:"center", alignItems:"center",
+                   height: "10vh", justifyItems:"center", alignItems:"center",
                maxHeight: "75px"}}>
             <ShoppingCartIcon fontSize={"medium"} sx={{ml : "16px"}}/>
             <Typography variant={"h6"} ml={2} >
