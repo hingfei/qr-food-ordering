@@ -1,16 +1,10 @@
 import React from "react";
-import {
-    Box,
-    List,
-    ListItem,
-    Typography,
-    Divider,
-} from "@mui/material";
+import { Box, List, ListItem, Typography, Divider } from "@mui/material";
 import ProfileQrGenerator from "./ProfileQrGenerator";
 import ProfileQrDownloadButton from "./ProfileQrDownloadButton";
+import ProfileFieldContainer from "./ProfileContainer/ProfileFieldContainer";
 
 function ProfileFields() {
-    
     // sample data
     const restaurantDetails = {
         firstName: "Hayden",
@@ -20,139 +14,63 @@ function ProfileFields() {
         contactNum: "0127788990",
         ssm: 202101000005,
         restaurantName: "The Deck Restaurant",
-        restaurantAddress: "No. 67, Jalan 99, Bandar Puchong Jaya, Puchong, 47170, Selangor.",
+        restaurantAddress:
+            "No. 67, Jalan 99, Bandar Puchong Jaya, Puchong, 47170, Selangor.",
         emailAddress: "soonghingfei@hotmail.com",
-        password: "fkyou69"
-    }
+        password: "fkyou69",
+    };
 
     return (
         <Box display="flex" flexDirection="column">
             {/* Name */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Name</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.firstName} {restaurantDetails.lastName}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Name"
+                description={
+                    restaurantDetails.firstName +
+                    " " +
+                    restaurantDetails.lastName
+                }
+            />
             {/* Gender */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Gender</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.gender}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Gender"
+                description={restaurantDetails.gender}
+            />
             {/* IC Number */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">IC Number</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.icNum}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Ic Number"
+                description={restaurantDetails.icNum}
+            />
             {/* Contact Number */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Contact Number</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.contactNum}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Contact Number"
+                description={restaurantDetails.contactNum}
+            />
             {/* SSM */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">SSM</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.ssm}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="SSM"
+                description={restaurantDetails.ssm}
+            />
             {/* Restaurant Name */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Restaurant Name</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.restaurantName}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Restaurant Name"
+                description={restaurantDetails.restaurantName}
+            />
             {/* Restaurant Address */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Restaurant Address</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.restaurantAddress}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Restaurant Address"
+                description={restaurantDetails.restaurantAddress}
+            />
             {/* Email Address */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Email Address</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.emailAddress}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Email Address"
+                description={restaurantDetails.emailAddress}
+            />
             {/* Password */}
-            <Box>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6">Password</Typography>
-                    </ListItem>
-                    <ListItem>
-                        <Typography variant="body1">
-                            {restaurantDetails.password}
-                        </Typography>
-                    </ListItem>
-                </List>
-                <Divider variant="middle" />
-            </Box>
+            <ProfileFieldContainer
+                title="Password"
+                description={restaurantDetails.password}
+            />
             {/* Qr Code */}
             <Box>
                 <List>
