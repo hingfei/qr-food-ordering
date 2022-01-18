@@ -10,7 +10,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import faker from "faker";
 
 ChartJS.register(
     CategoryScale,
@@ -21,7 +20,19 @@ ChartJS.register(
     Legend
 );
 
-const labels = Array.from({length:30}, (_, i) => i+1)  // Replace data
+
+let today = new Date();
+let priorDate = new Date(new Date().setDate(today.getDate() - 29));
+
+const getDaysArray = function (start, end) {
+    let arr = [];
+    let dt = new Date(start);
+    for (; dt <= end; dt.setDate(dt.getDate() + 1)) {
+        arr.push(new Date(dt).toDateString());
+    }
+    return arr;
+};
+const dayList = getDaysArray(priorDate, today);
 
 export const options = {
     responsive: true,
@@ -38,16 +49,64 @@ export const options = {
 
     },
 };
+
 function OrderGraph(props) {
+
+    const data = props.data
+    const group = data.reduce((group, item) =>{
+        const date = item.timestamp.substr(0,15);
+        if(!group[date]){
+            group[date] = [];
+        }
+        group[date].push(item);
+        return group;
+    },{})
+
+    const groupArray = Object.keys(group).map((date) => {
+            return{
+                date,
+                item: group[date]
+            }
+        }
+    )
+
+    const valueList = () => {
+        let value = []
+        let i = 0;
+        let n = 0;
+
+        while(i < dayList.length){
+
+            if(n >= groupArray.length){
+                value.push(0)
+                i++;
+            }else if(dayList[i] !== groupArray[n].date){
+                value.push(0)
+                i++;
+            }
+            else if(dayList[i] === groupArray[n].date){
+
+                let total = 0;
+                for(let j = 0; j < groupArray[n].item.length; j++){
+                    total += groupArray[n].item[j].amount
+                }
+                    value.push(total)
+                i++;
+                n++;
+            }}
+
+        return value;
+    }
+
     return (
-        <Box>
+        <Box mt={3}>
             <Bar
                 data={{
-                        labels,
+                        labels:dayList,
                         datasets:[
                             {
-                                label:'Total Income (RM)',
-                                data:labels.map(() => faker.datatype.number({min:1, max:2000})),
+                                label:'Total Income per day (RM)',
+                                data: valueList(),
                                 backgroundColor: '#4dbce8',
                             }
                         ]
