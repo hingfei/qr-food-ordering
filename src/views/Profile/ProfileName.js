@@ -3,7 +3,7 @@ import React from "react";
 import logo from "../images/decklogo.jpg";
 import "./ProfileName.css";
 
-function ProfileName() {
+function ProfileName({ name }) {
     return (
         <Box
             component="div"
@@ -17,7 +17,7 @@ function ProfileName() {
                 <Avatar src={logo} alt="logo" id="logo" />
             </Box>
             <Typography variant="h5" align="center" fontWeight="bold" mt={3}>
-                The Deck Restaurant
+                {name}
             </Typography>
         </Box>
     );

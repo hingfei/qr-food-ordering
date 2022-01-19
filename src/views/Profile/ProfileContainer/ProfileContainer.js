@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Footer from "../../../components/Footer";
 import ProfileNavBar from "../ProfileNavBar";
@@ -6,23 +6,44 @@ import ProfileName from "../ProfileName";
 import { Paper } from "@mui/material";
 import ProfileFields from "../ProfileFields";
 import ProfileEditFields from "../ProfileEditFields";
-import CheckUserLogin from "../../../components/CheckUserLogin";
-import {AuthContext} from "../../../context/AuthContextProvider";
+import axios from "axios";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 function ProfileContainer() {
-    const [authUser] = useContext(AuthContext);
+    const [details, setDetails] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
-    if (authUser === null) {
+    const AuthConfig = {
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+    };
+     // Get restaurant details
+     useEffect(() => {
+         if (isLoading) {
+             axios.get('/restaurant/profile', AuthConfig)
+                 .then((result) => {
+                     console.log(result.data);
+                     setDetails(result.data);
+                     setIsLoading(false);
+                 }).catch(error => {
+                     console.log(error);
+                     setIsLoading(false);
+                 })
+         }
+    },[details]);
+
+    if (isLoading) {
         return (
             <>
-                <CheckUserLogin />
+                <LoadingSpinner />
             </>
         )
     } else {
         return (
             <Box sx={{ minHeight: "100vh", backgroundColor: "FBF1E4" }}>
                 <ProfileNavBar />
-                <ProfileEditFields/>
+                <ProfileEditFields details={details}/>
                 <Box
                     display="flex"
                     width="100%"
@@ -39,13 +60,13 @@ function ProfileContainer() {
                         <Paper
                             elevation={3}
                             sx={{
-                                display:"flex",
+                                display: "flex",
                                 width: "400px",
                                 height: "500px",
                                 marginTop: 2,
                             }}
                         >
-                            <ProfileName />
+                            <ProfileName name={details.restaurantName}/>
                         </Paper>
                         <Paper
                             elevation={3}
@@ -55,16 +76,16 @@ function ProfileContainer() {
                                 marginBottom: 4,
                             }}
                         >
-                            <ProfileFields />
+                            <ProfileFields details={details}/>
                         </Paper>
                     </Box>
                 </Box>
                 <Footer />
             </Box>
         );
+
     }
-    
-    
+
 }
 
 export default ProfileContainer;
