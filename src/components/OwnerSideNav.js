@@ -123,7 +123,6 @@ function OwnerSideNav() {
                             <Button
                                 variant="inherit"
                                 startIcon={<BarChartIcon />}
-                                // Todo: Add endpoint of business summary
                                 onClick={() => redirect("business_summary")}
                             >
                                 Business Summary
