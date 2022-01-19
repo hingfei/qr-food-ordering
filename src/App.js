@@ -17,6 +17,7 @@ import BusinessSumContainer from "./views/BusinessSum/BusinessSumContainer/Busin
 import RegistrationContainer from "./views/Registration/RegistrationContainer/RegistrationContainer";
 import SomethingWentWrong from "./errors/SomethingWentWrong";
 import AuthContextProvider from "./context/AuthContextProvider";
+import CheckUserLogin from "./components/CheckUserLogin";
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
@@ -43,18 +44,18 @@ function App() {
                       <Route  path='/registration' component={RegistrationContainer}/> 
                       <Route  path='/login' component={LoginContainer}/>
 
-                      <Route  path='/profile'>
+                      <CheckUserLogin path='/profile'>
                         <ProfileContainer/>
-                      </Route>
-                      <Route  path='/business_summary'>
+                      </CheckUserLogin>
+                      <CheckUserLogin  path='/business_summary'>
                         <BusinessSumContainer/> 
-                      </Route>
-                      <Route  path='/order_list'>
+                      </CheckUserLogin>
+                      <CheckUserLogin  path='/order_list'>
                         <OrderListContainer/> 
-                      </Route>
-                      <Route  path='/edit_menu'>
+                      </CheckUserLogin>
+                      <CheckUserLogin  path='/edit_menu'>
                         <EditMenuContainer/>
-                      </Route>
+                      </CheckUserLogin>
                       <Route  path='/logout' component={LogoutContainer}/>
               
                       
