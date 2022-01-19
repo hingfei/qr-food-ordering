@@ -9,11 +9,11 @@ import {
     DialogActions,
     DialogContent,
     MenuItem,
-    IconButton,
 } from "@mui/material";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import './ProfileEditFields.css';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import axios from 'axios';
 
 // Dialog transition
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -32,49 +32,76 @@ const genders = [
     },
 ];
 
-// sample data
-const restaurantDetails = {
-    firstName: "Hayden",
-    lastName: "Soong",
-    gender: "male",
-    icNum: 990127435649,
-    contactNum: "0127788990",
-    ssm: 202101000005,
-    restaurantName: "The Deck Restaurant",
-    restaurantAddress:
-        "No. 67, Jalan 99, Bandar Puchong Jaya, Puchong, 47170, Selangor.",
-    emailAddress: "soonghingfei@hotmail.com",
-    password: "fkyou69",
-};
-
-function ProfileEditFields() {
+function ProfileEditFields({ details }) {
     // useState to open dialog
     const [open, setOpen] = useState(false);
+    const [openAlert, setOpenAlert] = useState(false);
+    
+    const [firstName, setFirstName] = useState(details.firstname);
+    const [lastName, setLastName] = useState(details.lastname);
+    const [gender, setGender] = useState(details.gender);
+    const [icNo, setIcNo] = useState(details.icNo);
+    const [contactNo, setContactNo] = useState(details.contactNo);
+    const [ssm, setSsm] = useState(details.ssm);
+    const [restaurantName, setRestaurantName] = useState(details.restaurantName);
+    const [restaurantAddress, setRestaurantAddress] = useState(details.restaurantAddress);
+    const [email, setEmail] = useState(details.email);
 
+    // Show Message
+    const Alert = React.forwardRef(function Alert(props, ref) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+      });
+    
+    // Show success message
+    const showMessage = () => {
+        setOpenAlert(true);
+    }
+
+    // Close success message
+    const closeMessage = () => {
+        setOpenAlert(false);
+    }
+
+    // Open dialog
     const handleOpen = () => {
         setOpen(true);
     };
-
+    // Close dialog
     const handleClose = () => {
         setOpen(false);
     };
 
+    // Handle save/update button
     const handleSave = () => {
-        console.log("Save");
-    };
+        // Combine data to put
+        const data = {
+            "firstname": firstName,
+            "lastname": lastName,
+            "gender": gender,
+            "icNo": icNo,
+            "contactNo": contactNo,
+            "ssm": ssm,
+            "restaurantName": restaurantName,
+            "restaurantAddress": restaurantAddress,
+            "email": email
+        }
 
-    // useState to set gender
-    const [gender, setGender] = useState(restaurantDetails.gender);
+        const AuthConfig = {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        };
 
-    const handleChange = (event) => {
-        setGender(event.target.value);
-    };
-
-    // useState to show password
-    const [passwordShown, setPasswordShown] = useState(false);
-
-    const togglePassword = () => {
-        setPasswordShown(!passwordShown);
+        // Update the profile
+        axios.put('restaurant/profile', data, AuthConfig)
+            .then(() => {
+                showMessage();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            }).catch((error) => {
+                console.log(error);
+            })
     };
 
     return (
@@ -115,7 +142,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.firstName}
+                            defaultValue={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -125,7 +153,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.lastName}
+                            defaultValue={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -136,7 +165,7 @@ function ProfileEditFields() {
                             fullWidth
                             variant="standard"
                             value={gender}
-                            onChange={handleChange}
+                            onChange={(e) => setGender(e.target.value)}
                         >
                             {genders.map((option) => (
                                 <MenuItem
@@ -155,7 +184,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.icNum}
+                            defaultValue={icNo}
+                            onChange={(e) => setIcNo(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -165,7 +195,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.contactNum}
+                            defaultValue={contactNo}
+                            onChange={(e) => setContactNo(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -175,7 +206,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.ssm}
+                            defaultValue={ssm}
+                            onChange={(e) => setSsm(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -185,7 +217,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.restaurantName}
+                            defaultValue={restaurantName}
+                            onChange={(e) => setRestaurantName(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -195,7 +228,8 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.restaurantAddress}
+                            defaultValue={restaurantAddress}
+                            onChange={(e) => setRestaurantAddress(e.target.value)}
                         />
                         <TextField
                             color="primary"
@@ -205,23 +239,9 @@ function ProfileEditFields() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            defaultValue={restaurantDetails.emailAddress}
+                            defaultValue={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-                        <Box width="100%" display="inline-flex">
-                            <TextField
-                                color="primary"
-                                size="large"
-                                id="password"
-                                label="Password"
-                                type={passwordShown ? "text" : "password"}
-                                fullWidth
-                                variant="standard"
-                                defaultValue={restaurantDetails.password}
-                            />
-                            <IconButton aria-label="show" onClick={togglePassword}>
-                                {passwordShown ? (<VisibilityOffIcon />) : (<VisibilityIcon />)}
-                            </IconButton>
-                        </Box>
                     </Box>
                 </DialogContent>
 
@@ -229,6 +249,12 @@ function ProfileEditFields() {
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleSave}>Save</Button>
                 </DialogActions>
+
+                <Snackbar anchorOrigin={{vertical:'top', horizontal:'center'}} open={openAlert} autoHideDuration={6000} onClose={closeMessage}>
+                <Alert onClose={closeMessage} severity="success" sx={{ width: '100%' }}>
+                    Update Successfully!
+                </Alert>
+            </Snackbar>
             </Dialog>
         </>
     );

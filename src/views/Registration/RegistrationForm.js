@@ -287,9 +287,9 @@ export default function RegistrationForm() {
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  Already have an account? Sign in
+              <Grid item sx={{marginBottom:"15px"}}>
+                <Link href="/login" variant="body2" >
+                  Already have an account? Sign in now!
                 </Link>
               </Grid>
             </Grid>
