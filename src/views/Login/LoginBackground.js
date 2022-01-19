@@ -5,6 +5,7 @@ import {Checkbox, FormControlLabel} from "@mui/material";
 import LoginInputField from "./LoginInputField";
 import login_img from "../images/menu.jpg";
 import "./LoginBackground.css";
+import Link from '@mui/material/Link';
 
 function LoginBackground(){
     return(
@@ -15,7 +16,9 @@ function LoginBackground(){
             <Box minWidth="60%" sx={{color:"#1E7DBC", display:"inline-flex", flexDirection:"column", alignItems:"center"}}>
                 <AssignmentInd sx={{fontSize:100}}/>
                 <LoginInputField/>
-                <FormControlLabel control={<Checkbox/>} label="Remember me"/>
+                <Link href="/registration" variant="body2" sx={{marginTop:"20px"}}>
+                    No account? Register now!
+                </Link>
             </Box>
         </Box>
     );
