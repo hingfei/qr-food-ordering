@@ -7,7 +7,6 @@ import axios from "axios";
 
 function OrderListCard() {
     const [orders, setOrders] = useState();
-    const [value, setValue] = useState();
     const [isLoading, setIsLoading] = useState(true);
     
     let status="";
@@ -31,7 +30,7 @@ function OrderListCard() {
                     setIsLoading(false);
                 })
         }
-    }, []) 
+    }) 
 
     // Function to indicate order is done.
     const handleFinish = (id) => {
@@ -42,7 +41,6 @@ function OrderListCard() {
         // Update database
         axios.put('/orders/'.concat(id), data)
             .then((result) => {
-                console.log(result);
                 window.location.reload();
             }).catch((error) => {
                 console.log(error);
@@ -53,7 +51,6 @@ function OrderListCard() {
     // Extract order details from str to json.
     const extractOrders = (orders) => {
         orders = JSON.parse(orders);
-        console.log(orders);
         return orders;
     }
 

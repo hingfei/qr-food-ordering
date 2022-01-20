@@ -24,7 +24,6 @@ function ProfileContainer() {
          if (isLoading) {
              axios.get('/restaurant/profile', AuthConfig)
                  .then((result) => {
-                     console.log(result.data);
                      setDetails(result.data);
                      setIsLoading(false);
                  }).catch(error => {
@@ -32,7 +31,7 @@ function ProfileContainer() {
                      setIsLoading(false);
                  })
          }
-    },[details]);
+    });
 
     if (isLoading) {
         return (
