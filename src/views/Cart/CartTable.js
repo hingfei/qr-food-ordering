@@ -12,7 +12,6 @@ function CartTable() {
 
     // todo: fix discount logic
     const orderContext = useContext(OrderContext)
-    const discount = 0
     const orderList = orderContext.orderListState;
     const [isLoading, setIsLoading] = useState(true)
 
@@ -74,27 +73,6 @@ function CartTable() {
                         )
                     })}
                     <Grid container mt={2} sx={{marginRight:'auto', marginLeft:'auto', marginBottom: '100px'}}>
-                        <Grid item xs={8}>
-                            <Typography variant={"body1"} ml={5}>
-                                SubTotal :
-                            </Typography>
-
-                        </Grid>
-                        <Grid item xs={4} sx={{textAlign:'left'}}>
-                            <Typography variant={"body1"} ml={5} >
-                                RM {subtotal}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={8} borderBottom={1} pb={2}>
-                            <Typography variant={"body1"} ml={5}>
-                                Discount ({discount*100}%) :
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={4} borderBottom={1} sx={{textAlign:'left'}} pb={2}>
-                            <Typography variant={"body1"} ml={5} >
-                                RM {discount*subtotal}
-                            </Typography>
-                        </Grid>
                         <Grid item xs={7} mt={2} sx={{fontSize: 'larger', fontWeight:'800'}}>
                             <Typography variant={"h5"} ml={5} fontWeight={"bold"}>
                                 Total:
@@ -103,11 +81,11 @@ function CartTable() {
                         </Grid>
                         <Grid item xs={5} mt={2} sx={{textAlign:'left'}}>
                             <Typography variant={"h5"} ml={1} fontWeight={"bold"}>
-                                RM{subtotal-subtotal*discount}
+                                RM{subtotal}
                             </Typography>
                         </Grid>
                     </Grid>
-                    <CartConfirmButton total={discount*subtotal}/>
+                    <CartConfirmButton total={subtotal}/>
                 </Box>
             );
         }
