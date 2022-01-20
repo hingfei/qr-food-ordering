@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, List, ListItem, Typography, Divider } from "@mui/material";
 import ProfileQrGenerator from "./ProfileQrGenerator";
-import ProfileQrDownloadButton from "./ProfileQrDownloadButton";
 import ProfileFieldContainer from "./ProfileContainer/ProfileFieldContainer";
 
 function ProfileFields({details}) {
+
     return (
         <Box display="flex" flexDirection="column">
             {/* Name */}
@@ -57,14 +57,7 @@ function ProfileFields({details}) {
                     <ListItem>
                         <Typography variant="h6">QR Code</Typography>
                     </ListItem>
-                    <Box
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                    >
-                        <ProfileQrGenerator />
-                        <ProfileQrDownloadButton />
-                    </Box>
+                        <ProfileQrGenerator res_ID = {details._id}/>
                 </List>
                 <Divider variant="middle" />
             </Box>
