@@ -7,7 +7,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const labels = ['nasi lemak', 'laksa', 'mee goreng']; // Replace data from database
 
-function PopularItems() {
+function PopularItems(props) {
+
+    const data = props.data
+    console.log(data[0].method)
     return (
         <Box mt={3}>
             <Doughnut
@@ -28,7 +31,7 @@ function PopularItems() {
                     plugins:{
                         title:{
                             display: true,
-                            text: 'Popular Items',
+                            text: 'Payment Method',
                             font:{
                                 size: 20,
                             }

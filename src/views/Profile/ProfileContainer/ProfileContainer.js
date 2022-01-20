@@ -4,6 +4,7 @@ import Footer from "../../../components/Footer";
 import ProfileNavBar from "../ProfileNavBar";
 import ProfileName from "../ProfileName";
 import { Paper } from "@mui/material";
+import ProfileTitle from "../ProfileTitle";
 import ProfileFields from "../ProfileFields";
 import ProfileEditFields from "../ProfileEditFields";
 import axios from "axios";
@@ -23,7 +24,6 @@ function ProfileContainer() {
          if (isLoading) {
              axios.get('/restaurant/profile', AuthConfig)
                  .then((result) => {
-                     console.log(result.data);
                      setDetails(result.data);
                      setIsLoading(false);
                  }).catch(error => {
@@ -31,7 +31,7 @@ function ProfileContainer() {
                      setIsLoading(false);
                  })
          }
-    },[details]);
+    });
 
     if (isLoading) {
         return (
@@ -43,6 +43,7 @@ function ProfileContainer() {
         return (
             <Box sx={{ minHeight: "100vh", backgroundColor: "FBF1E4" }}>
                 <ProfileNavBar />
+                <ProfileTitle />
                 <ProfileEditFields details={details}/>
                 <Box
                     display="flex"

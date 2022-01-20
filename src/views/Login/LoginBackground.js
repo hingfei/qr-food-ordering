@@ -1,7 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import AssignmentInd from '@mui/icons-material/AssignmentInd';
-import {Checkbox, FormControlLabel} from "@mui/material";
 import LoginInputField from "./LoginInputField";
 import login_img from "../images/menu.jpg";
 import "./LoginBackground.css";

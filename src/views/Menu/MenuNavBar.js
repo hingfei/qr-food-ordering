@@ -3,7 +3,6 @@ import {AppBar, Badge, Box, Grid, IconButton, Toolbar, Typography} from "@mui/ma
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChangeCircleRoundedIcon from '@mui/icons-material/ChangeCircleRounded';
 import './MenuNavBar.css'
-import MenuSideNav from "./MenuSideNav";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {OrderContext} from "../../App";
 import Snackbar from "@mui/material/Snackbar";
@@ -105,7 +104,6 @@ function MenuNavBar() {
             <AppBar position="static" sx={{backgroundColor:"#54486E"}}>
                 <Toolbar>
                     <Grid item xs={6}>
-                        <MenuSideNav/>
                         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 0}}>
                             <img
                                 alt=""
