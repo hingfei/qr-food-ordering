@@ -44,31 +44,29 @@ export const options = {
             font:{
                 size: 20,
             }
-
         },
-
     },
 };
 
 function OrderGraph(props) {
 
     const data = props.data
+
     const group = data.reduce((group, item) =>{
         const date = item.timestamp.substr(0,15);
         if(!group[date]){
             group[date] = [];
         }
-        group[date].push(item);
+        group[date].push(item.amount);
         return group;
     },{})
 
     const groupArray = Object.keys(group).map((date) => {
             return{
                 date,
-                item: group[date]
+                totalIncome: group[date].reduce((a,b) => {return a + b;})
             }
-        }
-    )
+        })
 
     const valueList = () => {
         let value = []
@@ -77,24 +75,15 @@ function OrderGraph(props) {
 
         while(i < dayList.length){
 
-            if(n >= groupArray.length){
+            if(n >= groupArray.length || dayList[i] !== groupArray[n].date){
                 value.push(0)
                 i++;
-            }else if(dayList[i] !== groupArray[n].date){
-                value.push(0)
-                i++;
-            }
-            else if(dayList[i] === groupArray[n].date){
-
-                let total = 0;
-                for(let j = 0; j < groupArray[n].item.length; j++){
-                    total += groupArray[n].item[j].amount
-                }
-                    value.push(total)
+            }else if(dayList[i] === groupArray[n].date){
+                    value.push(groupArray[n].totalIncome)
                 i++;
                 n++;
-            }}
-
+            }
+        }
         return value;
     }
 

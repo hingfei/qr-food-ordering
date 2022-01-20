@@ -20,18 +20,9 @@ function OrderSummary(props) {
                 paidArray.push(props.data[i])
             }
         }
-        console.log(paidArray)
         return paidArray.length
     }
 
-    const totalExpense = () => {
-        let expense = 10
-        return expense
-    }
-
-    const totalProfit = () => {
-        return totalRevenue() - totalExpense()
-    }
 
     return (
             <Box display="flex"
@@ -40,31 +31,32 @@ function OrderSummary(props) {
                  flexWrap="wrap"
                  mt={5}
                  sx={{minHeight:"20vh",
-                     justifyContent: "center"}}>
-                <Card sx={{minWidth:"40vh"}} variant="outlined">
+                     justifyContent: "center",
+                     textAlign:"center",
+                     }}>
+                <Card sx={{minWidth:"50vh"}} variant="outlined">
                     <CardContent>
-                    <Typography variant={'h4'}>Revenue:</Typography>
-                        <Typography variant={'h5'}>RM {totalRevenue()}</Typography>
+                        <Typography variant={'h4'} sx={{fontFamily:'Verdana',
+                                                        fontWeight:'bold',
+                                                        textShadow:'2px 2px 3px #54486E'}}>
+                            TOTAL INCOME:
+                        </Typography>
+                        <Typography variant={'h5'} mt={3} sx={{fontFamily:'Verdana'}}>
+                            RM {totalRevenue()}
+                        </Typography>
                     </CardContent>
                 </Card>
-                {/*<Card sx={{minWidth:"25vh"}} variant="outlined">*/}
-                {/*    <CardContent>*/}
-                {/*    <Typography>Expense:</Typography>*/}
-                {/*        {totalExpense()}*/}
-                {/*    </CardContent>*/}
-                {/*</Card>*/}
-                <Card sx={{minWidth:"40vh"}} variant="outlined">
+                <Card sx={{minWidth:"50vh"}} variant="outlined">
                     <CardContent>
-                    <Typography variant={'h4'}>Total Order:</Typography>
-                        <Typography variant={'h5'}>{totalOrder()} orders</Typography>
+                        <Typography variant={'h4'} sx={{fontFamily:'Verdana',
+                                                        fontWeight:'bold',
+                                                        textShadow:'2px 2px 3px #54486E'}}>
+                            TOTAL ORDERS:</Typography>
+                        <Typography variant={'h5'} mt={3} sx={{fontFamily:'Verdana'}}>
+                            {totalOrder()}
+                        </Typography>
                     </CardContent>
                 </Card>
-                {/*<Card sx={{minWidth:"25vh"}} variant="outlined">*/}
-                {/*    <CardContent>*/}
-                {/*    <Typography>Profit:</Typography>*/}
-                {/*        {totalProfit()}*/}
-                {/*    </CardContent>*/}
-                {/*</Card>*/}
             </Box>
     );
 }
