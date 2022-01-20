@@ -1,5 +1,5 @@
 import React from 'react';
-import BarChartIcon from "@mui/icons-material/ListAlt";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import {Paper, Typography} from "@mui/material";
 
 function BusinessSumTitle() {
