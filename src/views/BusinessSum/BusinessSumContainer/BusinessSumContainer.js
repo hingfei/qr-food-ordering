@@ -64,7 +64,7 @@ function BusinessSumContainer(){
             <br/>
             <Footer/>
         </Box>
-    );
+    )
 }
 
 export default BusinessSumContainer;
