@@ -4,7 +4,7 @@ import {saveAs} from "file-saver";
 
 function ProfileQrGenerator({res_ID}) {
     // todo: change localhost
-    const QrURL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://localhost:3000/check_in/"+res_ID
+    const QrURL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://localhost:3000/check-in/"+res_ID
 
     const handleDownload = () => {
         saveAs(QrURL, 'restaurantQRcode.png')
