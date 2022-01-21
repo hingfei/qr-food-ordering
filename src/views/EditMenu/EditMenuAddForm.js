@@ -63,7 +63,7 @@ function EditMenuAddForm(){
      const [newCategory, setCategory] = useState('');
      const [newPrice, setPrice] = useState('');
      const [newImage, setImage] = useState('');
-     const [authUser, setAuthUser] = useContext(AuthContext);
+     const [authUser] = useContext(AuthContext);
 
      const handleClickOpen = () => {
           setOpen(true);

@@ -40,7 +40,6 @@ function TableNumberButton({tableNumber}) {
 
         axios.post('orders/', data)
             .then(response => {
-                console.log(response.data)
                 sessionStorage.setItem("orderId", response.data._id)
                 return history.push('/menu/'.concat(id))
             })
@@ -63,11 +62,10 @@ function TableNumberButton({tableNumber}) {
         {
             // todo: if ald have session id ?
             axios
-                .post('http://localhost:8000/users/', data
+                .post('users/', data
                 )
                 .then(response => {
                     // CREATE ORDER ID
-                    console.log(response.data)
                     sessionStorage.setItem("session_id", response.data._id)
                     createOrder(response.data._id)
                 }).catch(error => {

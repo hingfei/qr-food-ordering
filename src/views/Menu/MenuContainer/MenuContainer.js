@@ -21,7 +21,6 @@ function MenuContainer() {
         if (isLoading) {
             axios.get('/restaurant/menu/'.concat(id))
                 .then(response => {
-                    console.log(response.data)
                     setMenuList(response.data)
                     setIsLoading(false);
                 }

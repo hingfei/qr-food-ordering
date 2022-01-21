@@ -18,7 +18,6 @@ export const orderReducer = (orderList, action) => {
                 return order;
             })
         if (orderFound === false) {
-            // Todo: replace the price with the actual price of item
             return [...orderList, {id: action.payload.id, title: action.payload.title, quantity: 1, price: action.payload.price, total: action.payload.price * 1}]
         }
         return orderList;
@@ -57,8 +56,5 @@ export const orderReducer = (orderList, action) => {
             orderList = action.payload
             return orderList
         }
-
-
-        // Todo: validate negative number
 }
 

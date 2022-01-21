@@ -14,7 +14,7 @@ const _ = require("lodash")
 
 function EditMenuContainer(){
 
-    const [authUser, setAuthUser] = useContext(AuthContext);
+    const [authUser] = useContext(AuthContext);
     const history = useHistory()
     const [MenuList, setMenuList] = useState([])
     const [isLoading, setIsLoading] = useState(true)

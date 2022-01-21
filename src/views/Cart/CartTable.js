@@ -10,7 +10,6 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 
 function CartTable() {
 
-    // todo: fix discount logic
     const orderContext = useContext(OrderContext)
     const orderList = orderContext.orderListState;
     const [isLoading, setIsLoading] = useState(true)
@@ -24,9 +23,11 @@ function CartTable() {
         {
             axios.get('orders/'.concat(sessionStorage.getItem("orderId")))
                 .then(res => {
-                    // todo : function to load orders
-                    loadOrder(JSON.parse(res.data.orders))
                     setIsLoading(false)
+                    if (res.data.orders){
+                        loadOrder(JSON.parse(res.data.orders))
+                    }
+                   
                 })
                 .catch(err => {
                     console.log(err)

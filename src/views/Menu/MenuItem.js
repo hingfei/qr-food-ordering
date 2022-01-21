@@ -29,7 +29,7 @@ function MenuItem({ _id, title, price, description, categories, image }) {
     function handleAddItem(id, title, price) {
         orderContext.orderListDispatch({ type: 'add_item_to_cart', payload: { id: id, title: title, price: price } })
     }
-    const imageUrl = 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d'
+    const imageUrl = image
     return (
         <>
             <div className="menu-items">
