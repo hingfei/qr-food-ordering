@@ -65,10 +65,12 @@ function OrderListCard() {
             <Box 
                 display="flex" 
                 flexDirection="row" 
-                columnGap={3} 
                 flexWrap="wrap" 
                 rowGap={3} 
                 justifyContent="space-between"
+                marginTop={3}
+                paddingX={5}
+                marginBottom={3}
             >
                 {orders.map((order) => {
                     if(order.done === false) {
@@ -83,10 +85,9 @@ function OrderListCard() {
                         const orderDetails = extractOrders(order.orders);
             
                         return (
-                            <Box key={order._id} component="div" flexBasis="32%">
+                            <Box key={order._id} component="div" flexBasis="32%" >
                                 <Card sx={{ minWidth: 350 }} variant="outlined">
                                     <CardContent>
-                                        {/* Todo: Add table number */}
                                         <Typography variant="h6" component="div" alignSelf="center">
                                             Order ID: {order._id}
                                         </Typography>
