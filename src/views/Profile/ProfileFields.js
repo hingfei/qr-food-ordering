@@ -1,24 +1,9 @@
 import React from "react";
 import { Box, List, ListItem, Typography, Divider } from "@mui/material";
 import ProfileQrGenerator from "./ProfileQrGenerator";
-import ProfileQrDownloadButton from "./ProfileQrDownloadButton";
 import ProfileFieldContainer from "./ProfileContainer/ProfileFieldContainer";
 
-function ProfileFields() {
-    // sample data
-    const restaurantDetails = {
-        firstName: "Hayden",
-        lastName: "Soong",
-        gender: "Male",
-        icNum: 990127435649,
-        contactNum: "0127788990",
-        ssm: 202101000005,
-        restaurantName: "The Deck Restaurant",
-        restaurantAddress:
-            "No. 67, Jalan 99, Bandar Puchong Jaya, Puchong, 47170, Selangor.",
-        emailAddress: "soonghingfei@hotmail.com",
-        password: "fkyou69",
-    };
+function ProfileFields({details}) {
 
     return (
         <Box display="flex" flexDirection="column">
@@ -26,50 +11,45 @@ function ProfileFields() {
             <ProfileFieldContainer
                 title="Name"
                 description={
-                    restaurantDetails.firstName +
+                    details.firstname +
                     " " +
-                    restaurantDetails.lastName
+                    details.lastname
                 }
             />
             {/* Gender */}
             <ProfileFieldContainer
                 title="Gender"
-                description={restaurantDetails.gender}
+                description={details.gender.charAt(0).toUpperCase() + details.gender.slice(1)}
             />
             {/* IC Number */}
             <ProfileFieldContainer
                 title="Ic Number"
-                description={restaurantDetails.icNum}
+                description={details.icNo}
             />
             {/* Contact Number */}
             <ProfileFieldContainer
                 title="Contact Number"
-                description={restaurantDetails.contactNum}
+                description={details.contactNo}
             />
             {/* SSM */}
             <ProfileFieldContainer
                 title="SSM"
-                description={restaurantDetails.ssm}
+                description={details.ssm}
             />
             {/* Restaurant Name */}
             <ProfileFieldContainer
                 title="Restaurant Name"
-                description={restaurantDetails.restaurantName}
+                description={details.restaurantName}
             />
             {/* Restaurant Address */}
             <ProfileFieldContainer
                 title="Restaurant Address"
-                description={restaurantDetails.restaurantAddress}
+                description={details.restaurantAddress}
             />
             {/* Email Address */}
             <ProfileFieldContainer
                 title="Email Address"
-                description={restaurantDetails.emailAddress}
-            />
-            {/* Password */}
-            <ProfileFieldContainer
-                title="Password"
-                description={restaurantDetails.password}
+                description={details.email}
             />
             {/* Qr Code */}
             <Box>
@@ -77,14 +57,7 @@ function ProfileFields() {
                     <ListItem>
                         <Typography variant="h6">QR Code</Typography>
                     </ListItem>
-                    <Box
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                    >
-                        <ProfileQrGenerator />
-                        <ProfileQrDownloadButton />
-                    </Box>
+                        <ProfileQrGenerator res_ID = {details._id}/>
                 </List>
                 <Divider variant="middle" />
             </Box>

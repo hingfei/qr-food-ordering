@@ -1,4 +1,5 @@
 import React , {useContext} from 'react';
+import { useHistory } from 'react-router-dom';
 import './LoginButton.css';
 import {Box, Button} from '@mui/material';
 import axios from 'axios';
@@ -7,6 +8,7 @@ import MuiAlert from '@mui/material/Alert';
 import { AuthContext } from '../../context/AuthContextProvider';
 
 function LoginButton({username, password}){
+    const history = useHistory();
 
     const [authUser, setAuthUser] = useContext(AuthContext);
     function handleLogin(){
@@ -44,6 +46,7 @@ function LoginButton({username, password}){
                 })
 
                 console.log(response.data) // show token, save token, redirect
+                history.push('/profile');
             }).catch(error => {
                 // unauthorized status code
                 if (error.response.status === 401){

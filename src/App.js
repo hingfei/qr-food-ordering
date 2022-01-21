@@ -11,25 +11,20 @@ import OrderListContainer from "./views/OrderList/OrderListContainer/OrderListCo
 import ProfileContainer from "./views/Profile/ProfileContainer/ProfileContainer"
 import EditMenuContainer from "./views/EditMenu/EditMenuContainer/EditMenuContainer"
 import LoginContainer from "./views/Login/LoginContainer/LoginContainer";
-import { orderListReducer, ordersTotal } from "./reducers/OrderReducer";
 import LogoutContainer from "./views/Logout/LogoutContainer/LogoutContainer";
 import BusinessSumContainer from "./views/BusinessSum/BusinessSumContainer/BusinessSumContainer";
 import RegistrationContainer from "./views/Registration/RegistrationContainer/RegistrationContainer";
 import SomethingWentWrong from "./errors/SomethingWentWrong";
 import AuthContextProvider from "./context/AuthContextProvider";
+import CheckUserLogin from "./components/CheckUserLogin";
 
 // Create context for customer cart
 export const OrderContext = React.createContext();
-// Create context for owner order list
-export const OrderListContext = React.createContext();
 // Todo: create dynamic url with diff restaurants name and Route other pages lol
 
 function App() {
     // Reducer for customer cart
     const [orderList, dispatch] = useReducer(orderReducer, initialOrderList);
-    // Reducer for owner order list
-    const [orders, action] = useReducer(orderListReducer, ordersTotal);
-
 
     // store token in localstorage
       return (
@@ -37,24 +32,23 @@ function App() {
           <div>
             <BrowserRouter>
               <AuthContextProvider>
-              <OrderListContext.Provider value={{ordersState: orders, ordersDispatch: action}}>
               <OrderContext.Provider value={{orderListState: orderList, orderListDispatch: dispatch }}>
                   <Switch>
                       <Route  path='/registration' component={RegistrationContainer}/> 
                       <Route  path='/login' component={LoginContainer}/>
 
-                      <Route  path='/profile'>
+                      <CheckUserLogin path='/profile'>
                         <ProfileContainer/>
-                      </Route>
-                      <Route  path='/business_summary'>
+                      </CheckUserLogin>
+                      <CheckUserLogin  path='/business_summary'>
                         <BusinessSumContainer/> 
-                      </Route>
-                      <Route  path='/order_list'>
+                      </CheckUserLogin>
+                      <CheckUserLogin  path='/order_list'>
                         <OrderListContainer/> 
-                      </Route>
-                      <Route  path='/edit_menu'>
+                      </CheckUserLogin>
+                      <CheckUserLogin  path='/edit_menu'>
                         <EditMenuContainer/>
-                      </Route>
+                      </CheckUserLogin>
                       <Route  path='/logout' component={LogoutContainer}/>
               
                       
@@ -69,7 +63,6 @@ function App() {
 
                 </Switch>
               </OrderContext.Provider>
-              </OrderListContext.Provider>
               </AuthContextProvider>
             </BrowserRouter>
           </div>
