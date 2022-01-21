@@ -62,7 +62,7 @@ function MenuItem({_id,title,description,categories,price,image}) {
     const [editDescription, setDescription] = useState(description);
     const [editCategories, setCategory] = useState(categories);
     const [editPrice, setPrice] = useState(price);
-    const [editImage, setImage] = useState(image);
+    const [editImageURL, setImage] = useState(image);
     const [openDelete, setOpenDelete] = React.useState(false);
 
     const handleDeleteOpen =()=>{
@@ -108,7 +108,7 @@ function MenuItem({_id,title,description,categories,price,image}) {
             "price" : editPrice,
             "description" : editDescription,
             "categories" : editCategories,
-            "image" :editImage      
+            "image" :editImageURL      
         }
 
         const AuthConfig = {
@@ -122,8 +122,8 @@ function MenuItem({_id,title,description,categories,price,image}) {
                     console.log(response.data)
                     setTimeout(() => {
                         window.location.reload();
-                    }, 1500);
-
+                    }, 50);
+                
             }).catch((error)=>{
                 console.log(error);
             })
@@ -150,12 +150,11 @@ function MenuItem({_id,title,description,categories,price,image}) {
         setOpenDelete(false);
      };
 
-    const imageUrl = 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d'
-    
+
     return (
         <>
         <div className="menu-items">
-            <img className='modal-img' src={imageUrl} alt={title} />
+            <img className='modal-img' src={editImageURL} alt={title} />
             <div className="details">
                 <div className="more-details">
                     <h5>{title}</h5>
@@ -227,8 +226,8 @@ function MenuItem({_id,title,description,categories,price,image}) {
                                 variant ="standard" 
                                 id="image" 
                                 label="Image" 
-                                value={editImage} 
-                                type="text" 
+                                value={editImageURL} 
+                                type="url" 
                                 width="25ch"  
                                 onChange = {handleImageChange}/>
 
