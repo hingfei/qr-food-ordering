@@ -25,7 +25,8 @@ function LoginButton({username, password}){
         }
         const data = JSON.stringify(
             'grant_type=&username='.concat(username) +'&password='.concat(password) + '&scope=&client_id=&client_secret=')
-        axios.post('auth/login', JSON.stringify(data), config).then(
+        
+            axios.post('auth/login', JSON.stringify(data), config).then(
             response => {
                 console.log(response.status)
                 localStorage.setItem("token", response.data.access_token)
