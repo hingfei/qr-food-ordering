@@ -73,55 +73,58 @@ function OrderListCard() {
                 marginBottom={3}
             >
                 {orders.map((order) => {
-                    if(order.done === false) {
-                        served = "Not Served";
-
-                        if(order.paid === true) {
-                            status = "Paid";
-                        }
-                        else {
-                            status = "Not Paid";
-                        }
+                    if (order.orders != "") {
                         const orderDetails = extractOrders(order.orders);
-            
-                        return (
-                            <Box key={order._id} component="div" flexBasis="32%" >
-                                <Card sx={{ minWidth: 350 }} variant="outlined">
-                                    <CardContent>
-                                        <Typography variant="h6" component="div" alignSelf="center">
-                                            Order ID: {order._id}
-                                        </Typography>
-                                        <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
-                                            Paid Status: {status}
-                                        </Typography>
-                                        <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
-                                            Total Amount: RM {order.amount}
-                                        </Typography>
-                                        <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
-                                            Payment Method: {order.method.charAt(0).toUpperCase() + order.method.slice(1)}
-                                        </Typography>
-                                        <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
-                                            Time: {order.timestamp}
-                                        </Typography>
-                                        <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
-                                            Served: {served}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <OrderListDialog orderID={order._id} orderDetails={orderDetails}/>
-                                        <Button
-                                            onClick={() => handleFinish(order._id)}
-                                            size="small"
-                                            color="success"
-                                            variant="contained"
-                                            endIcon={<CheckCircleIcon />}
-                                        >
-                                            Finish
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                           </Box>
-                        );
+
+                        if(order.done === false) {
+                            served = "Not Served";
+    
+                            if(order.paid === true) {
+                                status = "Paid";
+                            }
+                            else {
+                                status = "Not Paid";
+                            }
+                            
+                            return (
+                                <Box key={order._id} component="div" flexBasis="32%" >
+                                    <Card sx={{ minWidth: 350 }} variant="outlined">
+                                        <CardContent>
+                                            <Typography variant="h6" component="div" alignSelf="center">
+                                                Order ID: {order._id}
+                                            </Typography>
+                                            <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
+                                                Paid Status: {status}
+                                            </Typography>
+                                            <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
+                                                Total Amount: RM {order.amount}
+                                            </Typography>
+                                            <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
+                                                Payment Method: {order.method.charAt(0).toUpperCase() + order.method.slice(1)}
+                                            </Typography>
+                                            <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
+                                                Time: {order.timestamp}
+                                            </Typography>
+                                            <Typography variant="body1" color="text.secondary" fontWeight={"bold"}>
+                                                Served: {served}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <OrderListDialog orderID={order._id} orderDetails={orderDetails}/>
+                                            <Button
+                                                onClick={() => handleFinish(order._id)}
+                                                size="small"
+                                                color="success"
+                                                variant="contained"
+                                                endIcon={<CheckCircleIcon />}
+                                            >
+                                                Finish
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                               </Box>
+                            );
+                        }
                     }
                  })}
             </Box>
