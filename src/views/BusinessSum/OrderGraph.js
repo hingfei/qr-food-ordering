@@ -68,6 +68,7 @@ function OrderGraph(props) {
             }
         })
 
+
     const valueList = () => {
         let value = []
         let i = 0;

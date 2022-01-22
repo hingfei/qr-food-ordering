@@ -47,19 +47,19 @@ function BusinessSumContainer(){
             <BusinessSumNavBar/>
             <Box>
                 <BusinessSumTitle/>
-                <OrderSummary data = {orderDetail}/>
-                <OrderGraph data = {orderDetail}/>
-                <Box display="flex"
-                     flexDirection="row"
-                     columnGap={0}
-                     flexWrap="wrap"
-                     mt={5}
-                     mb={5}
-                     sx={{minHeight:"20vh",
-                         justifyContent: "center"}}>
-                <PopularItems data ={orderDetail}/>
-                <PaymentMethod data ={orderDetail}/>
-                </Box>
+                    <OrderSummary data = {orderDetail}/>
+                    <OrderGraph data = {orderDetail}/>
+                    <Box display="flex"
+                    flexDirection="row"
+                    columnGap={0}
+                    flexWrap="wrap"
+                    mt={5}
+                    mb={5}
+                    sx={{minHeight:"20vh",
+                    justifyContent: "center"}}>
+                    <PopularItems data ={orderDetail}/>
+                    <PaymentMethod data ={orderDetail}/>
+                    </Box>
             </Box>
             <br/>
             <Footer/>

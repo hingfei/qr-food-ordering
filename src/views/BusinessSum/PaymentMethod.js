@@ -7,7 +7,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function PaymentMethod(props) {
 
-    const data = props.data
+    let data = props.data
+
+    function checkOrder(data){
+        return data.orders !== "";
+    }
+    data = data.filter(checkOrder)
 
     const groupMethod = data.reduce((group, item) => {
         const method = item.method;

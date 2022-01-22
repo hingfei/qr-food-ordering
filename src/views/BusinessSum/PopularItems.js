@@ -7,15 +7,22 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function PopularItems(props) {
 
-    const data = props.data
+    let data = props.data
+
+    function checkOrder(data){
+        return data.payment !== null;
+    }
+    data = data.filter(checkOrder)
+
     const item = []
 
     for(let i = 0; i < data.length; i++){
-        let x = JSON.parse(data[i].orders)
+            let x = JSON.parse(data[i].orders)
         for(let j = 0; j < x.length; j++){
          item.push(x[j])
         }
     }
+
 
     const groupItem = item.reduce((group, item) => {
         const title = item.title;
