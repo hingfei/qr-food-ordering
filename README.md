@@ -7,7 +7,7 @@ This project is mainly built with
 - Material Ui
 
 ## Getting Started
-First, having Node and npm installed is needed to run the project.
+First, having Node and npm installed are needed to run the project.
 [Installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 **or**
@@ -72,7 +72,7 @@ docker run -p 3000:80 --name react-app app-prod
 It will serve the static files on port localhost:3000
 
 ## What to add next?
-Things that is nice to have 
+Things that are nice to have 
 ### Unit Testing for each components
 > For this project, there is no unit test written yet. Other than that, optimizations are needed.
 
