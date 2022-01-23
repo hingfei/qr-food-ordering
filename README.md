@@ -1,71 +1,103 @@
-# Getting Started with Create React App
+# QR-Food-Ordering App
+This is the frontend of the QR-food-ordering application. This project consists of the restaurant owner part to manage the restaurant and the customer part to order foods from the restaurant.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Built With
+This project is mainly built with
+- React.js
+- Material Ui
 
-## Available Scripts
+## Getting Started
+First, having Node and npm installed is needed to run the project.
+[Installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-In the project directory, you can run:
+**or**
 
-### `yarn start`
+You can also install **yarn** instead.
+[Installation guide](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
+**Make sure you set up the backend for the project from [backend](https://github.com/khooihzhz/qr-food-ordering-backend) then only the project can be run without error.**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Clone the repository
+```
+git clone https://github.com/khooihzhz/CAT304.git
+```
 
-### `yarn test`
+Create a **.env** file in the project root.
+``` 
+#.env file
+REACT_APP_API_URL = <backend_link>
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the repository directory, 
+```
+npm install
+or 
+yarn install
+```
 
-### `yarn build`
+To start a development server, 
+```
+npm start
+or 
+yarn start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**OR**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you have Docker installed,
+```
+docker-compose -f docker-compose.dev.yml up
+```
+This will start a docker container for development.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Production version of the application
+Run to create a build version of the application (make sure you have the .env file with the backend URL)
+```
+npm build
+or 
+yarn build
+```
 
-### `yarn eject`
+Use **serve** to run the static files [tutorial](https://stackoverflow.com/a/49209041)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**or**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+run 
+```
+docker-compose -f docker-compose.prod.yml build
+docker run -p 3000:80 --name react-app app-prod
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+It will serve the static files on port localhost:3000
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## What to add next?
+Things that is nice to have 
+### Unit Testing for each components
+> For this project, there is no unit test written yet. Other than that, optimizations are needed.
 
-## Learn More
+### Separating applications
+> It would be nice to separate the customer side and restaurant owner side to make the project smaller and easier to implement more features for both side in the future
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Payment system
+> API for payment system is not implemented
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Contact
+This project is contributed by 
+- [kahsing69](https://github.com/kahsing69)
+- [hingfei](https://github.com/hingfei)
+- [Guofoong](https://github.com/Guofoong)
+- [khooihzhz](https://github.com/khooihzhz)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# CAT304
+## Acknowledgements
+List of references and credits that helped completing this project
+- [materialui](https://mui.com/)
+- [react.js](https://reactjs.org/)
+- [dockerizeReactApp](https://www.youtube.com/watch?v=1QK27MUr2Dk&ab_channel=Karan)
+- [nginx](https://www.nginx.com/)
+- [foodMenuDesign](https://codingartistweb.com/2021/05/responsive-food-menu-without-media-queries/)
+- [axios](https://github.com/axios/axios)
+- [hdImages](https://unsplash.com/)
+- [uiGradients](https://uigradients.com)
+- [reactRouter](https://reactrouter.com/)
