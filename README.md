@@ -20,7 +20,7 @@ You can also install **yarn** instead.
 
 Clone the repository
 ```
-git clone https://github.com/khooihzhz/CAT304.git
+git clone https://github.com/khooihzhz/qr-food-ordering.git
 ```
 
 Create a **.env** file in the project root.
@@ -82,6 +82,8 @@ Things that is nice to have
 ### Payment system
 > API for payment system is not implemented
 
+## License
+Distributed under the MIT License.
 
 ## Contact
 This project is contributed by 
