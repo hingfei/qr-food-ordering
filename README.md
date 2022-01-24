@@ -54,7 +54,7 @@ This will start a docker container for development.
 ### Production version of the application
 Run to create a build version of the application (make sure you have the .env file with the backend URL)
 ```
-npm build
+npm run build
 or 
 yarn build
 ```
